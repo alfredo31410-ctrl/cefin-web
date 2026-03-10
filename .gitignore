@@ -1,0 +1,11 @@
+# Ignorar en la raíz y en subcarpetas
+node_modules/
+.next/
+dist/
+build/
+.env
+
+# Específicos para tu carpeta cefin
+cefin/node_modules/
+cefin/.next/
+cefin/out/

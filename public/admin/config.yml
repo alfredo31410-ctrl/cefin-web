@@ -1,0 +1,41 @@
+backend:
+  name: github
+  repo: JohnBecerra16/cefin-web
+  branch: main
+
+#PARA LOCAL
+#backend:
+  #name: test-repo
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+
+  - name: "blog"
+    label: "Blog"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+
+    fields:
+      - { label: "Titulo", name: "titulo", widget: "string" }
+      - { label: "Fecha", name: "fecha", widget: "datetime" }
+      - { label: "Imagen", name: "imagen", widget: "image" }
+      - { label: "Descripcion", name: "descripcion", widget: "text" }
+      - { label: "Contenido", name: "body", widget: "markdown" }
+
+  - name: "eventos"
+    label: "Eventos"
+    folder: "content/eventos"
+    create: true
+    slug: "{{slug}}"
+
+    fields:
+      - { label: "Titulo", name: "titulo", widget: "string" }
+      - { label: "Fecha", name: "fecha", widget: "datetime" }
+      - { label: "Lugar", name: "lugar", widget: "string" }
+      - { label: "Costo", name: "costo", widget: "string" }
+      - { label: "Imagen", name: "imagen", widget: "image" }
+      - { label: "Descripcion", name: "descripcion", widget: "text" }
+      - { label: "Hotmart", name: "hotmart", widget: "string" }
