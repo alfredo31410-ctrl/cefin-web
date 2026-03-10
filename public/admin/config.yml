@@ -60,7 +60,12 @@ collections:
           options: ["fiscal", "nomina", "contabilidad"] 
         }
       - { label: "Duración", name: "duracion", widget: "string" }
-      - { label: "Instructor", name: "instructor", widget: "string", default: "CEFIN" }
+      - { 
+          label: "Instructor", 
+          name: "instructor", 
+          widget: "select", 
+          options: ["Alfredo Cobos", "Marisol Galvan"] 
+        }
       - { label: "Hotmart Link", name: "hotmart", widget: "string" }
       - { label: "Destacado", name: "destacado", widget: "boolean", default: true }
       - { label: "Descripción Larga (Temario)", name: "body", widget: "markdown" }
