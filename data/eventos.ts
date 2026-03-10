@@ -6,7 +6,7 @@ export type Evento = {
   descripcion: string
   descripcionLarga: string
   imagen: string
-  fecha: string
+  fecha: string | Date
   lugar: string
   precio: string
   hotmart: string

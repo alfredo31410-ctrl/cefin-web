@@ -11,6 +11,16 @@ type Props = {
 }
 
 export default function EventoCard({ evento }: Props) {
+  //formatear la fecha para el texto del card
+  const fechaTexto = (evento.fecha as any) instanceof Date 
+    ? (evento.fecha as any).toLocaleDateString('es-MX', { day: '2-digit', month: 'long', year: 'numeric' })
+    : String(evento.fecha);
+
+    //aseguramos el countdow reciba un formato valido
+  const fechaParaCountdown = (evento.fecha as any) instanceof Date 
+    ? (evento.fecha as any).toISOString()
+    : String(evento.fecha);
+
   return (
     <motion.div
       whileHover={{ y: -6 }}
@@ -35,7 +45,7 @@ export default function EventoCard({ evento }: Props) {
         </h3>
 
         <p className="text-sm text-slate-500 mb-2">
-          📅 {evento.fecha}
+          📅 {fechaTexto}
         </p>
 
         <p className="text-sm text-slate-500 mb-4">
@@ -46,7 +56,7 @@ export default function EventoCard({ evento }: Props) {
           {evento.descripcion}
         </p>
 
-        <Countdown fecha={evento.fecha} />
+        <Countdown fecha={fechaParaCountdown} />
 
         <div className="flex justify-between items-center">
 

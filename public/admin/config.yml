@@ -29,6 +29,7 @@ collections:
   - name: "eventos"
     label: "Eventos"
     folder: "content/eventos"
+    identifier_field: titulo
     create: true
     slug: "{{slug}}"
 
