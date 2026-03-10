@@ -9,6 +9,10 @@ type Props = {
 }
 
     export default function BlogCard({ post }: Props) {
+      const fechaFormateada = (post.fecha as any) instanceof Date 
+    ? (post.fecha as any) .toLocaleDateString('es-MX', { day: '2-digit', month: 'long', year: 'numeric' })
+    : String(post.fecha);
+
   return (
     <div className="bg-white rounded-xl shadow-sm hover:shadow-xl transition overflow-hidden">
 
@@ -30,7 +34,7 @@ type Props = {
         </h3>
 
         <p className="text-sm text-slate-500 mb-3">
-          📅 {post.fecha}
+          📅 {fechaFormateada}
         </p>
 
         <p className="text-sm text-slate-600 mb-4">

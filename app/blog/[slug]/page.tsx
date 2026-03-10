@@ -23,6 +23,11 @@ export default async function BlogDetalle({ params }: Props) {
     notFound()
   }
 
+  // Formateo de seguridad
+  const fechaFormateada = (post.fecha as any) instanceof Date 
+    ? (post.fecha as any). toLocaleDateString('es-MX', { day: '2-digit', month: 'long', year: 'numeric' })
+    : String(post.fecha);
+
   return (
     <main className="max-w-4xl mx-auto px-6 py-24">
 
@@ -31,7 +36,7 @@ export default async function BlogDetalle({ params }: Props) {
       </h1>
 
       <p className="text-slate-500 mb-8">
-        📅 {post.fecha}
+        📅 {fechaFormateada}
       </p>
 
       {/* Video */}

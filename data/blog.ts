@@ -6,7 +6,7 @@ export type Blog = {
   descripcion: string
   contenido: string
   imagen: string
-  fecha: string
+  fecha: string | Date
   videoId: string
   destacado: boolean
 }
