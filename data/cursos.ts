@@ -32,7 +32,7 @@ const cursosBase: Omit<Curso, "slug">[] = [
     imagen: "/cfdi-4.webp",
     categoria: "fiscal",
     duracion: "6 horas",
-    instructor: "CEFIN",
+    instructor: "Alfredo Cobos",
     destacado: true,
     hotmart: "https://pay.hotmart.com/XXXX"
   },
@@ -51,7 +51,7 @@ const cursosBase: Omit<Curso, "slug">[] = [
     imagen: "/reformas-fiscales.png",
     categoria: "contabilidad",
     duracion: "8 horas",
-    instructor: "CEFIN",
+    instructor: "Marisol Galvan",
     destacado: true,
     hotmart: "https://pay.hotmart.com/YYYY"
   },
@@ -72,7 +72,7 @@ const cursosBase: Omit<Curso, "slug">[] = [
     imagen: "/nomina-imss.jpeg",
     categoria: "nomina",
     duracion: "5 horas",
-    instructor: "CEFIN",
+    instructor: "Alfredo Cobos",
     destacado: false,
     hotmart: "https://pay.hotmart.com/ZZZZ"
   }
