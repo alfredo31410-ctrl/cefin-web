@@ -1,10 +1,15 @@
-import { getAllPosts } from "@/lib/posts"
+import { getAllBlogs } from "@/lib/blogs"
 import BlogCard from "@/components/BlogCard"
+import { blog as blogsLocales } from "@/data/blogs"
 
 export default function BlogPage() {
+  const blogsCMS = getAllBlogs()
+  const todosLosBlogs = [...blogsLocales, ...blogsCMS]
 
-  const posts = getAllPosts()
-
+  const blogsOrdenados = todosLosBlogs.sort((a, b) => {
+    return new Date(b.fecha).getTime() - new Date(a.fecha).getTime()
+  }
+  )
   return (
     <main className="max-w-7xl mx-auto px-6 py-24">
 
@@ -38,7 +43,7 @@ export default function BlogPage() {
 
       <div className="grid md:grid-cols-3 gap-8">
 
-        {posts.map((post: any) => (
+        {blogsOrdenados.map((post: any) => (
           <BlogCard key={post.slug} post={post} />
         ))}
 

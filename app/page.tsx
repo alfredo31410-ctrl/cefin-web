@@ -7,7 +7,7 @@ import MembresiaCard from "@/components/MembresiaCard";
 import TestimonioCard from "@/components/TestimonioCard";
 import { eventos } from "@/data/eventos";
 import EventoCard from "@/components/EventoCard";
-import { blog } from "@/data/blog";
+import { blog } from "@/data/blogs";
 import BlogCard from "@/components/BlogCard";
 
 const eventosDestacados = eventos.filter((e) => e.destacado);

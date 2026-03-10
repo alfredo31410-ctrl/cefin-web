@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Blog } from "@/data/blog"
+import { Blog } from "@/data/blogs"
 
 type Props = {
     post: Blog & { slug: string }
