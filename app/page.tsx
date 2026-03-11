@@ -45,11 +45,11 @@ export default function Home() {
                 Ver Cursos
               </button>
             </a>
-          <a href="membresias">
-            <button className="border border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-slate-900 transition">
-              Ver Membresías
-            </button>
-          </a>
+            <a href="membresias">
+              <button className="border border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-slate-900 transition">
+                Ver Membresías
+              </button>
+            </a>
           </div>
         </div>
       </section>
@@ -63,129 +63,110 @@ export default function Home() {
               Capacitacion gratuita en vivo todos los martes a las 11:00 AM
             </p>
           </div>
-          <a href="https://youtube.com/@TU-CANAL/live"
-             target="_blank"
-            className="bg-white text-red-600 px-5 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
-              Ver transmision
-            </a>
+          <a
+            href="https://youtube.com/@TU-CANAL/live"
+            target="_blank"
+            className="bg-white text-red-600 px-5 py-2 rounded-lg font-semibold hover:bg-gray-100 transition"
+          >
+            Ver transmision
+          </a>
         </div>
       </section>
 
       {/* ================= EVENTOS ================= */}
 
-<section className="py-20 md:py-24 bg-white">
-
-  <Container>
-
-    <div className="flex justify-between items-center mb-12">
-
-      <div>
-
-        <p className="text-sm text-red-600 font-semibold uppercase">
-          Eventos
-        </p>
-
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-          Próximos seminarios y capacitaciones
-        </h2>
-
-      </div>
-
-    </div>
-
-    <Grid>
-
-      {eventosDestacados.map((evento) => (
-
-        <EventoCard key={evento.id} evento={evento} />
-
-      ))}
-
-    </Grid>
-
-  </Container>
-
-</section>
-      {/* ================= MEMBRESIAS ================= */}
-      <section className="py-24 bg-gray-50" id="membresias">
+      <section className="py-20 md:py-24 bg-white">
         <Container>
-          <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-center mb-12">
             <div>
               <p className="text-sm text-red-600 font-semibold uppercase">
-                Membresías
+                Eventos
               </p>
+
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                Capacítate con los mejores
+                Próximos seminarios y capacitaciones
               </h2>
             </div>
           </div>
+
           <Grid>
-            {membresias.map((membresia) => (
-              <MembresiaCard key={membresia.id} membresia={membresia} />
+            {eventosDestacados.map((evento) => (
+              <EventoCard key={evento.id} evento={evento} />
             ))}
           </Grid>
-            
+        </Container>
+      </section>
+      {/* ================= MEMBRESIAS ================= */}
+      <section className="py-24 bg-gray-50" id="membresias">
+        <Container>
+          <div className="flex justify-between items-center mb-12">
+            <div className="flex justify-between items-center mb-12">
+              <div>
+                <p className="text-sm text-red-600 font-semibold uppercase">
+                  Membresías
+                </p>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+                  Capacítate con los mejores
+                </h2>
+              </div>
+            </div>
+            <Grid>
+              {membresias.map((membresia) => (
+                <MembresiaCard key={membresia.id} membresia={membresia} />
+              ))}
+            </Grid>
           </div>
         </Container>
-        
       </section>
 
       {/* ================= CAPACITACIONES GRATUITAS ================= */}
 
       <section className="py-24 bg-slate-50">
         <Container>
-          <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-center mb-12">
-            <div>
-              <p className="text-sm text-red-600 font-semibold uppercase">
-                Capacitaciones gratuitas
-              </p>
+            {" "}
+            <div className="flex justify-between items-center mb-12">
+              <div>
+                <p className="text-sm text-red-600 font-semibold uppercase">
+                  Capacitaciones gratuitas
+                </p>
 
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                Aprende con nuestros lives
-              </h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+                  Aprende con nuestros lives
+                </h2>
+              </div>
             </div>
-          </div>
             <Grid>
               {blog.slice(0, 3).map((post) => (
                 <BlogCard key={post.id} post={post} />
               ))}
             </Grid>
-        </div>
+          </div>
         </Container>
-        
       </section>
 
       {/* ================= TESTIMONIOS ================= */}
       <section className="py-24 bg-white">
         <Container>
-          <div className="max-w-6xl mx-auto px-6 text-center">
-          <p className="text-sm text-red-600 uppercase font-semibold mb-4">
-            Testimonios
-          </p>
-
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-16">
-            Lo que dicen nuestros alumnos
-          </h2>
-              <Grid>
-                {testimonios.map((testimonio) => (
-                  <TestimonioCard key={testimonio.id} testimonio={testimonio} />
-                ))}
-              </Grid>
-          <div className="grid md:grid-cols-3 gap-10">
-            {testimonios.map((testimonio) => (
-              <TestimonioCard key={testimonio.id} testimonio={testimonio} />
-            ))}
+          <div className="flex justify-between items-center mb-12">
+            {" "}
+            <p className="text-sm text-red-600 uppercase font-semibold mb-4">
+              Testimonios
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-16">
+              Lo que dicen nuestros alumnos
+            </h2>
+            <Grid>
+              {testimonios.map((testimonio) => (
+                <TestimonioCard key={testimonio.id} testimonio={testimonio} />
+              ))}
+            </Grid>
           </div>
-        </div>
         </Container>
-        
       </section>
 
       {/* ================= BENEFICIOS ================= */}
       <section className="py-20 px-6 max-w-6xl mx-auto text-center">
-        
         <h2 className="text-3xl font-bold mb-12">
           ¿Por qué estudiar en CEFIN?
         </h2>
