@@ -12,9 +12,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-
 export default function Navbar() {
-
   /*
     ESTADOS DEL COMPONENTE
     ------------------------------------
@@ -43,7 +41,6 @@ export default function Navbar() {
   */
 
   useEffect(() => {
-
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
@@ -53,7 +50,6 @@ export default function Navbar() {
 
       return () => window.removeEventListener("scroll", handleScroll);
     }
-
   }, [isHome]);
 
   /*
@@ -69,15 +65,9 @@ export default function Navbar() {
       ? "bg-white/90 backdrop-blur-md shadow-md"
       : "bg-transparent";
 
-  const textColor =
-    !isHome || scrolled
-      ? "text-slate-700"
-      : "text-white";
+  const textColor = !isHome || scrolled ? "text-slate-700" : "text-white";
 
-  const activeColor =
-    !isHome || scrolled
-      ? "text-red-600"
-      : "text-red-400";
+  const activeColor = !isHome || scrolled ? "text-red-600" : "text-red-400";
 
   /*
     FUNCIÓN PARA DETECTAR
@@ -85,11 +75,9 @@ export default function Navbar() {
   */
 
   const isActive = (path: string) => {
-
     if (path === "/") return pathname === "/";
 
     return pathname.startsWith(path);
-
   };
 
   /*
@@ -109,9 +97,7 @@ export default function Navbar() {
 
   const closeMenu = () => setMenuOpen(false);
 
-
   return (
-
     /*
       NAVBAR PRINCIPAL
       ------------------------------------
@@ -119,44 +105,81 @@ export default function Navbar() {
       z-50 → por encima del contenido
     */
 
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${navbarBg}`}>
-
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${navbarBg}`}
+    >
       {/* CONTENEDOR PRINCIPAL */}
 
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
         {/* LOGO */}
 
         <Link
           href="/"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className={`font-black text-2xl md:text-3xl tracking-[0.2em] transition-colors duration-300 ${textColor}`}
         >
           CEFIN
         </Link>
 
-
         {/* MENÚ DESKTOP */}
 
         <div className="hidden md:flex gap-8 items-center">
+          <NavLink
+            href="/"
+            label="Inicio"
+            linkClass={linkClass}
+            isActive={isActive}
+          />
 
-          <NavLink href="/" label="Inicio" linkClass={linkClass} isActive={isActive} />
+          <NavLink
+            href="/cursos"
+            label="Cursos"
+            linkClass={linkClass}
+            isActive={isActive}
+          />
 
-          <NavLink href="/cursos" label="Cursos" linkClass={linkClass} isActive={isActive} />
+          <NavLink
+            href="/membresias"
+            label="Membresías"
+            linkClass={linkClass}
+            isActive={isActive}
+          />
 
-          <NavLink href="/membresias" label="Membresías" linkClass={linkClass} isActive={isActive} />
+          <NavLink
+            href="/eventos"
+            label="Eventos"
+            linkClass={linkClass}
+            isActive={isActive}
+          />
 
-          <NavLink href="/eventos" label="Eventos" linkClass={linkClass} isActive={isActive} />
+          <NavLink
+            href="/blog"
+            label="Blog"
+            linkClass={linkClass}
+            isActive={isActive}
+          />
 
-          <NavLink href="/blog" label="Blog" linkClass={linkClass} isActive={isActive} />
+          <NavLink
+            href="/instructores"
+            label="Instructores"
+            linkClass={linkClass}
+            isActive={isActive}
+          />
 
-          <NavLink href="/instructores" label="Instructores" linkClass={linkClass} isActive={isActive} />
+          <NavLink
+            href="/nosotros"
+            label="Nosotros"
+            linkClass={linkClass}
+            isActive={isActive}
+          />
 
-          <NavLink href="/nosotros" label="Nosotros" linkClass={linkClass} isActive={isActive} />
-
-          <NavLink href="/contacto" label="Contacto" linkClass={linkClass} isActive={isActive} />
-
+          <NavLink
+            href="/contacto"
+            label="Contacto"
+            linkClass={linkClass}
+            isActive={isActive}
+          />
         </div>
-
 
         {/* BOTÓN CTA DESKTOP */}
 
@@ -167,7 +190,6 @@ export default function Navbar() {
           Inscribirme
         </Link>
 
-
         {/* BOTÓN HAMBURGUESA (MÓVIL) */}
 
         <button
@@ -176,35 +198,46 @@ export default function Navbar() {
         >
           ☰
         </button>
-
       </div>
-
 
       {/* MENÚ MÓVIL */}
 
       {menuOpen && (
-
         <div className="md:hidden bg-white shadow-lg">
-
           <div className="flex flex-col gap-6 px-6 py-8 text-lg">
-
             {/* LINKS MÓVIL */}
 
             <MobileLink href="/" label="Inicio" closeMenu={closeMenu} />
 
             <MobileLink href="/cursos" label="Cursos" closeMenu={closeMenu} />
 
-            <MobileLink href="/membresias" label="Membresías" closeMenu={closeMenu} />
+            <MobileLink
+              href="/membresias"
+              label="Membresías"
+              closeMenu={closeMenu}
+            />
 
             <MobileLink href="/eventos" label="Eventos" closeMenu={closeMenu} />
 
             <MobileLink href="/blog" label="Blog" closeMenu={closeMenu} />
 
-            <MobileLink href="/instructores" label="Instructores" closeMenu={closeMenu} />
+            <MobileLink
+              href="/instructores"
+              label="Instructores"
+              closeMenu={closeMenu}
+            />
 
-            <MobileLink href="/nosotros" label="Nosotros" closeMenu={closeMenu} />
+            <MobileLink
+              href="/nosotros"
+              label="Nosotros"
+              closeMenu={closeMenu}
+            />
 
-            <MobileLink href="/contacto" label="Contacto" closeMenu={closeMenu} />
+            <MobileLink
+              href="/contacto"
+              label="Contacto"
+              closeMenu={closeMenu}
+            />
 
             {/* CTA MÓVIL */}
 
@@ -215,17 +248,12 @@ export default function Navbar() {
             >
               Inscribirme
             </Link>
-
           </div>
-
         </div>
-
       )}
-
     </nav>
   );
 }
-
 
 /*
   COMPONENTE NAVLINK
@@ -235,31 +263,18 @@ export default function Navbar() {
 */
 
 function NavLink({ href, label, linkClass, isActive }: any) {
-
   return (
-
     <Link href={href} className="relative">
-
-      <span className={linkClass(href)}>
-
-        {label}
-
-      </span>
+      <span className={linkClass(href)}>{label}</span>
 
       {/* INDICADOR DE LINK ACTIVO */}
 
       {isActive(href) && (
-
         <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-red-500 rounded-full" />
-
       )}
-
     </Link>
-
   );
-
 }
-
 
 /*
   COMPONENTE MOBILE LINK
@@ -269,9 +284,7 @@ function NavLink({ href, label, linkClass, isActive }: any) {
 */
 
 function MobileLink({ href, label, closeMenu }: any) {
-
   return (
-
     <Link
       href={href}
       onClick={closeMenu}
@@ -279,7 +292,5 @@ function MobileLink({ href, label, closeMenu }: any) {
     >
       {label}
     </Link>
-
   );
-
 }
