@@ -2,10 +2,8 @@ backend:
   name: github
   repo: JohnBecerra16/cefin-web
   branch: main
- 
-#PARA LOCAL
-#backend:
-  #name: test-repo
+  base_url: https://cefin-web.vercel.app
+  auth_endpoint: api/oauth
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
@@ -15,9 +13,9 @@ collections:
   - name: "blog"
     label: "Blog"
     folder: "content/blog"
-    identifier_field: title
+    identifier_field: titulo
     create: true
-    slug: "{tiulo}}"
+    slug: "{{titulo}}"
 
     fields:
       - { label: "Titulo", name: "titulo", widget: "string" }
@@ -27,7 +25,7 @@ collections:
       - { label: "Contenido", name: "body", widget: "markdown" }
 
   - name: "eventos"
-    label: "Evento"
+    label: "Eventos"
     folder: "content/eventos"
     identifier_field: titulo
     create: true
@@ -43,29 +41,35 @@ collections:
       - { label: "Hotmart", name: "hotmart", widget: "string" }
 
   - name: "cursos"
-    label: "Curso"
+    label: "Cursos"
     folder: "content/cursos"
     create: true
     slug: "{{titulo}}"
+
     fields:
-      - { label: "ID (Número)", name: "id", widget: "number", value_type: "int" }
+      - { label: "ID", name: "id", widget: "number", value_type: "int" }
       - { label: "Título", name: "titulo", widget: "string" }
       - { label: "Descripción Corta", name: "descripcion", widget: "text" }
-      - { label: "Precio (Ej: $1,499 MXN)", name: "precio", widget: "string" }
+      - { label: "Precio", name: "precio", widget: "string" }
       - { label: "Imagen", name: "imagen", widget: "image" }
-      - { 
-          label: "Categoría", 
-          name: "categoria", 
-          widget: "select", 
-          options: ["fiscal", "nomina", "contabilidad"] 
-        }
+
+      - label: "Categoría"
+        name: "categoria"
+        widget: "select"
+        options:
+          - fiscal
+          - nomina
+          - contabilidad
+
       - { label: "Duración", name: "duracion", widget: "string" }
-      - { 
-          label: "Instructor", 
-          name: "instructor", 
-          widget: "select", 
-          options: ["Alfredo Cobos", "Marisol Galvan"] 
-        }
+
+      - label: "Instructor"
+        name: "instructor"
+        widget: "select"
+        options:
+          - Alfredo Cobos
+          - Marisol Galvan
+
       - { label: "Hotmart Link", name: "hotmart", widget: "string" }
       - { label: "Destacado", name: "destacado", widget: "boolean", default: true }
-      - { label: "Descripción Larga (Temario)", name: "body", widget: "markdown" }
+      - { label: "Descripción Larga", name: "body", widget: "markdown" }
