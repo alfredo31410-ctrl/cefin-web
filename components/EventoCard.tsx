@@ -93,7 +93,7 @@ export default function EventoCard({ evento }: Props) {
 
         {/* COUNTDOWN */}
 
-        <div className="mb-4">
+        <div className="w-full">
           <Countdown fecha={fechaParaCountdown} />
         </div>
 

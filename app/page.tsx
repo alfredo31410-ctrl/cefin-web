@@ -17,8 +17,11 @@ const eventosDestacados = eventos.filter((e) => e.destacado);
 export default function Home() {
   return (
     <main>
+
       {/* ================= HERO ================= */}
+
       <section className="relative h-screen flex items-center justify-center text-white">
+
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/Banner.jpeg')" }}
@@ -27,6 +30,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50" />
 
         <div className="relative z-10 text-center max-w-3xl px-6">
+
           <p className="text-sm uppercase tracking-wider text-red-400 font-bold mb-4">
             Capacitación Fiscal Profesional en México
           </p>
@@ -39,54 +43,76 @@ export default function Home() {
             Domina reformas fiscales, CFDI 4.0 y cumplimiento SAT
           </p>
 
-          <div className="flex justify-center gap-6">
-            <a href="cursos">
+          <div className="flex justify-center gap-6 flex-wrap">
+
+            <a href="/cursos">
               <button className="bg-emerald-500 hover:bg-emerald-600 px-8 py-3 rounded-lg font-semibold transition">
                 Ver Cursos
               </button>
             </a>
-            <a href="membresias">
+
+            <a href="/membresias">
               <button className="border border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-slate-900 transition">
                 Ver Membresías
               </button>
             </a>
+
           </div>
+
         </div>
+
       </section>
 
+
       {/* ================= LIVE SEMANAL ================= */}
+
       <section className="bg-red-600 text-white py-6">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="animate-pulse text-xl">🔴</span>
-            <p className="font-semibold">
-              Capacitacion gratuita en vivo todos los martes a las 11:00 AM
-            </p>
+
+        <Container>
+
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+
+            <div className="flex items-center gap-3">
+
+              <span className="animate-pulse text-xl">🔴</span>
+
+              <p className="font-semibold">
+                Capacitación gratuita en vivo todos los martes a las 11:00 AM
+              </p>
+
+            </div>
+
+            <a
+              href="https://youtube.com/@TU-CANAL/live"
+              target="_blank"
+              className="bg-white text-red-600 px-5 py-2 rounded-lg font-semibold hover:bg-gray-100 transition"
+            >
+              Ver transmisión
+            </a>
+
           </div>
-          <a
-            href="https://youtube.com/@TU-CANAL/live"
-            target="_blank"
-            className="bg-white text-red-600 px-5 py-2 rounded-lg font-semibold hover:bg-gray-100 transition"
-          >
-            Ver transmision
-          </a>
-        </div>
+
+        </Container>
+
       </section>
+
 
       {/* ================= EVENTOS ================= */}
 
       <section className="py-20 md:py-24 bg-white">
-        <Container>
-          <div className="flex justify-between items-center mb-12">
-            <div>
-              <p className="text-sm text-red-600 font-semibold uppercase">
-                Eventos
-              </p>
 
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                Próximos seminarios y capacitaciones
-              </h2>
-            </div>
+        <Container>
+
+          <div className="mb-12">
+
+            <p className="text-sm text-red-600 font-semibold uppercase">
+              Eventos
+            </p>
+
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+              Próximos seminarios y capacitaciones
+            </h2>
+
           </div>
 
           <Grid>
@@ -94,109 +120,145 @@ export default function Home() {
               <EventoCard key={evento.id} evento={evento} />
             ))}
           </Grid>
+
         </Container>
-      </section>
-      {/* ================= MEMBRESIAS ================= */}
-      <section className="py-24 bg-gray-50" id="membresias">
-        <Container>
-          <div className="flex justify-between items-center mb-12">
-            <div className="flex justify-between items-center mb-12">
-              <div>
-                <p className="text-sm text-red-600 font-semibold uppercase">
-                  Membresías
-                </p>
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                  Capacítate con los mejores
-                </h2>
-              </div>
-            </div>
-            <Grid>
-              {membresias.map((membresia) => (
-                <MembresiaCard key={membresia.id} membresia={membresia} />
-              ))}
-            </Grid>
-          </div>
-        </Container>
+
       </section>
 
-      {/* ================= CAPACITACIONES GRATUITAS ================= */}
+
+      {/* ================= MEMBRESIAS ================= */}
+
+      <section className="py-24 bg-gray-50" id="membresias">
+
+        <Container>
+
+          <div className="mb-12">
+
+            <p className="text-sm text-red-600 font-semibold uppercase">
+              Membresías
+            </p>
+
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+              Capacítate con los mejores
+            </h2>
+
+          </div>
+
+          <Grid>
+            {membresias.map((membresia) => (
+              <MembresiaCard key={membresia.id} membresia={membresia} />
+            ))}
+          </Grid>
+
+        </Container>
+
+      </section>
+
+
+      {/* ================= CAPACITACIONES ================= */}
 
       <section className="py-24 bg-slate-50">
-        <Container>
-          <div className="flex justify-between items-center mb-12">
-            {" "}
-            <div className="flex justify-between items-center mb-12">
-              <div>
-                <p className="text-sm text-red-600 font-semibold uppercase">
-                  Capacitaciones gratuitas
-                </p>
 
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                  Aprende con nuestros lives
-                </h2>
-              </div>
-            </div>
-            <Grid>
-              {blog.slice(0, 3).map((post) => (
-                <BlogCard key={post.id} post={post} />
-              ))}
-            </Grid>
+        <Container>
+
+          <div className="mb-12">
+
+            <p className="text-sm text-red-600 font-semibold uppercase">
+              Capacitaciones gratuitas
+            </p>
+
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+              Aprende con nuestros lives
+            </h2>
+
           </div>
+
+          <Grid>
+            {blog.slice(0, 3).map((post) => (
+              <BlogCard key={post.id} post={post} />
+            ))}
+          </Grid>
+
         </Container>
+
       </section>
 
+
       {/* ================= TESTIMONIOS ================= */}
+
       <section className="py-24 bg-white">
+
         <Container>
-          <div className="flex justify-between items-center mb-12">
-            {" "}
+
+          <div className="mb-12 text-center">
+
             <p className="text-sm text-red-600 uppercase font-semibold mb-4">
               Testimonios
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-16">
+
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
               Lo que dicen nuestros alumnos
             </h2>
-            <Grid>
-              {testimonios.map((testimonio) => (
-                <TestimonioCard key={testimonio.id} testimonio={testimonio} />
-              ))}
-            </Grid>
+
           </div>
+
+          <Grid>
+            {testimonios.map((testimonio) => (
+              <TestimonioCard key={testimonio.id} testimonio={testimonio} />
+            ))}
+          </Grid>
+
         </Container>
+
       </section>
+
 
       {/* ================= BENEFICIOS ================= */}
-      <section className="py-20 px-6 max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-12">
-          ¿Por qué estudiar en CEFIN?
-        </h2>
 
-        <div className="grid md:grid-cols-3 gap-10">
-          <div>
-            <TrendingUp className="mx-auto mb-4 text-red-600" size={40} />
-            <h3 className="text-xl font-semibold mb-4">
-              Actualización Constante
-            </h3>
-            <p>Contenido alineado a reformas fiscales y cambios del SAT.</p>
+      <section className="py-20">
+
+        <Container>
+
+          <div className="text-center mb-12">
+
+            <h2 className="text-3xl font-bold">
+              ¿Por qué estudiar en CEFIN?
+            </h2>
+
           </div>
 
-          <div>
-            <FileText className="mx-auto mb-4 text-red-600" size={40} />
-            <h3 className="text-xl font-semibold mb-4">
-              Casos Prácticos Reales
-            </h3>
-            <p>Ejemplos aplicables a la vida profesional del contador.</p>
+          <div className="grid md:grid-cols-3 gap-10 text-center">
+
+            <div>
+              <TrendingUp className="mx-auto mb-4 text-red-600" size={40} />
+              <h3 className="text-xl font-semibold mb-4">
+                Actualización Constante
+              </h3>
+              <p>Contenido alineado a reformas fiscales y cambios del SAT.</p>
+            </div>
+
+            <div>
+              <FileText className="mx-auto mb-4 text-red-600" size={40} />
+              <h3 className="text-xl font-semibold mb-4">
+                Casos Prácticos Reales
+              </h3>
+              <p>Ejemplos aplicables a la vida profesional del contador.</p>
+            </div>
+
+            <div>
+              <Users className="mx-auto mb-4 text-red-600" size={40} />
+              <h3 className="text-xl font-semibold mb-4">
+                Instructores Expertos
+              </h3>
+              <p>Profesionales con experiencia en el sector fiscal.</p>
+            </div>
+
           </div>
 
-          <div>
-            <Users className="mx-auto mb-4 text-red-600" size={40} />
-            <h3 className="text-xl font-semibold mb-4">
-              Instructores Expertos
-            </h3>
-            <p>Profesionales con experiencia en el sector fiscal.</p>
-          </div>
-        </div>
+        </Container>
+
       </section>
+
     </main>
   );
 }
