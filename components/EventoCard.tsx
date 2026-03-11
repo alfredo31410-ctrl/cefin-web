@@ -11,23 +11,47 @@ type Props = {
 }
 
 export default function EventoCard({ evento }: Props) {
-  //formatear la fecha para el texto del card
-  const fechaTexto = (evento.fecha as any) instanceof Date 
-    ? (evento.fecha as any).toLocaleDateString('es-MX', { day: '2-digit', month: 'long', year: 'numeric' })
-    : String(evento.fecha);
 
-    //aseguramos el countdow reciba un formato valido
-  const fechaParaCountdown = (evento.fecha as any) instanceof Date 
-    ? (evento.fecha as any).toISOString()
-    : String(evento.fecha);
+  /* ===== FORMATEO DE FECHA ===== */
+
+  const fechaTexto =
+    (evento.fecha as any) instanceof Date
+      ? (evento.fecha as any).toLocaleDateString("es-MX", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        })
+      : String(evento.fecha)
+
+  /* ===== FORMATO PARA COUNTDOWN ===== */
+
+  const fechaParaCountdown =
+    (evento.fecha as any) instanceof Date
+      ? (evento.fecha as any).toISOString()
+      : String(evento.fecha)
 
   return (
+
     <motion.div
       whileHover={{ y: -6 }}
-      className="bg-white rounded-xl shadow-sm hover:shadow-xl transition overflow-hidden"
+      className="
+        bg-white
+        rounded-xl
+        shadow-sm
+        hover:shadow-xl
+        transition
+        overflow-hidden
+        flex
+        flex-col
+        h-full
+        border
+        border-slate-100
+      "
     >
 
-      <div className="relative h-48 w-full">
+      {/* ===== IMAGEN ===== */}
+
+      <div className="relative w-full h-44 md:h-48 lg:h-52">
 
         <Image
           src={evento.imagen}
@@ -38,29 +62,46 @@ export default function EventoCard({ evento }: Props) {
 
       </div>
 
-      <div className="p-6">
 
-        <h3 className="text-lg font-semibold mb-2">
+      {/* ===== CONTENIDO ===== */}
+
+      <div className="p-4 md:p-6 flex flex-col flex-grow">
+
+        {/* TITULO */}
+
+        <h3 className="text-base md:text-lg font-semibold mb-2 line-clamp-2">
           {evento.titulo}
         </h3>
 
-        <p className="text-sm text-slate-500 mb-2">
+        {/* FECHA */}
+
+        <p className="text-xs md:text-sm text-slate-500 mb-1">
           📅 {fechaTexto}
         </p>
 
-        <p className="text-sm text-slate-500 mb-4">
+        {/* LUGAR */}
+
+        <p className="text-xs md:text-sm text-slate-500 mb-3">
           📍 {evento.lugar}
         </p>
 
-        <p className="text-slate-600 text-sm mb-4">
+        {/* DESCRIPCION */}
+
+        <p className="text-sm text-slate-600 mb-4 line-clamp-3">
           {evento.descripcion}
         </p>
 
-        <Countdown fecha={fechaParaCountdown} />
+        {/* COUNTDOWN */}
 
-        <div className="flex justify-between items-center">
+        <div className="mb-4">
+          <Countdown fecha={fechaParaCountdown} />
+        </div>
 
-          <span className="font-bold text-red-600">
+        {/* FOOTER */}
+
+        <div className="flex items-center justify-between mt-auto">
+
+          <span className="font-bold text-red-600 text-base md:text-lg">
             {evento.precio}
           </span>
 
@@ -76,5 +117,6 @@ export default function EventoCard({ evento }: Props) {
       </div>
 
     </motion.div>
+
   )
 }

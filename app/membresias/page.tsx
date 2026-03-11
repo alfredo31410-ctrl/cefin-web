@@ -1,11 +1,13 @@
+import Container from "@/components/Container";
+import Grid from "@/components/Grid";
 import MembresiaCard from "@/components/MembresiaCard";
 import { membresias } from "@/data/membresias";
 
 export default function MembresiasPage() {
   return (
     <main className="max-w-7xl mx-auto px-6 py-24">
-
-      {/* HERO */}
+      <Container>
+              {/* HERO */}
       <section className="mb-16 text-center">
 
         <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -20,8 +22,7 @@ export default function MembresiasPage() {
       </section>
 
       {/* GRID DE MEMBRESÍAS */}
-      <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
+<Grid>
         {membresias.map((membresia) => (
           <MembresiaCard
             key={membresia.id}
@@ -29,8 +30,7 @@ export default function MembresiasPage() {
           />
         ))}
 
-      </section>
-
+</Grid>
       {/* CTA FINAL */}
       <section className="mt-24 text-center">
 
@@ -47,6 +47,8 @@ export default function MembresiasPage() {
         </button>
 
       </section>
+
+      </Container>
 
     </main>
   );

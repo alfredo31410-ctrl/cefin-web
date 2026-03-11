@@ -1,10 +1,11 @@
+import Container from "@/components/Container"
 import Image from "next/image"
 import Link from "next/link"
 
 export default function NosotrosPage() {
   return (
     <main className="max-w-7xl mx-auto px-6 py-24">
-
+<Container>
       {/* HERO */}
 
       <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
@@ -119,7 +120,7 @@ export default function NosotrosPage() {
         </Link>
 
       </div>
-
+    </Container>
     </main>
   )
 }

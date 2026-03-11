@@ -1,33 +1,48 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-import { slugify } from '@/data/slugify' // Asegúrate de que la ruta sea correcta
+import fs from "fs"
+import path from "path"
+import matter from "gray-matter"
 
-const eventosDirectory = path.join(process.cwd(), 'content/eventos')
+const eventosDirectory = path.join(process.cwd(), "content/eventos")
 
-export function getAllEventos() {
+export type Evento = {
+  id: string
+  slug: string
+  titulo: string
+  descripcion: string
+  descripcionLarga: string
+  imagen: string
+  fecha: string
+  lugar: string
+  precio: string
+  hotmart: string
+  destacado: boolean
+}
+
+export function getAllEventos(): Evento[] {
   if (!fs.existsSync(eventosDirectory)) return []
-  
+
   const fileNames = fs.readdirSync(eventosDirectory)
-  
+
   return fileNames.map((fileName) => {
+    const slug = fileName.replace(".md", "")
+
     const fullPath = path.join(eventosDirectory, fileName)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const fileContents = fs.readFileSync(fullPath, "utf8")
+
     const { data, content } = matter(fileContents)
 
-    // Estandarizamos para que coincida con la Type Evento
     return {
-      id: Math.random(), // Generamos un ID temporal
-      slug: slugify(data.titulo),
-      titulo: data.titulo,
+      id: slug,
+      slug,
+      titulo: data.titulo || "Evento sin título",
       descripcion: data.descripcion || "",
-      descripcionLarga: content || data.descripcion, // El contenido del MD es la desc. larga
-      imagen: data.imagen,
-      fecha: data.fecha,
-      lugar: data.lugar,
-      precio: data.costo || "$0 MXN", // Mapeamos 'costo' a 'precio'
+      descripcionLarga: content || "",
+      imagen: data.imagen || "/placeholder-evento.jpg",
+      fecha: data.fecha || "",
+      lugar: data.lugar || "Por definir",
+      precio: data.costo || "$0 MXN",
       hotmart: data.hotmart || "#",
-      destacado: false,
+      destacado: Boolean(data.destacado),
     }
   })
 }

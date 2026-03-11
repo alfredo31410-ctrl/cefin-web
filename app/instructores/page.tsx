@@ -1,12 +1,14 @@
 import { instructores } from "@/data/instructores"
 import InstructorCard from "@/components/InstructorCard"
+import Container from "@/components/Container"
+import Grid from "@/components/Grid"
 
 export default function InstructoresPage() {
 
   return (
     <main className="max-w-7xl mx-auto px-6 py-24">
-
-      <h1 className="text-4xl font-bold mb-8">
+      <Container>
+        <h1 className="text-4xl font-bold mb-8">
         Instructores CEFIN
       </h1>
 
@@ -14,9 +16,7 @@ export default function InstructoresPage() {
         Nuestros instructores son especialistas en fiscal, contabilidad
         y nómina con amplia experiencia en capacitación profesional.
       </p>
-
-      <div className="grid md:grid-cols-2 gap-8">
-
+    <Grid>
         {instructores.map((instructor) => (
           <InstructorCard
             key={instructor.id}
@@ -24,7 +24,9 @@ export default function InstructoresPage() {
           />
         ))}
 
-      </div>
+      </Grid>
+      </Container>
+      
 
     </main>
   )

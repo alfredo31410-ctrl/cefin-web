@@ -1,6 +1,7 @@
 import { cursos as cursosLocales } from "@/data/cursos"
 import { getAllCursos } from "@/lib/cursos" 
 import CursosList from "@/components/CursosList"
+import Container from "@/components/Container"
 
 export default function CursosPage() {
   const cursosCMS = getAllCursos()
@@ -9,9 +10,11 @@ export default function CursosPage() {
   )
 
   return (
-    <main className="max-w-7xl mx-auto px-6 py-24">
-      <h1 className="text-4xl font-bold mb-8">Cursos CEFIN</h1>
-      <CursosList cursosIniciales={todos} />
+    <main className="py-20 md:py-24">
+      <Container>
+        <h1 className="text-3xl md:text-4xl font-bold mb-8">Cursos CEFIN</h1>
+        <CursosList cursosIniciales={todos} />
+      </Container>
     </main>
   )
 }

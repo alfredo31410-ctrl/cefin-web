@@ -1,32 +1,32 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-import { slugify } from '@/data/slugify'
-import { Curso } from '@/data/cursos'
+import fs from "fs"
+import path from "path"
+import matter from "gray-matter"
+import { Curso } from "@/data/cursos"
 
-const cursosDirectory = path.join(process.cwd(), 'content/cursos')
+const cursosDirectory = path.join(process.cwd(), "content/cursos")
 
 export function getAllCursos(): Curso[] {
-  // 1. Verificamos si la carpeta existe para evitar que truene el build
   if (!fs.existsSync(cursosDirectory)) return []
-  
+
   const fileNames = fs.readdirSync(cursosDirectory)
-  
+
   return fileNames.map((fileName) => {
+    const slug = fileName.replace(".md", "")
+
     const fullPath = path.join(cursosDirectory, fileName)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const fileContents = fs.readFileSync(fullPath, "utf8")
+
     const { data, content } = matter(fileContents)
 
-    // 2. Mapeamos TODOS los campos para cumplir con el contrato de 'type Curso'
     return {
-      id: Number(data.id) || Math.floor(Math.random() * 1000), // Genera ID si no hay
+      id: Number(data.id) || 0,
       titulo: data.titulo || "Curso sin título",
-      slug: slugify(data.titulo || ""),
+      slug,
       descripcion: data.descripcion || "",
-      descripcionLarga: content || "", // El cuerpo del Markdown
+      descripcionLarga: content || "",
       precio: data.precio || "Consultar",
-      imagen: data.imagen || "/placeholder-curso.jpg", // Imagen por defecto
-      categoria: data.categoria || "fiscal", // Valor por defecto seguro
+      imagen: data.imagen || "/placeholder-curso.jpg",
+      categoria: data.categoria || "fiscal",
       duracion: data.duracion || "Por definir",
       instructor: data.instructor || "CEFIN",
       hotmart: data.hotmart || "#",

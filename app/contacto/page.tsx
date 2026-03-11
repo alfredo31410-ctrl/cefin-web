@@ -1,6 +1,11 @@
+import Container from "@/components/Container"
+import Grid from "@/components/Grid"
+
 export default function ContactoPage() {
   return (
-    <main className="max-w-6xl mx-auto px-6 py-24">
+    <main className="py-24">
+
+      <Container>
 
       <h1 className="text-4xl font-bold mb-6">
         Contacto
@@ -99,6 +104,8 @@ export default function ContactoPage() {
         </div>
 
       </div>
+
+      </Container>
 
     </main>
   )

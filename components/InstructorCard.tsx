@@ -11,13 +11,29 @@ type Props = {
 
 export default function InstructorCard({ instructor }: Props) {
   return (
+
     <motion.div
       whileHover={{ y: -6 }}
-      transition={{ duration: 0.3 }}
-      className="bg-white rounded-xl shadow-sm hover:shadow-xl transition overflow-hidden"
+      transition={{ duration: 0.25 }}
+      className="
+        bg-white
+        rounded-xl
+        shadow-sm
+        hover:shadow-xl
+        transition
+        overflow-hidden
+        flex
+        flex-col
+        h-full
+        border
+        border-slate-100
+      "
     >
 
-<div className="relative h-64 w-full">
+      {/* IMAGEN */}
+
+      <div className="relative w-full h-52 md:h-60 lg:h-64">
+
         <Image
           src={instructor.imagen}
           alt={instructor.nombre}
@@ -27,19 +43,28 @@ export default function InstructorCard({ instructor }: Props) {
 
       </div>
 
-      <div className="p-4">
 
-        <h3 className="text-xl font-semibold mb-1">
+      {/* CONTENIDO */}
+
+      <div className="p-4 md:p-6 flex flex-col flex-grow">
+
+        {/* NOMBRE */}
+
+        <h3 className="text-base md:text-lg lg:text-xl font-semibold mb-1 line-clamp-2">
           {instructor.nombre}
         </h3>
 
-        <p className="text-slate-600 text-sm mb-4">
+        {/* ESPECIALIDAD */}
+
+        <p className="text-sm text-slate-600 mb-4 line-clamp-2">
           {instructor.especialidad}
         </p>
 
+        {/* BOTÓN */}
+
         <Link
           href={`/instructores/${instructor.slug}`}
-          className="text-red-600 font-semibold hover:underline"
+          className="text-red-600 font-semibold hover:underline mt-auto"
         >
           Ver perfil →
         </Link>
@@ -47,5 +72,6 @@ export default function InstructorCard({ instructor }: Props) {
       </div>
 
     </motion.div>
+
   )
 }

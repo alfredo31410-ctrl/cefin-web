@@ -9,6 +9,8 @@ import { eventos } from "@/data/eventos";
 import EventoCard from "@/components/EventoCard";
 import { blog } from "@/data/blogs";
 import BlogCard from "@/components/BlogCard";
+import Container from "@/components/Container";
+import Grid from "@/components/Grid";
 
 const eventosDestacados = eventos.filter((e) => e.destacado);
 
@@ -71,31 +73,43 @@ export default function Home() {
 
       {/* ================= EVENTOS ================= */}
 
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex justify-between items-center mb-12">
-            <div>
-              <p className="text-sm text-red-600 font-semibold uppercase">
-                Eventos
-              </p>
+<section className="py-20 md:py-24 bg-white">
 
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-                Próximos seminarios y capacitaciones
-              </h2>
-            </div>
-          </div>
+  <Container>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {eventosDestacados.map((evento) => (
-              <EventoCard key={evento.id} evento={evento} />
-            ))}
-          </div>
-        </div>
-      </section>
+    <div className="flex justify-between items-center mb-12">
 
+      <div>
+
+        <p className="text-sm text-red-600 font-semibold uppercase">
+          Eventos
+        </p>
+
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+          Próximos seminarios y capacitaciones
+        </h2>
+
+      </div>
+
+    </div>
+
+    <Grid>
+
+      {eventosDestacados.map((evento) => (
+
+        <EventoCard key={evento.id} evento={evento} />
+
+      ))}
+
+    </Grid>
+
+  </Container>
+
+</section>
       {/* ================= MEMBRESIAS ================= */}
       <section className="py-24 bg-gray-50" id="membresias">
-        <div className="max-w-7xl mx-auto px-6">
+        <Container>
+          <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-center mb-12">
             <div>
               <p className="text-sm text-red-600 font-semibold uppercase">
@@ -106,19 +120,22 @@ export default function Home() {
               </h2>
             </div>
           </div>
-
-          <div className="grid md:grid-cols-4 gap-8">
+          <Grid>
             {membresias.map((membresia) => (
               <MembresiaCard key={membresia.id} membresia={membresia} />
             ))}
+          </Grid>
+            
           </div>
-        </div>
+        </Container>
+        
       </section>
 
       {/* ================= CAPACITACIONES GRATUITAS ================= */}
 
       <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-6">
+        <Container>
+          <div className="max-w-7xl mx-auto px-6">
           <div className="flex justify-between items-center mb-12">
             <div>
               <p className="text-sm text-red-600 font-semibold uppercase">
@@ -130,18 +147,20 @@ export default function Home() {
               </h2>
             </div>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {blog.slice(0, 3).map((post) => (
-              <BlogCard key={post.id} post={post} />
-            ))}
-          </div>
+            <Grid>
+              {blog.slice(0, 3).map((post) => (
+                <BlogCard key={post.id} post={post} />
+              ))}
+            </Grid>
         </div>
+        </Container>
+        
       </section>
 
       {/* ================= TESTIMONIOS ================= */}
       <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-6 text-center">
+        <Container>
+          <div className="max-w-6xl mx-auto px-6 text-center">
           <p className="text-sm text-red-600 uppercase font-semibold mb-4">
             Testimonios
           </p>
@@ -149,17 +168,24 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-16">
             Lo que dicen nuestros alumnos
           </h2>
-
+              <Grid>
+                {testimonios.map((testimonio) => (
+                  <TestimonioCard key={testimonio.id} testimonio={testimonio} />
+                ))}
+              </Grid>
           <div className="grid md:grid-cols-3 gap-10">
             {testimonios.map((testimonio) => (
               <TestimonioCard key={testimonio.id} testimonio={testimonio} />
             ))}
           </div>
         </div>
+        </Container>
+        
       </section>
 
       {/* ================= BENEFICIOS ================= */}
       <section className="py-20 px-6 max-w-6xl mx-auto text-center">
+        
         <h2 className="text-3xl font-bold mb-12">
           ¿Por qué estudiar en CEFIN?
         </h2>

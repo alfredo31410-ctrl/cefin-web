@@ -1,6 +1,8 @@
 import { getAllEventos } from "@/lib/eventos" 
 import EventoCard from "@/components/EventoCard"
 import { eventos as eventosLocales } from "@/data/eventos"
+import Container from "@/components/Container"
+import Grid from "@/components/Grid"
 
 export default function EventosPage() {
   const eventosCMS = getAllEventos()
@@ -14,22 +16,27 @@ export default function EventosPage() {
   })
 
   return (
-    <main className="max-w-7xl mx-auto px-6 py-24">
-      <h1 className="text-4xl font-bold mb-8">Eventos y Seminarios</h1>
+    <main className="py-20 md:py-24">
+
+      <Container>
+        <h1 className="text-4xl font-bold mb-8">Eventos y Seminarios</h1>
       
       <p className="text-slate-600 mb-12 max-w-2xl">
         Participa en nuestros eventos especializados para contadores...
       </p>
 
-      <div className="grid md:grid-cols-3 gap-8">
-        {/* CORRECCIÓN: Usar la lista fusionada y ordenada */}
+       <Grid>
+         {/* CORRECCIÓN: Usar la lista fusionada y ordenada */}
         {eventosOrdenados.map((evento: any) => (
           <EventoCard
             key={evento.slug}
             evento={evento}
           />
         ))}
-      </div>
+       </Grid>
+      </Container>
+
+      
     </main>
   )
 }
