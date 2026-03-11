@@ -2,8 +2,8 @@ backend:
   name: github
   repo: JohnBecerra16/cefin-web
   branch: main
-  base_url: https://cefin-web.vercel.app
-  auth_endpoint: api/oauth
+  base_url: https://decap-oauth.vercel.app
+  auth_endpoint: auth
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
@@ -15,42 +15,65 @@ collections:
     folder: "content/blog"
     identifier_field: titulo
     create: true
-    slug: "{{titulo}}"
+    slug: "{{slug}}"
 
     fields:
-      - { label: "Titulo", name: "titulo", widget: "string" }
+      - { label: "Título", name: "titulo", widget: "string" }
+
+      - { label: "Slug (URL)", name: "slug", widget: "string" }
+
       - { label: "Fecha", name: "fecha", widget: "datetime" }
+
       - { label: "Imagen", name: "imagen", widget: "image" }
-      - { label: "Descripcion", name: "descripcion", widget: "text" }
+
+      - { label: "Descripción", name: "descripcion", widget: "text" }
+
       - { label: "Contenido", name: "body", widget: "markdown" }
+
 
   - name: "eventos"
     label: "Eventos"
     folder: "content/eventos"
     identifier_field: titulo
     create: true
-    slug: "{{titulo}}"
+    slug: "{{slug}}"
 
     fields:
-      - { label: "Titulo", name: "titulo", widget: "string" }
+      - { label: "Título", name: "titulo", widget: "string" }
+
+      - { label: "Slug (URL)", name: "slug", widget: "string" }
+
       - { label: "Fecha", name: "fecha", widget: "datetime" }
+
       - { label: "Lugar", name: "lugar", widget: "string" }
+
       - { label: "Costo", name: "costo", widget: "string" }
+
       - { label: "Imagen", name: "imagen", widget: "image" }
-      - { label: "Descripcion", name: "descripcion", widget: "text" }
+
+      - { label: "Descripción", name: "descripcion", widget: "text" }
+
       - { label: "Hotmart", name: "hotmart", widget: "string" }
+
 
   - name: "cursos"
     label: "Cursos"
     folder: "content/cursos"
     create: true
-    slug: "{{titulo}}"
+    slug: "{{slug}}"
 
     fields:
+
       - { label: "ID", name: "id", widget: "number", value_type: "int" }
+
       - { label: "Título", name: "titulo", widget: "string" }
+
+      - { label: "Slug (URL)", name: "slug", widget: "string" }
+
       - { label: "Descripción Corta", name: "descripcion", widget: "text" }
+
       - { label: "Precio", name: "precio", widget: "string" }
+
       - { label: "Imagen", name: "imagen", widget: "image" }
 
       - label: "Categoría"
@@ -71,5 +94,7 @@ collections:
           - Marisol Galvan
 
       - { label: "Hotmart Link", name: "hotmart", widget: "string" }
+
       - { label: "Destacado", name: "destacado", widget: "boolean", default: true }
+
       - { label: "Descripción Larga", name: "body", widget: "markdown" }
