@@ -25,7 +25,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50" />
 
         <div className="relative z-10 text-center max-w-3xl px-6">
-          <p className="text-sm uppercase tracking-wider text-red-400 mb-4">
+          <p className="text-sm uppercase tracking-wider text-red-400 font-bold mb-4">
             Capacitación Fiscal Profesional en México
           </p>
 
@@ -38,13 +38,16 @@ export default function Home() {
           </p>
 
           <div className="flex justify-center gap-6">
-            <button className="bg-emerald-500 hover:bg-emerald-600 px-8 py-3 rounded-lg font-semibold transition">
-              Ver Cursos
-            </button>
-
+            <a href="cursos">
+              <button className="bg-emerald-500 hover:bg-emerald-600 px-8 py-3 rounded-lg font-semibold transition">
+                Ver Cursos
+              </button>
+            </a>
+          <a href="membresias">
             <button className="border border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-slate-900 transition">
-              Descargar catálogo
+              Ver Membresías
             </button>
+          </a>
           </div>
         </div>
       </section>

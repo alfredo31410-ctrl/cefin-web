@@ -2,7 +2,7 @@ backend:
   name: github
   repo: JohnBecerra16/cefin-web
   branch: main
-
+ 
 #PARA LOCAL
 #backend:
   #name: test-repo
@@ -17,7 +17,7 @@ collections:
     folder: "content/blog"
     identifier_field: title
     create: true
-    slug: "{{slug}}"
+    slug: "{tiulo}}"
 
     fields:
       - { label: "Titulo", name: "titulo", widget: "string" }
@@ -31,7 +31,7 @@ collections:
     folder: "content/eventos"
     identifier_field: titulo
     create: true
-    slug: "{{slug}}"
+    slug: "{{titulo}}"
 
     fields:
       - { label: "Titulo", name: "titulo", widget: "string" }
@@ -46,7 +46,7 @@ collections:
     label: "Curso"
     folder: "content/cursos"
     create: true
-    slug: "{{slug}}"
+    slug: "{{titulo}}"
     fields:
       - { label: "ID (Número)", name: "id", widget: "number", value_type: "int" }
       - { label: "Título", name: "titulo", widget: "string" }
