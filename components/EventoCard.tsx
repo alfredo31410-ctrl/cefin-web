@@ -57,7 +57,7 @@ export default function EventoCard({ evento }: Props) {
           src={evento.imagen}
           alt={evento.titulo}
           fill
-          className="object-cover"
+          className="object-contain"
         />
 
       </div>

@@ -75,8 +75,22 @@ export default function Countdown({ fecha }: Props) {
 
   return (
 
-<div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 text-center bg-slate-50 p-4 md:p-6 rounded-xl border border-slate-100">
-
+<div className="
+grid 
+grid-cols-2 
+md:grid-cols-4
+gap-3 
+md:gap-6
+justify-items-center
+items-center
+text-center
+bg-slate-50
+p-4
+md:p-6
+rounded-xl
+border
+border-slate-100
+">
       {/* DIAS */}
 
       <div className="min-w-[70px] flex-shrink-0">

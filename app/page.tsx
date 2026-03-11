@@ -17,11 +17,9 @@ const eventosDestacados = eventos.filter((e) => e.destacado);
 export default function Home() {
   return (
     <main>
-
       {/* ================= HERO ================= */}
 
       <section className="relative h-screen flex items-center justify-center text-white">
-
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/Banner.jpeg')" }}
@@ -30,7 +28,6 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50" />
 
         <div className="relative z-10 text-center max-w-3xl px-6">
-
           <p className="text-sm uppercase tracking-wider text-red-400 font-bold mb-4">
             Capacitación Fiscal Profesional en México
           </p>
@@ -44,7 +41,6 @@ export default function Home() {
           </p>
 
           <div className="flex justify-center gap-6 flex-wrap">
-
             <a href="/cursos">
               <button className="bg-emerald-500 hover:bg-emerald-600 px-8 py-3 rounded-lg font-semibold transition">
                 Ver Cursos
@@ -56,30 +52,21 @@ export default function Home() {
                 Ver Membresías
               </button>
             </a>
-
           </div>
-
         </div>
-
       </section>
-
 
       {/* ================= LIVE SEMANAL ================= */}
 
       <section className="bg-red-600 text-white py-6">
-
         <Container>
-
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-
             <div className="flex items-center gap-3">
-
               <span className="animate-pulse text-xl">🔴</span>
 
               <p className="font-semibold">
                 Capacitación gratuita en vivo todos los martes a las 11:00 AM
               </p>
-
             </div>
 
             <a
@@ -89,22 +76,15 @@ export default function Home() {
             >
               Ver transmisión
             </a>
-
           </div>
-
         </Container>
-
       </section>
-
 
       {/* ================= EVENTOS ================= */}
 
       <section className="py-20 md:py-24 bg-white">
-
         <Container>
-
           <div className="mb-12">
-
             <p className="text-sm text-red-600 font-semibold uppercase">
               Eventos
             </p>
@@ -112,7 +92,6 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
               Próximos seminarios y capacitaciones
             </h2>
-
           </div>
 
           <Grid>
@@ -120,20 +99,14 @@ export default function Home() {
               <EventoCard key={evento.id} evento={evento} />
             ))}
           </Grid>
-
         </Container>
-
       </section>
-
 
       {/* ================= MEMBRESIAS ================= */}
 
       <section className="py-24 bg-gray-50" id="membresias">
-
         <Container>
-
           <div className="mb-12">
-
             <p className="text-sm text-red-600 font-semibold uppercase">
               Membresías
             </p>
@@ -141,7 +114,6 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
               Capacítate con los mejores
             </h2>
-
           </div>
 
           <Grid>
@@ -149,20 +121,14 @@ export default function Home() {
               <MembresiaCard key={membresia.id} membresia={membresia} />
             ))}
           </Grid>
-
         </Container>
-
       </section>
-
 
       {/* ================= CAPACITACIONES ================= */}
 
       <section className="py-24 bg-slate-50">
-
         <Container>
-
           <div className="mb-12">
-
             <p className="text-sm text-red-600 font-semibold uppercase">
               Capacitaciones gratuitas
             </p>
@@ -170,7 +136,6 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
               Aprende con nuestros lives
             </h2>
-
           </div>
 
           <Grid>
@@ -178,20 +143,14 @@ export default function Home() {
               <BlogCard key={post.id} post={post} />
             ))}
           </Grid>
-
         </Container>
-
       </section>
-
 
       {/* ================= TESTIMONIOS ================= */}
 
       <section className="py-24 bg-white">
-
         <Container>
-
           <div className="mb-12 text-center">
-
             <p className="text-sm text-red-600 uppercase font-semibold mb-4">
               Testimonios
             </p>
@@ -199,36 +158,24 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
               Lo que dicen nuestros alumnos
             </h2>
-
           </div>
-
-          <Grid>
+          <div className="grid md:grid-cols-3 gap-8 justify-items-center">
             {testimonios.map((testimonio) => (
               <TestimonioCard key={testimonio.id} testimonio={testimonio} />
             ))}
-          </Grid>
-
+          </div>
         </Container>
-
       </section>
-
 
       {/* ================= BENEFICIOS ================= */}
 
       <section className="py-20">
-
         <Container>
-
           <div className="text-center mb-12">
-
-            <h2 className="text-3xl font-bold">
-              ¿Por qué estudiar en CEFIN?
-            </h2>
-
+            <h2 className="text-3xl font-bold">¿Por qué estudiar en CEFIN?</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-10 text-center">
-
             <div>
               <TrendingUp className="mx-auto mb-4 text-red-600" size={40} />
               <h3 className="text-xl font-semibold mb-4">
@@ -252,13 +199,9 @@ export default function Home() {
               </h3>
               <p>Profesionales con experiencia en el sector fiscal.</p>
             </div>
-
           </div>
-
         </Container>
-
       </section>
-
     </main>
   );
 }

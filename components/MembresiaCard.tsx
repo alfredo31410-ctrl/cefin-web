@@ -47,7 +47,7 @@ export default function MembresiaCard({ membresia }: Props) {
           src={membresia.imagen}
           alt={membresia.titulo}
           fill
-          className="object-cover"
+          className="object-contain"
         />
       </div>
 
