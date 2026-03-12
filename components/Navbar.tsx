@@ -52,6 +52,17 @@ export default function Navbar() {
     }
   }, [isHome]);
 
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden"; // Evita scroll cuando el menú está abierto
+    } else {
+      document.body.style.overflow = "auto"; // Restaura el scroll cuando el menú está cerrado
+    }
+
+    return () => {
+      document.body.style.overflow = "auto"; // Asegura que el scroll se restaure si el componente se desmonta
+    };
+  }, [menuOpen]);
   /*
     ESTILOS DINÁMICOS
     ------------------------------------
@@ -208,9 +219,9 @@ export default function Navbar() {
 
       {/* MENÚ MÓVIL */}
 
-      {(
+      {
         <div
-          className={`md:hidden bg-white shadow-lg transition-all duration-300 overflow-hidden
+          className={`md:hidden bg-white/90 backdrop-blur-md shadow-lg transition-all duration-300 overflow-hidden
         ${menuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}
         `}
         >
@@ -260,7 +271,7 @@ export default function Navbar() {
             </Link>
           </div>
         </div>
-      )}
+      }
     </nav>
   );
 }
