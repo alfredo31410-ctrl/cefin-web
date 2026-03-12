@@ -193,17 +193,27 @@ export default function Navbar() {
         {/* BOTÓN HAMBURGUESA (MÓVIL) */}
 
         <button
-          className={`md:hidden text-3xl ${textColor}`}
+          className={`md:hidden text-3xl transition-all duration-300 ${textColor}`}
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          ☰
+          <span
+            className={`block transition-transform duration-300 ${
+              menuOpen ? "rotate-90 scale-110" : ""
+            }`}
+          >
+            {menuOpen ? "✕" : "☰"}
+          </span>
         </button>
       </div>
 
       {/* MENÚ MÓVIL */}
 
-      {menuOpen && (
-        <div className="md:hidden bg-white shadow-lg">
+      {(
+        <div
+          className={`md:hidden bg-white shadow-lg transition-all duration-300 overflow-hidden
+        ${menuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}
+        `}
+        >
           <div className="flex flex-col gap-6 px-6 py-8 text-lg">
             {/* LINKS MÓVIL */}
 
