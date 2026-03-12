@@ -55,6 +55,9 @@ collections:
 
       - { label: "Hotmart", name: "hotmart", widget: "string" }
 
+      - { label: "Destacado", name: "destacado", widget: "boolean", default: true }
+
+
 
   - name: "cursos"
     label: "Cursos"

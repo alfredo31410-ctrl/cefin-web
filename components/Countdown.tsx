@@ -73,85 +73,83 @@ export default function Countdown({ fecha }: Props) {
   }
 
 
-  return (
+return (
 
 <div className="
-grid 
-grid-cols-2 
-md:grid-cols-4
-gap-3 
-md:gap-6
+grid
+grid-cols-4
+gap-2
 justify-items-center
 items-center
 text-center
 bg-slate-50
-p-4
-md:p-6
-rounded-xl
+p-3
+rounded-lg
 border
 border-slate-100
 ">
-      {/* DIAS */}
 
-      <div className="min-w-[70px] flex-shrink-0">
+  {/* DIAS */}
 
-        <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-800">
-          {tiempo.dias}
-        </p>
+  <div className="min-w-[45px]">
 
-        <span className="text-xs uppercase tracking-wider text-slate-500 font-medium">
-          Días
-        </span>
+    <p className="text-lg md:text-xl font-bold text-slate-800">
+      {tiempo.dias}
+    </p>
 
-      </div>
+    <span className="text-[10px] uppercase tracking-wide text-slate-500 font-medium">
+      D
+    </span>
 
-
-      {/* HORAS */}
-
-      <div className="min-w-[70px] flex-shrink-0">
-
-        <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-800">
-          {tiempo.horas}
-        </p>
-
-        <span className="text-xs uppercase tracking-wider text-slate-500 font-medium">
-          Horas
-        </span>
-
-      </div>
+  </div>
 
 
-      {/* MINUTOS */}
+  {/* HORAS */}
 
-      <div className="min-w-[70px] flex-shrink-0">
+  <div className="min-w-[45px]">
 
-        <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-800">
-          {tiempo.minutos}
-        </p>
+    <p className="text-lg md:text-xl font-bold text-slate-800">
+      {tiempo.horas}
+    </p>
 
-        <span className="text-xs uppercase tracking-wider text-slate-500 font-medium">
-          Min
-        </span>
+    <span className="text-[10px] uppercase tracking-wide text-slate-500 font-medium">
+      H
+    </span>
 
-      </div>
+  </div>
 
 
-      {/* SEGUNDOS */}
+  {/* MINUTOS */}
 
-      <div className="min-w-[70px] flex-shrink-0">
+  <div className="min-w-[45px]">
 
-        <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-red-600">
-          {tiempo.segundos}
-        </p>
+    <p className="text-lg md:text-xl font-bold text-slate-800">
+      {tiempo.minutos}
+    </p>
 
-        <span className="text-xs uppercase tracking-wider text-slate-500 font-medium">
-          Seg
-        </span>
+    <span className="text-[10px] uppercase tracking-wide text-slate-500 font-medium">
+      M
+    </span>
 
-      </div>
+  </div>
 
-    </div>
 
-  )
+  {/* SEGUNDOS */}
+
+  <div className="min-w-[45px]">
+
+    <p className="text-lg md:text-xl font-bold text-red-600">
+      {tiempo.segundos}
+    </p>
+
+    <span className="text-[10px] uppercase tracking-wide text-slate-500 font-medium">
+      S
+    </span>
+
+  </div>
+
+</div>
+
+)
 
 }

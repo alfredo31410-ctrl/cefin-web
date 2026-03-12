@@ -114,7 +114,7 @@ export default function Home() {
 
       {/* ================= LIVE SEMANAL ================= */}
 
-      <section className="bg-red-600 text-white py-6">
+      <section className="bg-slate-900 text-white py-6">
         <Container>
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
@@ -126,7 +126,7 @@ export default function Home() {
             </div>
 
             <a
-              href="https://youtube.com/@TU-CANAL/live"
+              href="https://www.youtube.com/@CEFINImpuestos"
               target="_blank"
               className="bg-white text-red-600 px-5 py-2 rounded-lg font-semibold hover:bg-gray-100 transition"
             >

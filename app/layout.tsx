@@ -53,7 +53,31 @@ export default function RootLayout({
         {children}
         <Footer />
         <WhatsAppButton />
-
+      <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "CEFIN",
+      url: "https://cefin.com",
+      logo: "https://cefin.com/logo.png",
+      sameAs: [
+        "https://www.facebook.com/CEFINCapacitacion",
+        "https://www.instagram.com/cefinimpuestosmx/",
+        "https://www.youtube.com/@CEFINImpuestos",
+        "https://www.tiktok.com/@cefinimpuestosmx"
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+52-449-455-4578",
+        contactType: "customer service",
+        areaServed: "MX",
+        availableLanguage: "Spanish"
+      }
+    })
+  }}
+/>
       </body>
     </html>
   );
