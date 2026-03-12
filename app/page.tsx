@@ -12,6 +12,7 @@ import BlogCard from "@/components/BlogCard";
 import Container from "@/components/Container";
 import Grid from "@/components/Grid";
 import { motion } from "framer-motion";
+import Reveal from "@/components/Reveal";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -148,12 +149,13 @@ export default function Home() {
               Próximos seminarios y capacitaciones
             </h2>
           </div>
-
+<Reveal>
           <Grid>
             {eventosDestacados.map((evento) => (
               <EventoCard key={evento.id} evento={evento} />
             ))}
           </Grid>
+</Reveal>
         </Container>
       </section>
 
@@ -170,12 +172,13 @@ export default function Home() {
               Capacítate con los mejores
             </h2>
           </div>
-
+<Reveal>
           <Grid>
             {membresias.map((membresia) => (
               <MembresiaCard key={membresia.id} membresia={membresia} />
             ))}
           </Grid>
+</Reveal>
         </Container>
       </section>
 
@@ -192,12 +195,13 @@ export default function Home() {
               Aprende con nuestros lives
             </h2>
           </div>
-
+<Reveal>
           <Grid>
             {blog.slice(0, 3).map((post) => (
               <BlogCard key={post.id} post={post} />
             ))}
           </Grid>
+</Reveal>
         </Container>
       </section>
 
