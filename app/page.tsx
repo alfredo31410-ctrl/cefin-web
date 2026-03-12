@@ -32,11 +32,12 @@ export default function Home() {
       src="/Banner.jpeg"
       alt="CEFIN capacitación fiscal"
       className="
+      absolute
       w-full
       h-full
-      object-contain
-      md:object-cover
-      object-center
+      object-cover
+      object-[center_top]
+      md:object-center
       "
     />
 
@@ -48,7 +49,7 @@ export default function Home() {
 
   {/* CONTENIDO */}
 
-  <div className="relative z-10 text-center max-w-4xl px-6">
+  <div className="relative z-10 text-center max-w-4xl px-6 pt-28 md:pt-32">
 
     <p className="text-sm uppercase tracking-wider text-red-400 font-bold mb-4">
       Capacitación Fiscal Profesional en México
