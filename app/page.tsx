@@ -209,6 +209,8 @@ export default function Home() {
 
       <section className="py-24 bg-white">
         <Container>
+                    <Reveal>
+
           <div className="mb-12 text-center">
             <p className="text-sm text-red-600 uppercase font-semibold mb-4">
               Testimonios
@@ -218,11 +220,12 @@ export default function Home() {
               Lo que dicen nuestros alumnos
             </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-8 justify-items-center">
-            {testimonios.map((testimonio) => (
-              <TestimonioCard key={testimonio.id} testimonio={testimonio} />
-            ))}
-          </div>
+            <div className="grid md:grid-cols-3 gap-8 justify-items-center">
+              {testimonios.map((testimonio) => (
+                <TestimonioCard key={testimonio.id} testimonio={testimonio} />
+              ))}
+            </div>
+          </Reveal>
         </Container>
       </section>
 
@@ -230,9 +233,10 @@ export default function Home() {
 
       <section className="py-20">
         <Container>
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold">¿Por qué estudiar en CEFIN?</h2>
-          </div>
+          <Reveal>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold">¿Por qué estudiar en CEFIN?</h2>
+            </div>
 
           <div className="grid md:grid-cols-3 gap-10 text-center">
             <div>
@@ -259,6 +263,8 @@ export default function Home() {
               <p>Profesionales con experiencia en el sector fiscal.</p>
             </div>
           </div>
+                    </Reveal>
+
         </Container>
       </section>
     </main>
