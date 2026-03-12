@@ -19,48 +19,113 @@ export default function Home() {
     <main>
       {/* ================= HERO ================= */}
 
-      <section className="relative min-h-screen flex items-center justify-center text-white">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/Banner.jpeg')" }}
-        />
+<section
+  id="top"
+  className="relative min-h-[90vh] flex items-center justify-center text-white overflow-hidden"
+>
 
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50" />
+  {/* IMAGEN HERO */}
 
-        <div className="relative z-10 text-center max-w-4xl px-6">
-          <p className="text-sm uppercase tracking-wider text-red-400 font-bold mb-4">
-            Capacitación Fiscal Profesional en México
-          </p>
+  <div className="absolute inset-0">
 
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Actualización fiscal inteligente
-            <br />
-            para contadores que quieren crecer
-          </h1>
+    <img
+      src="/Banner.jpeg"
+      alt="CEFIN capacitación fiscal"
+      className="
+      w-full
+      h-full
+      object-contain
+      md:object-cover
+      object-center
+      "
+    />
 
-          <p className="text-lg md:text-xl text-slate-200 max-w-2xl mx-auto mb-10">
-            Domina reformas fiscales, CFDI 4.0 y cumplimiento SAT con
-            capacitacio practica impartida por especialistas.
-          </p>
+  </div>
 
-          <div className="flex flex-wrap justify-center gap-4 mb-10">
-            <a href="/cursos">
-              <button className="bg-emerald-500 hover:bg-emerald-600 px-8 py-3 rounded-lg font-semibold shadow-lg hover:scale-105 transition">
-                Ver Cursos
-              </button>
-            </a>
+  {/* OVERLAY */}
 
-            <a href="/membresias">
-              <button className="border border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-slate-900 transition">
-                Ver Membresías
-              </button>
-            </a>
-          </div>
-          <p className="text-sm text-slate-300">
-            +5,000 contadores capacitados y creciendo profesionalmente con nosotros.
-          </p>
-        </div>
-      </section>
+  <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50" />
+
+  {/* CONTENIDO */}
+
+  <div className="relative z-10 text-center max-w-4xl px-6">
+
+    <p className="text-sm uppercase tracking-wider text-red-400 font-bold mb-4">
+      Capacitación Fiscal Profesional en México
+    </p>
+
+    <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+
+      Actualización fiscal inteligente  
+      <br />
+      para contadores que quieren crecer
+
+    </h1>
+
+    <p className="text-lg md:text-xl text-slate-200 max-w-2xl mx-auto mb-10">
+
+      Domina reformas fiscales, CFDI 4.0 y cumplimiento SAT
+      con capacitación práctica impartida por especialistas.
+
+    </p>
+
+    {/* BOTONES */}
+
+    <div className="flex flex-wrap justify-center gap-4 mb-10">
+
+      <a href="/cursos">
+
+        <button
+          className="
+          bg-emerald-500
+          hover:bg-emerald-600
+          px-8
+          py-3
+          rounded-lg
+          font-semibold
+          shadow-xl
+          hover:scale-105
+          transition
+          "
+        >
+          Ver Cursos
+        </button>
+
+      </a>
+
+      <a href="/membresias">
+
+        <button
+          className="
+          border
+          border-white
+          px-8
+          py-3
+          rounded-lg
+          font-semibold
+          hover:bg-white
+          hover:text-slate-900
+          transition
+          "
+        >
+          Ver Membresías
+        </button>
+
+      </a>
+
+    </div>
+
+    {/* PRUEBA SOCIAL */}
+
+    <p className="text-sm text-slate-300">
+
+      +5,000 contadores capacitados en México
+
+    </p>
+
+  </div>
+
+</section>
 
       {/* ================= LIVE SEMANAL ================= */}
 
