@@ -19,109 +19,66 @@ export default function Home() {
     <main>
       {/* ================= HERO ================= */}
 
-<section
-  id="top"
-  className="relative min-h-[90vh] flex items-center justify-center text-white overflow-hidden"
->
+<section className="relative min-h-[85vh] md:h-screen flex items-center justify-center text-white overflow-hidden">
 
-  {/* IMAGEN HERO */}
+  {/* HERO DESKTOP */}
 
-  <div className="absolute inset-0">
+  <img
+    src="/Banner.jpeg"
+    alt="CEFIN capacitación fiscal"
+    className="hidden md:block absolute inset-0 w-full h-full object-cover"
+  />
 
-    <img
-      src="/Banner.jpeg"
-      alt="CEFIN capacitación fiscal"
-      className="
-      absolute
-      w-full
-      h-full
-      object-cover
-      object-[center_top]
-      md:object-center
-      "
-    />
+  {/* HERO MOBILE */}
 
-  </div>
+  <img
+    src="/Banner_movile.png"
+    alt="CEFIN capacitación fiscal"
+    className="block md:hidden absolute inset-0 w-full h-full object-cover object-top"
+  />
 
-  {/* OVERLAY */}
+  {/* OVERLAY OSCURO */}
 
-  <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50" />
+  <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/90" />
 
   {/* CONTENIDO */}
 
   <div className="relative z-10 text-center max-w-4xl px-6 pt-28 md:pt-32">
 
     <p className="text-sm uppercase tracking-wider text-red-400 font-bold mb-4">
-      Capacitación Fiscal Profesional en México
+      Capacitación fiscal profesional en México
     </p>
 
-    <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-
-      Actualización fiscal inteligente  
+    <h1 className="text-3xl md:text-6xl font-bold mb-6 leading-tight">
+      Actualización fiscal inteligente
       <br />
       para contadores que quieren crecer
-
     </h1>
 
-    <p className="text-lg md:text-xl text-slate-200 max-w-2xl mx-auto mb-10">
-
-      Domina reformas fiscales, CFDI 4.0 y cumplimiento SAT
-      con capacitación práctica impartida por especialistas.
-
+    <p className="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-slate-200">
+      Domina reformas fiscales, CFDI 4.0 y cumplimiento SAT con capacitación práctica impartida por especialistas.
     </p>
 
     {/* BOTONES */}
 
-    <div className="flex flex-wrap justify-center gap-4 mb-10">
+    <div className="flex flex-col sm:flex-row justify-center gap-4">
 
       <a href="/cursos">
-
-        <button
-          className="
-          bg-emerald-500
-          hover:bg-emerald-600
-          px-8
-          py-3
-          rounded-lg
-          font-semibold
-          shadow-xl
-          hover:scale-105
-          transition
-          "
-        >
+        <button className="bg-emerald-500 hover:bg-emerald-600 px-8 py-3 rounded-lg font-semibold transition">
           Ver Cursos
         </button>
-
       </a>
 
       <a href="/membresias">
-
-        <button
-          className="
-          border
-          border-white
-          px-8
-          py-3
-          rounded-lg
-          font-semibold
-          hover:bg-white
-          hover:text-slate-900
-          transition
-          "
-        >
+        <button className="border border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-slate-900 transition">
           Ver Membresías
         </button>
-
       </a>
 
     </div>
 
-    {/* PRUEBA SOCIAL */}
-
-    <p className="text-sm text-slate-300">
-
+    <p className="mt-8 text-sm text-slate-300">
       +5,000 contadores capacitados en México
-
     </p>
 
   </div>
