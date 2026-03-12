@@ -32,7 +32,7 @@ export default function Home() {
   {/* HERO MOBILE */}
 
   <img
-    src="/Banner_movile.png"
+    src="/Banner_movil.png"
     alt="CEFIN capacitación fiscal"
     className="block md:hidden absolute inset-0 w-full h-full object-cover object-top"
   />
