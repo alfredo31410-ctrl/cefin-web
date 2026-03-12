@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-/* ===== Tipo de datos ===== */
-
 type Membresia = {
   id: number;
   slug: string;
@@ -14,8 +12,6 @@ type Membresia = {
   imagen: string;
   precio: string;
 };
-
-/* ===== Props ===== */
 
 type Props = {
   membresia: Membresia;
@@ -27,31 +23,41 @@ export default function MembresiaCard({ membresia }: Props) {
       whileHover={{ y: -6 }}
       transition={{ duration: 0.25 }}
       className="
+        group
         bg-white
         rounded-xl
         shadow-sm
         hover:shadow-xl
-        transition
+        transition-all
+        duration-300
         overflow-hidden
         flex
         flex-col
         h-full
         border
         border-slate-100
+        hover:-translate-y-1
       "
     >
-      {/* ===== IMAGEN ===== */}
+      {/* IMAGEN */}
 
-      <div className="relative w-full h-44 md:h-48 lg:h-52">
+      <div className="relative w-full h-44 md:h-48 lg:h-52 overflow-hidden">
+
         <Image
           src={membresia.imagen}
           alt={membresia.titulo}
           fill
-          className="object-contain"
+          className="
+            object-contain
+            transition-transform
+            duration-500
+            group-hover:scale-105
+          "
         />
+
       </div>
 
-      {/* ===== CONTENIDO ===== */}
+      {/* CONTENIDO */}
 
       <div className="p-4 md:p-6 flex flex-col flex-grow">
 
@@ -77,7 +83,14 @@ export default function MembresiaCard({ membresia }: Props) {
 
           <Link
             href={`/membresias/${membresia.slug}`}
-            className="text-slate-700 font-semibold hover:text-red-600 transition whitespace-nowrap"
+            className="
+              text-slate-700
+              font-semibold
+              transition-colors
+              duration-300
+              group-hover:text-red-600
+              whitespace-nowrap
+            "
           >
             Ver detalles →
           </Link>

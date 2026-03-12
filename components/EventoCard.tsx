@@ -12,8 +12,6 @@ type Props = {
 
 export default function EventoCard({ evento }: Props) {
 
-  /* ===== FORMATEO DE FECHA ===== */
-
   const fechaTexto =
     (evento.fecha as any) instanceof Date
       ? (evento.fecha as any).toLocaleDateString("es-MX", {
@@ -22,8 +20,6 @@ export default function EventoCard({ evento }: Props) {
           year: "numeric",
         })
       : String(evento.fecha)
-
-  /* ===== FORMATO PARA COUNTDOWN ===== */
 
   const fechaParaCountdown =
     (evento.fecha as any) instanceof Date
@@ -35,35 +31,43 @@ export default function EventoCard({ evento }: Props) {
     <motion.div
       whileHover={{ y: -6 }}
       className="
+        group
         bg-white
         rounded-xl
         shadow-sm
         hover:shadow-xl
-        transition
+        transition-all
+        duration-300
         overflow-hidden
         flex
         flex-col
         h-full
         border
         border-slate-100
+        hover:-translate-y-1
       "
     >
 
-      {/* ===== IMAGEN ===== */}
+      {/* IMAGEN */}
 
-      <div className="relative w-full h-44 md:h-48 lg:h-52">
+      <div className="relative w-full h-44 md:h-48 lg:h-52 overflow-hidden">
 
         <Image
           src={evento.imagen}
           alt={evento.titulo}
           fill
-          className="object-contain"
+          className="
+            object-contain
+            transition-transform
+            duration-500
+            group-hover:scale-105
+          "
         />
 
       </div>
 
 
-      {/* ===== CONTENIDO ===== */}
+      {/* CONTENIDO */}
 
       <div className="p-4 md:p-6 flex flex-col flex-grow">
 
@@ -73,11 +77,13 @@ export default function EventoCard({ evento }: Props) {
           {evento.titulo}
         </h3>
 
+
         {/* FECHA */}
 
         <p className="text-xs md:text-sm text-slate-500 mb-1">
           📅 {fechaTexto}
         </p>
+
 
         {/* LUGAR */}
 
@@ -85,17 +91,20 @@ export default function EventoCard({ evento }: Props) {
           📍 {evento.lugar}
         </p>
 
+
         {/* DESCRIPCION */}
 
         <p className="text-sm text-slate-600 mb-4 line-clamp-3">
           {evento.descripcion}
         </p>
 
+
         {/* COUNTDOWN */}
 
-        <div className="w-full">
+        <div className="w-full mb-4">
           <Countdown fecha={fechaParaCountdown} />
         </div>
+
 
         {/* FOOTER */}
 
@@ -107,7 +116,14 @@ export default function EventoCard({ evento }: Props) {
 
           <Link
             href={`/eventos/${evento.slug}`}
-            className="text-sm font-semibold hover:text-red-600"
+            className="
+              text-sm
+              font-semibold
+              text-slate-700
+              transition-colors
+              duration-300
+              group-hover:text-red-600
+            "
           >
             Ver evento →
           </Link>
@@ -119,4 +135,5 @@ export default function EventoCard({ evento }: Props) {
     </motion.div>
 
   )
+
 }

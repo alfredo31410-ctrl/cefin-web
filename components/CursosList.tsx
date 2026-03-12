@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Curso } from "@/data/cursos"
 import CursoCard from "@/components/CursoCard"
 import { motion, AnimatePresence } from "framer-motion"
+import Grid from "./Grid"
 
 export default function CursosList({ cursosIniciales }: { cursosIniciales: Curso[] }) {
   const [categoria, setCategoria] = useState("todos")
@@ -30,8 +31,8 @@ export default function CursosList({ cursosIniciales }: { cursosIniciales: Curso
         ))}
       </div>
 
-      <motion.div layout className="grid md:grid-cols-3 gap-8">
-        <AnimatePresence mode="popLayout">
+<Grid>
+  <AnimatePresence mode="popLayout">
           {cursosFiltrados.map((curso) => (
             <motion.div
               layout
@@ -44,7 +45,7 @@ export default function CursosList({ cursosIniciales }: { cursosIniciales: Curso
             </motion.div>
           ))}
         </AnimatePresence>
-      </motion.div>
+        </Grid>        
     </>
   )
 }

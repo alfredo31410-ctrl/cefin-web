@@ -1,27 +1,15 @@
 "use client"
 
-/*
-  IMPORTACIONES
-*/
-
 import { Curso } from "@/data/cursos"
 import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-
-/*
-  PROPS
-*/
 
 type Props = {
   curso: Curso
 }
 
 export default function CursoCard({ curso }: Props) {
-
-  /*
-    COLORES POR CATEGORÍA
-  */
 
   const coloresCategoria = {
     fiscal: "bg-blue-100 text-blue-700",
@@ -31,15 +19,10 @@ export default function CursoCard({ curso }: Props) {
 
   return (
 
-    /*
-      CARD PRINCIPAL
-      flex-col + h-full permite que todas las cards
-      tengan la misma altura dentro del grid
-    */
-
     <motion.div
       whileHover={{ y: -6 }}
       className="
+        group
         bg-white
         rounded-xl
         shadow-sm
@@ -52,21 +35,27 @@ export default function CursoCard({ curso }: Props) {
         h-full
         border
         border-slate-100
+        hover:-translate-y-1
       "
     >
 
       {/* IMAGEN */}
 
-      <div className="relative w-full h-44 md:h-48 lg:h-52">
+      <div className="relative w-full h-44 md:h-48 lg:h-52 overflow-hidden">
 
         <Image
           src={curso.imagen}
           alt={curso.titulo}
           fill
-          className="object-cover"
+          className="
+            object-cover
+            transition-transform
+            duration-500
+            group-hover:scale-105
+          "
         />
 
-        {/* BADGE CATEGORÍA */}
+        {/* BADGE */}
 
         <div className="absolute top-3 left-3">
 
@@ -94,7 +83,8 @@ export default function CursoCard({ curso }: Props) {
 
       <div className="p-4 md:p-6 flex flex-col flex-grow">
 
-        {/* META INFO */}
+
+        {/* META */}
 
         <div className="flex items-center gap-2 md:gap-3 mb-3 text-[11px] font-medium text-slate-400 uppercase tracking-widest">
 
@@ -129,6 +119,7 @@ export default function CursoCard({ curso }: Props) {
 
         <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
 
+
           {/* PRECIO */}
 
           <div className="flex flex-col">
@@ -148,7 +139,7 @@ export default function CursoCard({ curso }: Props) {
           </div>
 
 
-          {/* BOTÓN */}
+          {/* BOTON */}
 
           <Link
             href={`/cursos/${curso.slug}`}
@@ -159,8 +150,9 @@ export default function CursoCard({ curso }: Props) {
               rounded-lg
               text-sm
               font-bold
-              hover:bg-red-600
-              transition-colors
+              transition-all
+              duration-300
+              group-hover:bg-red-600
               whitespace-nowrap
               shadow-sm
             "
