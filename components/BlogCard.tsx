@@ -25,17 +25,37 @@ export default function BlogCard({ post }: Props) {
 
     /* ===== CARD ===== */
 
-    <div className="bg-white rounded-xl shadow-sm hover:shadow-xl transition overflow-hidden flex flex-col h-full">
+    <div className="
+      group
+      bg-white
+      rounded-xl
+      shadow-sm
+      hover:shadow-xl
+      transition-all
+      duration-300
+      overflow-hidden
+      flex
+      flex-col
+      h-full
+      border
+      border-slate-100
+      hover:-translate-y-1
+    ">
 
       {/* ===== IMAGEN ===== */}
 
-      <div className="relative w-full h-44 md:h-48 lg:h-52">
+      <div className="relative w-full h-44 md:h-48 lg:h-52 overflow-hidden">
 
         <Image
           src={post.imagen}
           alt={post.titulo}
           fill
-          className="object-cover"
+          className="
+            object-cover
+            transition-transform
+            duration-500
+            group-hover:scale-105
+          "
         />
 
       </div>
@@ -62,11 +82,18 @@ export default function BlogCard({ post }: Props) {
           {post.descripcion}
         </p>
 
-        {/* BOTON (SIEMPRE ABAJO) */}
+        {/* BOTON */}
 
         <Link
           href={`/blog/${post.slug}`}
-          className="text-red-600 font-semibold hover:underline mt-auto"
+          className="
+            mt-auto
+            font-semibold
+            text-slate-700
+            transition-colors
+            duration-300
+            group-hover:text-red-600
+          "
         >
           Ver capacitación →
         </Link>
