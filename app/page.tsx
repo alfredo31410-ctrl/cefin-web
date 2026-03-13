@@ -1,11 +1,8 @@
-"use client";
-
 import { FileText, TrendingUp, Users } from "lucide-react";
 import { membresias } from "@/data/membresias";
 import { testimonios } from "@/data/testimonios";
 import MembresiaCard from "@/components/MembresiaCard";
 import TestimonioCard from "@/components/TestimonioCard";
-import { eventos } from "@/data/eventos";
 import EventoCard from "@/components/EventoCard";
 import { blog } from "@/data/blogs";
 import BlogCard from "@/components/BlogCard";
@@ -13,15 +10,17 @@ import Container from "@/components/Container";
 import Grid from "@/components/Grid";
 import { motion } from "framer-motion";
 import Reveal from "@/components/Reveal";
+import { getEventosDestacados } from "@/lib/eventos";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 },
 };
 
-const eventosDestacados = eventos.filter((e) => e.destacado);
 
 export default function Home() {
+  const eventosDestacados = getEventosDestacados();
+
   return (
     <main>
       {/* ================= HERO ================= */}
@@ -152,7 +151,14 @@ export default function Home() {
 <Reveal>
           <Grid>
             {eventosDestacados.map((evento) => (
-              <EventoCard key={evento.id} evento={evento} />
+              <EventoCard 
+                key={evento.id}
+                evento={{
+                  ...evento,
+                  slug: evento.slug ?? String(evento.id),
+                  id: typeof evento.id === "string" ? Number(evento.id) : evento.id,
+                }}
+              />
             ))}
           </Grid>
 </Reveal>

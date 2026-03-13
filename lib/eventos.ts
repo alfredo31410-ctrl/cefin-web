@@ -46,3 +46,18 @@ export function getAllEventos(): Evento[] {
     }
   })
 }
+
+export function getEventosDestacados(): Evento[] {
+
+  const eventos = getAllEventos()
+
+  return eventos
+    .filter((evento) => evento.destacado)
+    .filter((evento) => new Date(evento.fecha).getTime() > Date.now())
+    .sort(
+      (a, b) =>
+        new Date(a.fecha).getTime() - new Date(b.fecha).getTime()
+    )
+    .slice(0, 3)
+
+}

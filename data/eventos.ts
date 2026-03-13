@@ -53,7 +53,7 @@ const eventosBase: Evento[] = [
 
     hotmart: "https://pay.hotmart.com/YYYY",
 
-    destacado: false
+    destacado: true
   }
 ]
 
