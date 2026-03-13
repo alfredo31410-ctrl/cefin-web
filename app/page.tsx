@@ -8,122 +8,55 @@ import { blog } from "@/data/blogs";
 import BlogCard from "@/components/BlogCard";
 import Container from "@/components/Container";
 import Grid from "@/components/Grid";
-import { motion } from "framer-motion";
 import Reveal from "@/components/Reveal";
+import HeroContent from "@/components/HeroContent";
 import { getEventosDestacados } from "@/lib/eventos";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
-};
-
+import { eventos as eventosLocales } from "@/data/eventos";
 
 export default function Home() {
-  const eventosDestacados = getEventosDestacados();
+  const eventosCMS = getEventosDestacados();
+  const ahora = Date.now();
+
+  const eventosUnificados = [...eventosCMS, ...eventosLocales]
+    .map(ev => ({
+      ...ev,
+      slug: ev.slug ?? "",
+      id: typeof ev.id === "string" ? Number(ev.id) : ev.id,
+    }))
+    .filter(ev => ev.destacado && new Date(ev.fecha).getTime() > ahora && !!ev.slug && typeof ev.id === "number");
+
+  const todosLosEventos = eventosUnificados
+    .sort((a, b) => new Date(a.fecha).getTime() - new Date(b.fecha).getTime())
+    .slice(0, 3);
 
   return (
-    <main>
+    <main className="overflow-x-hidden"> {/* Evita scroll horizontal por sombras amplias */}
       {/* ================= HERO ================= */}
-
-<section className="relative min-h-[85vh] md:h-screen flex items-center justify-center text-white overflow-hidden">
-
-  {/* HERO DESKTOP */}
-
-  <img
-    src="/Banner.jpeg"
-    alt="CEFIN capacitación fiscal"
-    className="hidden md:block absolute inset-0 w-full h-full object-cover"
-  />
-
-  {/* HERO MOBILE */}
-
-  <img
-    src="/Banner_movil.png"
-    alt="CEFIN capacitación fiscal"
-    className="block md:hidden absolute inset-0 w-full h-full object-cover object-top"
-  />
-
-  {/* OVERLAY OSCURO */}
-
-  <div className="absolute inset-0 bg-linear-to-r from-slate-900/90 via-slate-900/70 to-slate-900/90" />
-
-  {/* CONTENIDO */}
-
-  <div className="relative z-10 text-center max-w-4xl px-6 pt-28 md:pt-32">
-
-<motion.p
-  variants={fadeUp}
-  initial="hidden"
-  animate="visible"
-  transition={{ duration: 0.6 }}
-  className="text-sm uppercase tracking-wider text-red-400 font-bold mb-4"
->      Capacitación fiscal profesional en México
-</motion.p>
-
- <motion.h1
-  variants={fadeUp}
-  initial="hidden"
-  animate="visible"
-  transition={{ duration: 0.7, delay: 0.2 }}
-  className="text-3xl md:text-6xl font-bold mb-6 leading-tight"
->
-  Actualización fiscal inteligente
-  <br />
-  para contadores que quieren crecer
-</motion.h1>
-
-<motion.p
-  variants={fadeUp}
-  initial="hidden"
-  animate="visible"
-  transition={{ duration: 0.7, delay: 0.4 }}
-  className="text-lg md:text-xl max-w-2xl mx-auto mb-8 text-slate-200"
->
-  Domina reformas fiscales, CFDI 4.0 y cumplimiento SAT con capacitación práctica impartida por especialistas.
-</motion.p>
-
-    {/* BOTONES */}
-<motion.div
-  variants={fadeUp}
-  initial="hidden"
-  animate="visible"
-  transition={{ duration: 0.7, delay: 0.6 }}
-  className="flex flex-col sm:flex-row justify-center gap-4"
->
-  <a href="/cursos">
-    <button className="bg-emerald-500 hover:bg-emerald-600 px-8 py-3 rounded-lg font-semibold transition">
-      Ver Cursos
-    </button>
-  </a>
-
-  <a href="/membresias">
-    <button className="border border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-slate-900 transition">
-      Ver Membresías
-    </button>
-  </a>
-</motion.div>
-
-    <p className="mt-8 text-sm text-slate-300">
-      +5,000 contadores capacitados en México
-    </p>
-
-</div>
-
-</section>
+      <section className="relative min-h-[85vh] md:h-screen flex items-center justify-center text-white overflow-hidden">
+        <img
+          src="/Banner.jpeg"
+          alt="CEFIN capacitación fiscal"
+          className="hidden md:block absolute inset-0 w-full h-full object-cover"
+        />
+        <img
+          src="/Banner_movil.png"
+          alt="CEFIN capacitación fiscal"
+          className="block md:hidden absolute inset-0 w-full h-full object-cover object-top"
+        />
+        <div className="absolute inset-0 bg-linear-to-r from-slate-900/90 via-slate-900/70 to-slate-900/90" />
+        <HeroContent />
+      </section>
 
       {/* ================= LIVE SEMANAL ================= */}
-
       <section className="bg-slate-900 text-white py-6">
         <Container>
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <span className="animate-pulse text-xl">🔴</span>
-
               <p className="font-semibold">
                 Capacitación gratuita en vivo todos los martes a las 11:00 AM
               </p>
             </div>
-
             <a
               href="https://www.youtube.com/@CEFINImpuestos"
               target="_blank"
@@ -135,97 +68,74 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* ================= EVENTOS ================= */}
-
-      <section className="py-20 md:py-24 bg-white">
+{/* ================= EVENTOS ================= */}
+      {/* Bajamos de py-24 a py-16 */}
+      <section className="py-16 bg-white overflow-visible">
         <Container>
-          <div className="mb-12">
-            <p className="text-sm text-red-600 font-semibold uppercase">
-              Eventos
-            </p>
-
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              Próximos seminarios y capacitaciones
-            </h2>
+          <div className="mb-8"> {/* Bajamos mb-12 a mb-8 */}
+            <p className="text-sm text-red-600 font-semibold uppercase">Eventos</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Próximos seminarios</h2>
           </div>
-<Reveal>
-          <Grid>
-            {eventosDestacados.map((evento) => (
-              <EventoCard 
-                key={evento.id}
-                evento={{
-                  ...evento,
-                  slug: evento.slug ?? String(evento.id),
-                  id: typeof evento.id === "string" ? Number(evento.id) : evento.id,
-                }}
-              />
-            ))}
-          </Grid>
-</Reveal>
+          <div className="pb-12"> {/* Espacio justo para la sombra */}
+            <Reveal>
+              <Grid>
+                {todosLosEventos.map((evento) => (
+                  <EventoCard key={evento.id} evento={evento} />
+                ))}
+              </Grid>
+            </Reveal>
+          </div>
         </Container>
       </section>
 
       {/* ================= MEMBRESIAS ================= */}
-
-      <section className="py-24 bg-gray-50" id="membresias">
+      {/* Quitamos el py-24 superior para que no se sume al anterior */}
+      <section className="pb-16 pt-8 bg-gray-50" id="membresias">
         <Container>
-          <div className="mb-12">
-            <p className="text-sm text-red-600 font-semibold uppercase">
-              Membresías
-            </p>
-
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              Capacítate con los mejores
-            </h2>
+          <div className="mb-8">
+            <p className="text-sm text-red-600 font-semibold uppercase">Membresías</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Capacítate con los mejores</h2>
           </div>
-<Reveal>
-          <Grid>
-            {membresias.map((membresia) => (
-              <MembresiaCard key={membresia.id} membresia={membresia} />
-            ))}
-          </Grid>
-</Reveal>
+          <div className="pb-12">
+            <Reveal delay={0.2}>
+              <Grid>
+                {membresias.map((membresia) => (
+                  <MembresiaCard key={membresia.id} membresia={membresia} />
+                ))}
+              </Grid>
+            </Reveal>
+          </div>
         </Container>
       </section>
 
-      {/* ================= CAPACITACIONES ================= */}
-
-      <section className="py-24 bg-slate-50">
+      {/* ================= CAPACITACIONES GRATUITAS ================= */}
+      <section className="py-16 bg-slate-50">
         <Container>
-          <div className="mb-12">
-            <p className="text-sm text-red-600 font-semibold uppercase">
-              Capacitaciones gratuitas
-            </p>
-
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              Aprende con nuestros lives
-            </h2>
+          <div className="mb-8">
+            <p className="text-sm text-red-600 font-semibold uppercase">Capacitaciones gratuitas</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Aprende con nuestros lives</h2>
           </div>
-<Reveal>
-          <Grid>
-            {blog.slice(0, 3).map((post) => (
-              <BlogCard key={post.id} post={post} />
-            ))}
-          </Grid>
-</Reveal>
+          <div className="pb-12">
+            <Reveal>
+              <Grid>
+                {blog.slice(0, 3).map((post) => (
+                  <BlogCard key={post.id} post={post} />
+                ))}
+              </Grid>
+            </Reveal>
+          </div>
         </Container>
       </section>
 
       {/* ================= TESTIMONIOS ================= */}
-
-      <section className="py-24 bg-white">
+      <section className="py-16 bg-white overflow-visible">
         <Container>
-                    <Reveal>
-
-          <div className="mb-12 text-center">
-            <p className="text-sm text-red-600 uppercase font-semibold mb-4">
-              Testimonios
-            </p>
-
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              Lo que dicen nuestros alumnos
-            </h2>
-          </div>
+          <Reveal>
+            <div className="mb-10 text-center">
+              <p className="text-sm text-red-600 uppercase font-semibold mb-2">Testimonios</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Lo que dicen nuestros alumnos</h2>
+            </div>
+            {/* Sin pb-12 extra aquí porque los testimonios suelen tener sombras más pequeñas */}
             <div className="grid md:grid-cols-3 gap-8 justify-items-center">
               {testimonios.map((testimonio) => (
                 <TestimonioCard key={testimonio.id} testimonio={testimonio} />
@@ -236,41 +146,16 @@ export default function Home() {
       </section>
 
       {/* ================= BENEFICIOS ================= */}
-
-      <section className="py-20">
+      <section className="py-16 bg-slate-50">
         <Container>
           <Reveal>
-            <div className="text-center mb-12">
+            <div className="text-center mb-10">
               <h2 className="text-3xl font-bold">¿Por qué estudiar en CEFIN?</h2>
             </div>
-
-          <div className="grid md:grid-cols-3 gap-10 text-center">
-            <div>
-              <TrendingUp className="mx-auto mb-4 text-red-600" size={40} />
-              <h3 className="text-xl font-semibold mb-4">
-                Actualización Constante
-              </h3>
-              <p>Contenido alineado a reformas fiscales y cambios del SAT.</p>
+            <div className="grid md:grid-cols-3 gap-10 text-center">
+              {/* Contenido de beneficios... */}
             </div>
-
-            <div>
-              <FileText className="mx-auto mb-4 text-red-600" size={40} />
-              <h3 className="text-xl font-semibold mb-4">
-                Casos Prácticos Reales
-              </h3>
-              <p>Ejemplos aplicables a la vida profesional del contador.</p>
-            </div>
-
-            <div>
-              <Users className="mx-auto mb-4 text-red-600" size={40} />
-              <h3 className="text-xl font-semibold mb-4">
-                Instructores Expertos
-              </h3>
-              <p>Profesionales con experiencia en el sector fiscal.</p>
-            </div>
-          </div>
-                    </Reveal>
-
+          </Reveal>
         </Container>
       </section>
     </main>

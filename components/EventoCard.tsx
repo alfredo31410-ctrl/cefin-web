@@ -29,15 +29,15 @@ export default function EventoCard({ evento }: Props) {
   return (
 
     <motion.div
-      whileHover={{ y: -6 }}
+      whileHover={{ y: -8 }}
       className="
         group
         bg-white
-        rounded-xl
+        rounded-2xl
         shadow-sm
         hover:shadow-xl
         transition-all
-        duration-300
+        duration-500
         overflow-hidden
         flex
         flex-col

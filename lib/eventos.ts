@@ -19,9 +19,11 @@ export type Evento = {
 }
 
 export function getAllEventos(): Evento[] {
+
   if (!fs.existsSync(eventosDirectory)) return []
 
   const fileNames = fs.readdirSync(eventosDirectory)
+  console.log("Eventos CMS:", fileNames)
 
   return fileNames.map((fileName) => {
     const slug = fileName.replace(".md", "")
@@ -45,6 +47,7 @@ export function getAllEventos(): Evento[] {
       destacado: Boolean(data.destacado),
     }
   })
+
 }
 
 export function getEventosDestacados(): Evento[] {

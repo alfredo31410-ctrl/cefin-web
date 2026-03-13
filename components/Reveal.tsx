@@ -1,30 +1,44 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { ReactNode, useEffect, useState } from "react";
 
 type Props = {
-  children: React.ReactNode
-  delay?: number
-}
+  children: ReactNode;
+  delay?: number;
+  width?: "fit-content" | "100%";
+  className?: string;
+};
 
-export default function Reveal({ children, delay = 0 }: Props) {
+export default function Reveal({ 
+  children, 
+  delay = 0, 
+  width = "100%", 
+  className = "" 
+}: Props) {
+  // Estado para evitar errores de hidratación
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) return <>{children}</>;
 
   return (
-
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.6,
-        delay
-      }}
-      viewport={{ once: true, margin: "-50px" }}
-    >
-
-      {children}
-
-    </motion.div>
-
-  )
-
+    <div style={{ position: "relative", width, overflow: "visible" }} className={className}>
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }} // Un margen un poco más amplio suele verse mejor
+        transition={{
+          duration: 0.6,
+          delay: delay,
+          ease: "easeOut" // Suaviza la llegada al punto final
+        }}
+      >
+        {children}
+      </motion.div>
+    </div>
+  );
 }
