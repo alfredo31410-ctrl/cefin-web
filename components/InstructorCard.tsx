@@ -68,7 +68,7 @@ export default function InstructorCard({ instructor }: Props) {
         {/* ESPECIALIDAD */}
 
         <p className="text-sm text-slate-600 mb-4 line-clamp-2">
-          {instructor.especialidad}
+          {instructor.descripcionCorta}
         </p>
 
 

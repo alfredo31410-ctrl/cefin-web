@@ -40,6 +40,17 @@ const blogBase: Blog[] = [
     fecha: "5 Marzo 2026",
     videoId: "VIDEOID2",
     destacado: false
+  },
+
+  {
+    id: 3,
+    titulo: "Prueba de blog destacado",
+    descripcion: "Este es un blog de prueba para verificar que el sistema de destacados funciona correctamente.",
+    contenido: `Este blog no tiene un video asociado, pero es importante para probar que el sistema de destacados funciona correctamente. Debería aparecer en la sección de blogs destacados a pesar de no tener un videoId, siempre y cuando la propiedad destacado esté en true.`,
+    imagen: "/eventoReforma-Fiscal.jpg",
+    fecha: "5 Marzo 2026",
+    videoId: "VIDEOID2",
+    destacado: true
   }
 ]
 
