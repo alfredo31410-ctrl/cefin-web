@@ -47,6 +47,20 @@ Lo que equivale a un año completo de actualización y dominio profesional en ma
   },
   {
     id: 4,
+    slug: "cefin-mental",
+    titulo: "Membresía Mental CEFIN 2026",
+    descripcion: "transformar tu relación con el dinero, tu mentalidad u la forma en la que tomas decisiones financieras y profesionales.",
+    descripcionLarga: `Tendrás 12 meses de cursos especializados en ayudarte en transformar tu relación con el dinero, tu mentalidad u la forma en la que tomas decisiones financieras y profesionales. 
+
+📚10 entrenamientos enfocados en despachos, ventas, liderazgo, finanzas, marketing e IA aplicada a negocios.    
+🎁Incluye 1 año de sesiones en vivo todos los lunes a las 11:00 a.m.
+💡Ideal para contadores y profesionistas que saben que el otro nivel no solo depende de conocimiento técnico…sino de cómo piensan, deciden y actúan.`,
+
+    imagen: "/cefin-mental.png",
+    precio: "$9,987 MXN",
+  },
+  {
+    id: 5,
     slug: "cefin-total",
     titulo: "Membresía Total CEFIN 2026",
     descripcion: "Acceso a todos los cursos fiscales, contables y de nómina.",
