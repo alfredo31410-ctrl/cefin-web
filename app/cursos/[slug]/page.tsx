@@ -1,4 +1,5 @@
-import { cursos } from "@/data/cursos";
+import { cursos as cursosStatic } from "@/data/cursos";
+import { getAllCursos } from "@/lib/cursos";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -10,8 +11,15 @@ export default async function CursoDetalle({ params }: Props) {
 
   const { slug } = await params;
 
+  //traer del cms
+  const cursosCMS = getAllCursos();
+
+  //unificar con los cursos estáticos
+  const cursos = [...cursosStatic, ...cursosCMS];
+
+  //buscar el curso por slug
   const curso = cursos.find(
-    (c) => c.slug === slug
+    c => c.slug === slug
   );
 
   if (!curso) {
