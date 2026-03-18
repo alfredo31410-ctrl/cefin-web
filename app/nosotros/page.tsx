@@ -1,126 +1,178 @@
 import Container from "@/components/Container"
 import Image from "next/image"
 import Link from "next/link"
+import Reveal from "@/components/Reveal"
 
 export default function NosotrosPage() {
   return (
     <main className="max-w-7xl mx-auto px-6 py-24">
-<Container>
-      {/* HERO */}
 
-      <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
+      <Container>
 
-        <div>
+        {/* ===== HERO ===== */}
 
-          <h1 className="text-4xl font-bold mb-6">
-            Sobre CEFIN
-          </h1>
+        <section className="grid md:grid-cols-2 gap-12 items-center mb-24">
 
-          <p className="text-slate-600 mb-4">
-            En CEFIN nos dedicamos a la capacitación especializada
-            para contadores, empresarios y profesionales que desean
-            mantenerse actualizados en temas fiscales, contables y
-            laborales.
-          </p>
+          <Reveal>
+            <div>
 
-          <p className="text-slate-600">
-            Nuestro objetivo es ofrecer formación práctica y actualizada
-            que ayude a los profesionales a tomar mejores decisiones
-            en su ejercicio profesional.
-          </p>
+              <p className="text-sm uppercase tracking-wider text-red-600 font-semibold mb-3">
+                Sobre CEFIN
+              </p>
 
-        </div>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                Formación fiscal que transforma tu ejercicio profesional
+              </h1>
 
-        <div className="relative h-72 w-full">
+              <p className="text-slate-600 mb-4 leading-relaxed">
+                En CEFIN capacitamos contadores, empresarios y profesionales
+                que buscan dominar la materia fiscal y tomar decisiones con
+                seguridad, claridad y criterio.
+              </p>
 
-          <Image
-            src="/equipo-cefin.jpg"
-            alt="Equipo CEFIN"
-            fill
-            className="object-cover rounded-xl"
-          />
+              <p className="text-slate-600 leading-relaxed">
+                Nuestro enfoque es práctico, actualizado y alineado a la
+                realidad del ejercicio profesional en México.
+              </p>
 
-        </div>
+            </div>
+          </Reveal>
 
-      </div>
+          <Reveal>
+            <div className="relative h-72 md:h-96 w-full rounded-2xl overflow-hidden shadow-lg">
 
-      {/* HISTORIA */}
+              <Image
+                src="/equipo-cefin.jpg"
+                alt="Equipo CEFIN"
+                fill
+                className="object-cover"
+              />
 
-      <div className="max-w-3xl mb-20">
+            </div>
+          </Reveal>
 
-        <h2 className="text-2xl font-bold mb-4">
-          Nuestra historia
-        </h2>
+        </section>
 
-        <p className="text-slate-600 mb-4">
-          CEFIN nació con la misión de brindar capacitación
-          especializada a profesionales del área contable y fiscal.
-        </p>
 
-        <p className="text-slate-600">
-          A lo largo de los años hemos formado a cientos de
-          profesionales a través de cursos, seminarios y
-          capacitaciones en línea impartidas por expertos.
-        </p>
+        {/* ===== IMPACTO (🔥 NUEVO) ===== */}
 
-      </div>
+        <section className="mb-24">
+          <Reveal>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
 
-      {/* MISION VISION */}
+              <div className="bg-white p-6 rounded-xl shadow-sm border">
+                <p className="text-2xl md:text-3xl font-bold text-red-600">+30,000</p>
+                <p className="text-sm text-slate-500">Contadores capacitados</p>
+              </div>
 
-      <div className="grid md:grid-cols-2 gap-10 mb-20">
+              <div className="bg-white p-6 rounded-xl shadow-sm border">
+                <p className="text-2xl md:text-3xl font-bold text-red-600">+260</p>
+                <p className="text-sm text-slate-500">Empresas asesoradas</p>
+              </div>
 
-        <div className="bg-slate-50 p-8 rounded-xl">
+              <div className="bg-white p-6 rounded-xl shadow-sm border">
+                <p className="text-2xl md:text-3xl font-bold text-red-600">+15 años</p>
+                <p className="text-sm text-slate-500">Experiencia profesional</p>
+              </div>
 
-          <h3 className="text-xl font-semibold mb-3">
-            Nuestra misión
-          </h3>
+              <div className="bg-white p-6 rounded-xl shadow-sm border">
+                <p className="text-2xl md:text-3xl font-bold text-red-600">100%</p>
+                <p className="text-sm text-slate-500">Enfoque práctico</p>
+              </div>
 
-          <p className="text-slate-600">
-            Brindar capacitación práctica y actualizada en temas
-            fiscales, contables y laborales para impulsar el
-            crecimiento profesional de nuestros alumnos.
-          </p>
+            </div>
+          </Reveal>
+        </section>
 
-        </div>
 
-        <div className="bg-slate-50 p-8 rounded-xl">
+        {/* ===== HISTORIA ===== */}
 
-          <h3 className="text-xl font-semibold mb-3">
-            Nuestra visión
-          </h3>
+        <section className="max-w-3xl mx-auto mb-24 text-center">
+          <Reveal>
 
-          <p className="text-slate-600">
-            Ser un referente en capacitación fiscal y contable
-            en México, ofreciendo contenido de alto valor y
-            formación de calidad.
-          </p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-6">
+              Nuestra historia
+            </h2>
 
-        </div>
+            <p className="text-slate-600 mb-4 leading-relaxed">
+              CEFIN nace con el propósito de elevar el nivel del ejercicio
+              contable en México, brindando capacitación especializada,
+              práctica y alineada a la realidad fiscal.
+            </p>
 
-      </div>
+            <p className="text-slate-600 leading-relaxed">
+              A lo largo de los años hemos acompañado a miles de contadores
+              en su crecimiento profesional, ayudándolos a trabajar con mayor
+              seguridad, claridad y confianza.
+            </p>
 
-      {/* CTA INSTRUCTORES */}
+          </Reveal>
+        </section>
 
-      <div className="text-center">
 
-        <h2 className="text-2xl font-bold mb-4">
-          Conoce a nuestros instructores
-        </h2>
+        {/* ===== MISION Y VISION ===== */}
 
-        <p className="text-slate-600 mb-6">
-          Aprende de profesionales con amplia experiencia en el
-          área fiscal y contable.
-        </p>
+        <section className="grid md:grid-cols-2 gap-10 mb-24">
+          <Reveal>
+            <div className="bg-slate-50 p-8 rounded-2xl shadow-sm border">
 
-        <Link
-          href="/instructores"
-          className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition"
-        >
-          Ver instructores
-        </Link>
+              <h3 className="text-xl font-semibold mb-3">
+                Nuestra misión
+              </h3>
 
-      </div>
-    </Container>
+              <p className="text-slate-600 leading-relaxed">
+                Capacitar, actualizar y empoderar contadores con herramientas
+                prácticas que les permitan cumplir correctamente con sus
+                obligaciones fiscales y crecer profesionalmente.
+              </p>
+
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <div className="bg-slate-50 p-8 rounded-2xl shadow-sm border">
+
+              <h3 className="text-xl font-semibold mb-3">
+                Nuestra visión
+              </h3>
+
+              <p className="text-slate-600 leading-relaxed">
+                Ser la plataforma de referencia en capacitación fiscal y
+                contable en México, formando profesionales con criterio,
+                seguridad y alto nivel técnico.
+              </p>
+
+            </div>
+          </Reveal>
+        </section>
+
+
+        {/* ===== CTA ===== */}
+
+        <section className="text-center">
+          <Reveal>
+
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Aprende con quienes ya recorrieron el camino
+            </h2>
+
+            <p className="text-slate-600 mb-6">
+              Nuestros instructores combinan experiencia real con una forma
+              clara de enseñar.
+            </p>
+
+            <Link
+              href="/instructores"
+              className="bg-red-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-700 transition"
+            >
+              Ver instructores
+            </Link>
+
+          </Reveal>
+        </section>
+
+      </Container>
+
     </main>
   )
 }
