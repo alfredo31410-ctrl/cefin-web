@@ -11,129 +11,67 @@ type Props = {
 }
 
 export default function EventoCard({ evento }: Props) {
-
-  const fechaTexto =
-    (evento.fecha as any) instanceof Date
-      ? (evento.fecha as any).toLocaleDateString("es-MX", {
-          day: "2-digit",
-          month: "long",
-          year: "numeric",
-        })
-      : String(evento.fecha)
-
-  const fechaParaCountdown =
-    (evento.fecha as any) instanceof Date
-      ? (evento.fecha as any).toISOString()
-      : String(evento.fecha)
+  const fechaTexto = (evento.fecha as any) instanceof Date
+    ? (evento.fecha as any).toLocaleDateString("es-MX", { day: "2-digit", month: "short" })
+    : String(evento.fecha)
 
   return (
-
     <motion.div
-      whileHover={{ y: -8 }}
-      className="
-        group
-        bg-white
-        rounded-2xl
-        shadow-sm
-        hover:shadow-xl
-        transition-all
-        duration-500
-        overflow-hidden
-        flex
-        flex-col
-        h-full
-        border
-        border-slate-100
-        hover:-translate-y-1
-      "
+      whileHover={{ y: -5 }}
+      className="group bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col h-full border border-slate-100"
     >
-
-      {/* IMAGEN */}
-
-      <div className="relative w-full h-44 md:h-48 lg:h-52 overflow-hidden">
-
+      {/* 1. IMAGEN MÁS BAJA */}
+      <div className="relative w-full h-32 md:h-40 overflow-hidden bg-slate-50">
         <Image
           src={evento.imagen}
           alt={evento.titulo}
           fill
-          className="
-            object-contain
-            transition-transform
-            duration-500
-            group-hover:scale-105
-          "
+          className="object-contain p-3 transition-transform duration-500 group-hover:scale-105"
         />
-
+        <div className="absolute top-2 left-2">
+          <span className="bg-red-600 text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-sm">
+            Próximamente
+          </span>
+        </div>
       </div>
 
+      {/* 2. CONTENIDO MÁS APRETADO */}
+      <div className="p-4 flex flex-col flex-grow">
+        
+        {/* META EN UNA SOLA LÍNEA PEQUEÑA */}
+        <div className="flex items-center gap-2 mb-2 text-[10px] font-medium text-slate-400 uppercase">
+          <span className="truncate">📍 {evento.lugar}</span>
+          <span>•</span>
+          <span className="shrink-0">📅 {fechaTexto}</span>
+        </div>
 
-      {/* CONTENIDO */}
-
-      <div className="p-4 md:p-6 flex flex-col flex-grow">
-
-        {/* TITULO */}
-
-        <h3 className="text-base md:text-lg font-semibold mb-2 line-clamp-2">
+        {/* TITULO CON ALTURA CONTROLADA */}
+        <h3 className="text-sm md:text-base font-bold mb-2 text-slate-800 line-clamp-2 leading-tight min-h-[2.5rem]">
           {evento.titulo}
         </h3>
 
-
-        {/* FECHA */}
-
-        <p className="text-xs md:text-sm text-slate-500 mb-1">
-          📅 {fechaTexto}
-        </p>
-
-
-        {/* LUGAR */}
-
-        <p className="text-xs md:text-sm text-slate-500 mb-3">
-          📍 {evento.lugar}
-        </p>
-
-
-        {/* DESCRIPCION */}
-
-        <p className="text-sm text-slate-600 mb-4 line-clamp-3">
-          {evento.descripcion}
-        </p>
-
-
-        {/* COUNTDOWN */}
-
-        <div className="w-full mb-4">
-          <Countdown fecha={fechaParaCountdown} />
+        {/* 3. COUNTDOWN MINI (Sin fondo gris para no abultar) */}
+        <div className="mb-4 py-2 border-y border-slate-50">
+          <Countdown fecha={String(evento.fecha)} />
         </div>
 
-
-        {/* FOOTER */}
-
-        <div className="flex items-center justify-between mt-auto">
-
-          <span className="font-bold text-red-600 text-base md:text-lg">
-            {evento.precio}
-          </span>
+        {/* 4. FOOTER INTEGRADO (Precio y Botón en la misma línea pero más pequeños) */}
+        <div className="mt-auto pt-3 flex items-center justify-between gap-2">
+          <div className="flex flex-col shrink-0">
+            <span className="text-[9px] text-slate-400 uppercase font-bold">Inversión</span>
+            <span className="font-extrabold text-red-600 text-base">
+              {evento.precio}
+            </span>
+          </div>
 
           <Link
             href={`/eventos/${evento.slug}`}
-            className="
-              text-sm
-              font-semibold
-              text-slate-700
-              transition-colors
-              duration-300
-              group-hover:text-red-600
-            "
+            className="bg-slate-900 text-white px-3 py-1.5 rounded-lg text-[11px] font-bold hover:bg-red-600 transition-colors whitespace-nowrap"
           >
-            Ver evento →
+            Ver evento
           </Link>
-
         </div>
-
       </div>
-
     </motion.div>
-
   )
-
 }

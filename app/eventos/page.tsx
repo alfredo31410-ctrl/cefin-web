@@ -1,42 +1,28 @@
 import { getAllEventos } from "@/lib/eventos" 
-import EventoCard from "@/components/EventoCard"
 import { eventos as eventosLocales } from "@/data/eventos"
 import Container from "@/components/Container"
-import Grid from "@/components/Grid"
+import { HeroEventos, CTAEventos } from "@/components/EventosVisuals"
+import EventosClient from "@/components/EventosClient"
 
 export default function EventosPage() {
+  // Esto corre en el servidor (fs funciona aquí)
   const eventosCMS = getAllEventos()
-
-  // Fusionamos ambos
   const todosLosEventos = [...eventosLocales, ...eventosCMS]
 
-  // Ordenamos por fecha real
   const eventosOrdenados = todosLosEventos.sort((a, b) => {
     return new Date(a.fecha).getTime() - new Date(b.fecha).getTime()
   })
 
   return (
-    <main className="py-20 md:py-24">
-
+    <main className="py-20 md:py-28 bg-slate-50/50">
       <Container>
-        <h1 className="text-4xl font-bold mb-8">Eventos y Seminarios</h1>
-      
-      <p className="text-slate-600 mb-12 max-w-2xl">
-        Participa en nuestros eventos especializados para contadores...
-      </p>
+        {/* Componentes Cliente que importamos */}
+        <HeroEventos />
+        
+        <EventosClient eventos={eventosOrdenados} />
 
-       <Grid>
-         {/* CORRECCIÓN: Usar la lista fusionada y ordenada */}
-        {eventosOrdenados.map((evento: any) => (
-          <EventoCard
-            key={evento.slug}
-            evento={evento}
-          />
-        ))}
-       </Grid>
+        <CTAEventos />
       </Container>
-
-      
     </main>
   )
 }

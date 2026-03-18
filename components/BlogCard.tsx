@@ -9,43 +9,40 @@ type Props = {
 }
 
 export default function BlogCard({ post }: Props) {
-
   /* ===== FORMATEO DE FECHA ===== */
+  // Si la fecha viene como string de una API o Markdown, intentamos convertirla
+  const dateObj = typeof post.fecha === "string" ? new Date(post.fecha) : post.fecha;
 
   const fechaFormateada =
-    (post.fecha as any) instanceof Date
-      ? (post.fecha as any).toLocaleDateString("es-MX", {
+    dateObj instanceof Date && !isNaN(dateObj.getTime())
+      ? dateObj.toLocaleDateString("es-MX", {
           day: "2-digit",
           month: "long",
           year: "numeric"
         })
-      : String(post.fecha)
+      : "Fecha no disponible";
 
   return (
-
     /* ===== CARD ===== */
-
-    <div className="
+    <article className="
       group
       bg-white
-      rounded-xl
+      rounded-2xl
       shadow-sm
       hover:shadow-xl
       transition-all
       duration-300
+      ease-out
       overflow-hidden
       flex
       flex-col
       h-full
       border
-      border-slate-100
-      hover:-translate-y-1
+      border-slate-200
+      hover:-translate-y-2
     ">
-
-      {/* ===== IMAGEN ===== */}
-
-      <div className="relative w-full h-44 md:h-48 lg:h-52 overflow-hidden">
-
+      {/* ===== IMAGEN CON OVERLAY SUTIL ===== */}
+      <div className="relative w-full h-44 md:h-52 overflow-hidden">
         <Image
           src={post.imagen}
           alt={post.titulo}
@@ -53,55 +50,63 @@ export default function BlogCard({ post }: Props) {
           className="
             object-cover
             transition-transform
-            duration-500
-            group-hover:scale-105
+            duration-700
+            group-hover:scale-110
           "
         />
-
+        {/* Un gradiente sutil para que la imagen no se vea "plana" */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
       {/* ===== CONTENIDO ===== */}
-
-      <div className="p-4 md:p-6 flex flex-col flex-grow">
+      <div className="p-5 flex flex-col grow">
+        
+        {/* TAG O CATEGORÍA (Opcional, si tienes una en tu data) */}
+        <span className="text-[10px] uppercase tracking-widest font-bold text-red-600 mb-2">
+          Blog Educativo
+        </span>
 
         {/* TITULO */}
-
-        <h3 className="font-semibold text-base md:text-lg mb-2 line-clamp-2">
+        <h3 className="font-bold text-slate-800 text-lg md:text-xl mb-2 line-clamp-2 group-hover:text-red-600 transition-colors">
           {post.titulo}
         </h3>
 
         {/* FECHA */}
-
-        <p className="text-xs md:text-sm text-slate-500 mb-3">
-          📅 {fechaFormateada}
-        </p>
+        <div className="flex items-center gap-2 text-xs text-slate-500 mb-4">
+          <span className="opacity-70 text-sm">📅</span>
+          <span>{fechaFormateada}</span>
+        </div>
 
         {/* DESCRIPCION */}
-
-        <p className="text-sm text-slate-600 mb-4 line-clamp-3">
+        <p className="text-sm text-slate-600 mb-6 line-clamp-3 leading-relaxed">
           {post.descripcion}
         </p>
 
-        {/* BOTON */}
-
+        {/* BOTON ESTILIZADO */}
         <Link
           href={`/blog/${post.slug}`}
           className="
+            w-full
+            text-center
+            bg-slate-900
+            text-white
+            px-6
+            py-3
+            rounded-xl
             mt-auto
-            font-semibold
-            text-slate-700
-            transition-colors
+            font-bold
+            text-sm
+            transition-all
             duration-300
-            group-hover:text-red-600
+            hover:bg-red-600
+            hover:shadow-lg
+            hover:shadow-red-200
+            active:scale-95
           "
         >
-          Ver capacitación →
+          Leer artículo
         </Link>
-
       </div>
-
-    </div>
-
+    </article>
   )
-
 }

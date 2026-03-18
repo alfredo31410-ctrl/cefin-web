@@ -1,160 +1,79 @@
 import Container from "@/components/Container"
-import Reveal from "@/components/Reveal"
+import { HeroContacto, WhatsAppBanner } from "@/components/ContactoVisuals"
 
 export default function ContactoPage() {
   return (
-    <main className="py-24">
-
+    <main className="py-20 md:py-28 bg-slate-50/50">
       <Container>
+        
+        <HeroContacto />
 
-        {/* ===== HERO ===== */}
+        <WhatsAppBanner />
 
-        <section className="text-center mb-16">
-          <Reveal>
-
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              ¿Tienes dudas? Te ayudamos a decidir
-            </h1>
-
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              Nuestro equipo puede ayudarte a elegir la capacitación ideal
-              según tu nivel, objetivos y experiencia profesional.
-            </p>
-
-          </Reveal>
-        </section>
-
-
-        {/* ===== CTA WHATSAPP (🔥 PRINCIPAL) ===== */}
-
-        <section className="mb-16">
-          <Reveal>
-
-            <div className="bg-green-50 border border-green-200 rounded-2xl p-8 text-center shadow-sm">
-
-              <h2 className="text-2xl font-semibold mb-3">
-                Atención inmediata por WhatsApp
-              </h2>
-
-              <p className="text-slate-600 mb-6">
-                Resolvemos tus dudas en minutos y te guiamos paso a paso.
-              </p>
-
-              <a
-                href="https://wa.me/524494554578"
-                target="_blank"
-                className="inline-block bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
-              >
-                Hablar por WhatsApp
-              </a>
-
-            </div>
-
-          </Reveal>
-        </section>
-
-
-        {/* ===== FORM + INFO ===== */}
-
-        <section className="grid md:grid-cols-2 gap-16">
-
-          {/* FORMULARIO */}
-
-          <Reveal>
-            <form className="space-y-6 bg-white p-8 rounded-2xl shadow-sm border">
-
-              <h3 className="text-xl font-semibold mb-4">
-                Envíanos un mensaje
-              </h3>
-
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Nombre
-                </label>
-                <input
-                  type="text"
-                  className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500"
-                  placeholder="Tu nombre"
-                />
+        <section className="grid md:grid-cols-2 gap-12 lg:gap-20 items-start">
+          
+          {/* FORMULARIO ESTILIZADO */}
+          <div className="bg-white p-8 md:p-10 rounded-[2.5rem] shadow-sm border border-slate-100">
+            <h3 className="text-2xl font-black mb-8 text-slate-900">Envíanos un mensaje</h3>
+            
+            <form className="space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 mb-2 ml-1">Nombre</label>
+                  <input
+                    type="text"
+                    className="w-full bg-slate-50 border-none rounded-2xl px-5 py-4 focus:ring-2 focus:ring-red-500/20 transition-all text-slate-800 placeholder:text-slate-400"
+                    placeholder="Tu nombre"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 mb-2 ml-1">Email</label>
+                  <input
+                    type="email"
+                    className="w-full bg-slate-50 border-none rounded-2xl px-5 py-4 focus:ring-2 focus:ring-red-500/20 transition-all text-slate-800 placeholder:text-slate-400"
+                    placeholder="correo@ejemplo.com"
+                  />
+                </div>
               </div>
-
+              
               <div>
-                <label className="block text-sm font-medium mb-1">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500"
-                  placeholder="correo@email.com"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Mensaje
-                </label>
+                <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 mb-2 ml-1">Mensaje</label>
                 <textarea
-                  rows={5}
-                  className="w-full border border-slate-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500"
+                  rows={4}
+                  className="w-full bg-slate-50 border-none rounded-2xl px-5 py-4 focus:ring-2 focus:ring-red-500/20 transition-all text-slate-800 placeholder:text-slate-400 resize-none"
                   placeholder="¿En qué podemos ayudarte?"
                 />
               </div>
 
-              <button className="w-full bg-red-600 text-white py-3 rounded-lg font-semibold hover:bg-red-700 transition">
+              <button className="w-full bg-slate-900 text-white py-5 rounded-2xl font-black hover:bg-red-600 transition-all hover:scale-[1.02] shadow-lg shadow-slate-900/10">
                 Enviar mensaje
               </button>
-
             </form>
-          </Reveal>
+          </div>
 
-
-          {/* INFO */}
-
-          <Reveal>
-            <div className="space-y-8">
-
-              <div className="bg-slate-50 p-6 rounded-xl border">
-                <h3 className="font-semibold text-lg mb-2">
-                  WhatsApp
-                </h3>
-
-                <a
-                  href="https://wa.me/524494554578"
-                  target="_blank"
-                  className="text-green-600 font-semibold hover:underline"
-                >
-                  Enviar mensaje
-                </a>
-              </div>
-
-              <div className="bg-slate-50 p-6 rounded-xl border">
-                <h3 className="font-semibold text-lg mb-2">
-                  Email
-                </h3>
-
-                <p className="text-slate-600">
-                  contacto@cefincapacitacion.com
-                </p>
-              </div>
-
-              <div className="bg-slate-50 p-6 rounded-xl border">
-                <h3 className="font-semibold text-lg mb-2">
-                  Horario de atención
-                </h3>
-
-                <p className="text-slate-600">
-                  Lunes a Viernes <br />
-                  8:00 AM - 3:00 PM
-                </p>
-              </div>
-
+          {/* INFO DE CONTACTO */}
+          <div className="space-y-6 pt-4">
+            <div className="group p-8 rounded-3xl border border-slate-100 bg-white hover:border-red-100 transition-colors">
+              <span className="text-red-600 font-bold text-xs uppercase tracking-widest mb-2 block">Correo Electrónico</span>
+              <p className="text-xl font-bold text-slate-800 group-hover:text-red-600 transition-colors">contacto@cefincapacitacion.com</p>
             </div>
-          </Reveal>
+
+            <div className="group p-8 rounded-3xl border border-slate-100 bg-white">
+              <span className="text-red-600 font-bold text-xs uppercase tracking-widest mb-2 block">Horario de Atención</span>
+              <p className="text-xl font-bold text-slate-800">Lunes a Viernes</p>
+              <p className="text-slate-500 font-medium">08:00 AM — 03:00 PM</p>
+            </div>
+
+            <div className="p-8 rounded-3xl border border-dashed border-slate-200">
+              <p className="text-slate-500 text-sm leading-relaxed italic">
+                "Nuestra prioridad es que encuentres la herramienta exacta para tu crecimiento profesional."
+              </p>
+            </div>
+          </div>
 
         </section>
 
       </Container>
-
     </main>
   )
 }

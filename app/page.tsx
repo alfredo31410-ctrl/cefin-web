@@ -145,19 +145,56 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* ================= BENEFICIOS ================= */}
-      <section className="py-16 bg-slate-50">
-        <Container>
-          <Reveal>
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold">¿Por qué estudiar en CEFIN?</h2>
-            </div>
-            <div className="grid md:grid-cols-3 gap-10 text-center">
-              {/* Contenido de beneficios... */}
-            </div>
-          </Reveal>
-        </Container>
-      </section>
+     {/* ================= BENEFICIOS ================= */}
+<section className="py-24 bg-slate-50">
+  <Container>
+    <Reveal>
+      <div className="text-center mb-16">
+        <p className="text-sm text-red-600 font-bold uppercase tracking-widest mb-3">Ventajas</p>
+        <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">
+          ¿Por qué estudiar en CEFIN?
+        </h2>
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+        
+        {/* Beneficio 1 */}
+        <div className="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+          <div className="w-16 h-16 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mb-6">
+            <FileText size={32} />
+          </div>
+          <h3 className="text-xl font-bold mb-4 text-slate-900">Enfoque 100% Práctico</h3>
+          <p className="text-slate-600 leading-relaxed">
+            Nuestras capacitaciones están diseñadas para aplicarse de inmediato en tu ejercicio profesional diario.
+          </p>
+        </div>
+
+        {/* Beneficio 2 */}
+        <div className="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+          <div className="w-16 h-16 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mb-6">
+            <TrendingUp size={32} />
+          </div>
+          <h3 className="text-xl font-bold mb-4 text-slate-900">Actualización Constante</h3>
+          <p className="text-slate-600 leading-relaxed">
+            Mantente al día con las últimas reformas fiscales y normativas vigentes en México.
+          </p>
+        </div>
+
+        {/* Beneficio 3 */}
+        <div className="bg-white p-10 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col items-center text-center hover:shadow-md transition-shadow">
+          <div className="w-16 h-16 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center mb-6">
+            <Users size={32} />
+          </div>
+          <h3 className="text-xl font-bold mb-4 text-slate-900">Comunidad de Expertos</h3>
+          <p className="text-slate-600 leading-relaxed">
+            Únete a una red de miles de contadores y profesionales que comparten conocimiento y experiencias.
+          </p>
+        </div>
+
+      </div>
+    </Reveal>
+  </Container>
+</section>
     </main>
   );
 }
