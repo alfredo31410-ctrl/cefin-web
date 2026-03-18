@@ -14,6 +14,7 @@ export const membresias = [
 Lo que equivale a un año de especialización contable con acompañamiento real.`,
     imagen: "/cefin-contable.jpg",
     precio: "$13,737 MXN",
+    hotmart: "https://pay.hotmart.com/U104732838U?bid=1773863073857"
   },
   {
     id: 2,
@@ -29,6 +30,8 @@ Lo que equivale a un año de especialización contable con acompañamiento real.
 Lo que equivale a un año completo de especialización profesional con acompañamiento real.`,
     imagen: "/cefin-fiscal.jpg",
     precio: "$16,987 MXN",
+    hotmart: "https://pay.hotmart.com/D103594318R"
+
   },
   {
     id: 3,
@@ -44,6 +47,7 @@ Lo que equivale a un año completo de especialización profesional con acompaña
 Lo que equivale a un año completo de actualización y dominio profesional en materia de nómina y seguridad social. 💼📊`,
     imagen: "/cefin-nomina.png",
     precio: "$7,987 MXN",
+    hotmart: "https://pay.hotmart.com/E104096842K"
   },
   {
     id: 4,
@@ -58,6 +62,7 @@ Lo que equivale a un año completo de actualización y dominio profesional en ma
 
     imagen: "/cefin-mental.png",
     precio: "$9,987 MXN",
+    hotmart: "https://pay.hotmart.com/A101941374F"
   },
   {
     id: 5,
@@ -73,5 +78,6 @@ Lo que equivale a un año completo de actualización y dominio profesional en ma
 Lo que equivale a un 365 días completos de especialización, actualización y acompañamiento profesional continuo. 🚀`,
     imagen: "/cefin-total.jpg",
     precio: "$24,987 MXN",
+    hotmart: "https://pay.hotmart.com/H104533716X"
   },
 ];
