@@ -65,26 +65,23 @@ export default async function BlogDetalle({ params }: Props) {
             {post.titulo}
           </h1>
 
-          {/* Imagen / Video Hero */}
-          <div className="relative w-full aspect-video mb-12 shadow-2xl rounded-3xl overflow-hidden group">
-            {post.videoId ? (
-              <iframe
-                className="absolute inset-0 w-full h-full"
-                src={`https://www.youtube.com/embed/${post.videoId}?rel=0&modestbranding=1`}
-                title={post.titulo}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            ) : (
-              <Image
-                src={post.imagen}
-                alt={post.titulo}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                priority
-              />
-            )}
-          </div>
+{/* Sección del Video / Playlist */}
+{post.videoId && (
+  <div className="aspect-video w-full mb-10">
+    <iframe
+      className="w-full h-full rounded-3xl shadow-2xl"
+      /* Esta es la clave: si empieza con PL, usamos el formato de playlist */
+      src={
+        post.videoId.startsWith('PL') 
+          ? `https://www.youtube.com/embed/videoseries?list=${post.videoId}`
+          : `https://www.youtube.com/embed/${post.videoId}`
+      }
+      title={post.titulo}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+    />
+  </div>
+)}
 
           {/* Texto del artículo */}
           <div className="prose prose-lg max-w-none text-slate-700 leading-relaxed 
