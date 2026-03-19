@@ -2,10 +2,114 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>CEFIN Admin</title>
+  <title>CEFIN | Panel de Control</title>
+<style>
+  /* 1. Fondo general más suave (Gris azulado muy claro) */
+  body { 
+    background-color: #f1f5f9 !important; 
+  }
+
+  /* 2. Barra lateral: Slate oscuro pero con clase */
+  #nc-root [class^="SidebarContainer"] {
+    background-color: #0f172a !important;
+    border-right: 1px solid #e2e8f0 !important;
+    box-shadow: 4px 0 10px rgba(0,0,0,0.05) !important;
+  }
+
+  /* 3. Estilo de los links de la barra lateral */
+  #nc-root [class^="SidebarLink"] {
+    color: #94a3b8 !important;
+    font-weight: 500 !important;
+    margin: 4px 12px !important;
+    border-radius: 8px !important;
+    transition: all 0.2s !important;
+  }
+
+  #nc-root [class^="SidebarLinkActive"] {
+    background-color: rgba(255,255,255,0.1) !important;
+    color: #ffffff !important;
+  }
+
+  /* 4. Cabecera blanca y limpia */
+  #nc-root [class^="AppHeaderContainer"] {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+  }
+
+  /* 5. Tarjetas de contenido (Lo que se ve oscuro en tu captura) */
+  #nc-root [class^="CollectionCard"] {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important;
+    margin-bottom: 12px !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+
+  #nc-root [class^="CollectionCard"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+    border-color: #dc2626 !important; /* Rojo CEFIN al pasar el mouse */
+  }
+
+  /* 6. Botones principales (Rojo CEFIN) */
+  #nc-root button[class*="StyledAppHeaderButton"],
+  #nc-root button[class*="StyledButton"] {
+    background-color: #dc2626 !important;
+    color: white !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    text-transform: none !important; /* Quita el uppercase excesivo */
+    padding: 10px 24px !important;
+  }
+
+  /* 7. Inputs y campos de texto */
+  #nc-root input, #nc-root textarea, #nc-root select {
+    border-radius: 8px !important;
+    border: 1px solid #cbd5e1 !important;
+    padding: 12px !important;
+  }
+
+  #nc-root input:focus {
+    border-color: #dc2626 !important;
+    box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.1) !important;
+  }
+
+  /* 8. Títulos y etiquetas */
+  #nc-root h1, #nc-root h2 {
+    color: #1e293b !important;
+    font-weight: 800 !important;
+  }
+
+  #nc-root label {
+    color: #475569 !important;
+    font-size: 13px !important;
+    letter-spacing: 0.025em !important;
+  }
+</style>
   <script defer src="https://unpkg.com/decap-cms@3.10.1/dist/decap-cms.js"></script>
 </head>
 <body>
   <div id="nc-root"></div>
+<script>
+  CMS.registerEventListener({
+    name: 'preSave',
+    handler: ({ entry }) => {
+      const title = entry.getIn(['data', 'titulo']);
+      const currentSlug = entry.getIn(['data', 'slug']);
+      
+      // Si hay título pero no hay slug, lo generamos automáticamente
+      if (title && !currentSlug) {
+        const generatedSlug = title
+          .toLowerCase()
+          .trim()
+          .replace(/[^\w ]+/g, '')
+          .replace(/ +/g, '-');
+        return entry.getIn(['data']).set('slug', generatedSlug);
+      }
+    },
+  });
+</script>
 </body>
 </html>
