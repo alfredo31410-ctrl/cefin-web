@@ -30,7 +30,7 @@ Y la diferencia se nota cuando llega el momento de presentar.`,
 `,
     imagen: "/TRANSMISIONES - RETO CEFIN  DECLARACIONES - IMAGENES CUADRADAS (Anuncio para Tiendas de Facebook).png",
     fecha: "12 Marzo 2026",
-    videoId: "VIDEOID",
+    videoId: "JgNvVhYcaHc&list",
     destacado: true
   },
 
