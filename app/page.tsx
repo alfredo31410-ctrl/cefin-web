@@ -1,4 +1,5 @@
 import { FileText, TrendingUp, Users } from "lucide-react";
+import Image from "next/image";
 import { membresias } from "@/data/membresias";
 import { testimonios } from "@/data/testimonios";
 import MembresiaCard from "@/components/MembresiaCard";
@@ -31,21 +32,42 @@ export default function Home() {
 
   return (
     <main className="overflow-x-hidden"> {/* Evita scroll horizontal por sombras amplias */}
-      {/* ================= HERO ================= */}
-      <section className="relative min-h-[85vh] md:h-screen flex items-center justify-center text-white overflow-hidden">
-        <img
-          src="/Banner.jpeg"
-          alt="CEFIN capacitación fiscal"
-          className="hidden md:block absolute inset-0 w-full h-full object-cover"
-        />
-        <img
-          src="/Banner_movil.png"
-          alt="CEFIN capacitación fiscal"
-          className="block md:hidden absolute inset-0 w-full h-full object-cover object-top"
-        />
-        <div className="absolute inset-0 bg-linear-to-r from-slate-900/90 via-slate-900/70 to-slate-900/90" />
-        <HeroContent />
-      </section>
+    {/* ================= HERO ================= */}
+<section className="relative min-h-[85vh] md:h-screen flex items-center justify-center text-white overflow-hidden">
+  {/* Imagen para Escritorio (Desktop) */}
+  <div className="hidden md:block absolute inset-0 w-full h-full">
+    <Image
+      src="/Banner.jpeg"
+      alt="CEFIN capacitación fiscal - Especialistas en materia fiscal y contable"
+      fill
+      priority // <--- ESTO sube el puntaje de rendimiento (LCP)
+      className="object-cover"
+      sizes="100vw"
+      quality={85} // Optimiza el peso sin perder calidad visual
+    />
+  </div>
+
+  {/* Imagen para Móvil (Mobile) */}
+  <div className="block md:hidden absolute inset-0 w-full h-full">
+    <Image
+      src="/Banner_movil.png"
+      alt="CEFIN capacitación fiscal"
+      fill
+      priority // <--- Prioridad también en móvil
+      className="object-cover object-top"
+      sizes="100vw"
+      quality={80} // Un poco más de compresión para móvil ayuda al 4G/5G
+    />
+  </div>
+
+  {/* Overlay de gradiente */}
+  <div className="absolute inset-0 bg-linear-to-r from-slate-900/90 via-slate-900/70 to-slate-900/90 z-10" />
+
+  {/* Contenido del Hero */}
+  <div className="relative z-20 w-full h-full flex items-center justify-center">
+    <HeroContent />
+  </div>
+</section>
 
       {/* ================= LIVE SEMANAL ================= */}
       <section className="bg-slate-900 text-white py-6">
@@ -79,8 +101,11 @@ export default function Home() {
           <div className="pb-12"> {/* Espacio justo para la sombra */}
             <Reveal>
               <Grid>
-                {todosLosEventos.map((evento) => (
-                  <EventoCard key={evento.id} evento={evento} />
+                {todosLosEventos.map((evento, index) => (
+                  <EventoCard 
+                  key={evento.slug || evento.id || `evento-${index}`} 
+                  evento={evento} 
+                  />
                 ))}
               </Grid>
             </Reveal>
