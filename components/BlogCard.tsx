@@ -10,7 +10,6 @@ type Props = {
 
 export default function BlogCard({ post }: Props) {
   /* ===== FORMATEO DE FECHA ===== */
-  // Si la fecha viene como string de una API o Markdown, intentamos convertirla
   const dateObj = typeof post.fecha === "string" ? new Date(post.fecha) : post.fecha;
 
   const fechaFormateada =
@@ -23,7 +22,6 @@ export default function BlogCard({ post }: Props) {
       : "Fecha no disponible";
 
   return (
-    /* ===== CARD ===== */
     <article className="
       group
       bg-white
@@ -41,48 +39,44 @@ export default function BlogCard({ post }: Props) {
       border-slate-200
       hover:-translate-y-2
     ">
-      {/* ===== IMAGEN CON OVERLAY SUTIL ===== */}
-      <div className="relative w-full h-44 md:h-52 overflow-hidden">
+      {/* ===== CONTENEDOR DE IMAGEN CORREGIDO ===== */}
+      <div className="relative w-full h-48 md:h-56 overflow-hidden bg-slate-50">
         <Image
           src={post.imagen}
           alt={post.titulo}
           fill
           className="
-            object-cover
+            object-contain 
+            p-1
             transition-transform
             duration-700
-            group-hover:scale-110
+            group-hover:scale-105
           "
         />
-        {/* Un gradiente sutil para que la imagen no se vea "plana" */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {/* Overlay sutil solo en hover */}
+        <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
       {/* ===== CONTENIDO ===== */}
       <div className="p-5 flex flex-col grow">
         
-        {/* TAG O CATEGORÍA (Opcional, si tienes una en tu data) */}
         <span className="text-[10px] uppercase tracking-widest font-bold text-red-600 mb-2">
           Blog Educativo
         </span>
 
-        {/* TITULO */}
         <h3 className="font-bold text-slate-800 text-lg md:text-xl mb-2 line-clamp-2 group-hover:text-red-600 transition-colors">
           {post.titulo}
         </h3>
 
-        {/* FECHA */}
         <div className="flex items-center gap-2 text-xs text-slate-500 mb-4">
           <span className="opacity-70 text-sm">📅</span>
           <span>{fechaFormateada}</span>
         </div>
 
-        {/* DESCRIPCION */}
         <p className="text-sm text-slate-600 mb-6 line-clamp-3 leading-relaxed">
           {post.descripcion}
         </p>
 
-        {/* BOTON ESTILIZADO */}
         <Link
           href={`/blog/${post.slug}`}
           className="
