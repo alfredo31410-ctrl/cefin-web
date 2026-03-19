@@ -19,6 +19,7 @@ type Props = {
 export default async function BlogDetalle({ params }: Props) {
   const { slug } = await params
 
+  // Unificamos la data local y la del CMS
   const todos = [...blogsLocales, ...getAllBlogs()]
   const post = todos.find((b) => b.slug === slug)
 
@@ -26,26 +27,29 @@ export default async function BlogDetalle({ params }: Props) {
     notFound()
   }
 
-  // --- LÓGICA DE LIMPIEZA INTELIGENTE DE YOUTUBE ---
+  // --- LÓGICA DE PRECISIÓN DE YOUTUBE (Solución al inicio de playlist) ---
   const rawId = post.videoId || "";
   
-  // 1. Intentamos extraer el ID de la Playlist (lo que viene después de list=)
+  // 1. Extraemos el ID del video (lo que está antes del primer & o el ID solo)
+  const videoId = rawId.split('&')[0].split('?')[0];
+
+  // 2. Extraemos el ID de la lista (buscando el parámetro list=)
   const playlistMatch = rawId.match(/[&?]list=([^&]+)/);
   const playlistId = playlistMatch ? playlistMatch[1] : (rawId.startsWith('PL') ? rawId : null);
 
-  // 2. Intentamos extraer el ID del Video (lo que viene antes del primer & o el ID solo)
-  const videoId = rawId.split('&')[0].split('?')[1]?.includes('v=') 
-    ? rawId.split('v=')[1].split('&')[0] 
-    : rawId.split('&')[0];
-
-  // 3. Construimos la URL final según lo que encontramos
+  // 3. Construimos la URL de inserción inteligente
   let embedUrl = "";
-  if (playlistId) {
+  if (videoId && playlistId && playlistId !== videoId) {
+    // Si tenemos video Y lista, cargamos el video específico DENTRO de la lista
+    embedUrl = `https://www.youtube.com/embed/${videoId}?list=${playlistId}`;
+  } else if (playlistId) {
+    // Si solo hay lista, cargamos la serie desde el inicio
     embedUrl = `https://www.youtube.com/embed/videoseries?list=${playlistId}`;
   } else if (videoId) {
+    // Si solo hay video, cargamos el video normal
     embedUrl = `https://www.youtube.com/embed/${videoId}`;
   }
-  // -------------------------------------------------
+  // -----------------------------------------------------------------------
 
   const contenidoFinal = post.contenido || (post as any).body || ""
 
@@ -60,12 +64,14 @@ export default async function BlogDetalle({ params }: Props) {
 
   return (
     <div className="max-w-6xl mx-auto py-16 px-6 lg:py-24">
+      {/* Botón de volver */}
       <Link href="/blog" className="group text-slate-400 hover:text-red-600 mb-10 inline-flex items-center gap-2 font-semibold transition-all">
         <span className="group-hover:-translate-x-1 transition-transform">←</span> Volver al listado
       </Link>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         
+        {/* COLUMNA PRINCIPAL */}
         <div className="lg:col-span-8">
           
           <div className="flex items-center gap-3 mb-6">
@@ -82,7 +88,7 @@ export default async function BlogDetalle({ params }: Props) {
             {post.titulo}
           </h1>
 
-          {/* REPRODUCTOR INTELIGENTE (Ya no se rompe) */}
+          {/* REPRODUCTOR INTELIGENTE CON PRESIÓN DE VIDEO */}
           {embedUrl && (
             <div className="aspect-video w-full mb-10">
               <iframe
@@ -95,6 +101,7 @@ export default async function BlogDetalle({ params }: Props) {
             </div>
           )}
 
+          {/* Texto del artículo */}
           <div className="prose prose-lg max-w-none text-slate-700 leading-relaxed 
             prose-headings:text-slate-900 prose-headings:font-black prose-strong:text-red-600
             whitespace-pre-line">
@@ -102,6 +109,7 @@ export default async function BlogDetalle({ params }: Props) {
           </div>
         </div>
 
+        {/* COLUMNA LATERAL */}
         <div className="lg:col-span-4">
           <div className="sticky top-28 space-y-6">
             
