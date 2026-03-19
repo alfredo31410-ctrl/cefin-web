@@ -49,7 +49,7 @@ Este curso gratuito en vivo para contadores es la actualización que necesitas p
 
 Este no es un resumen superficial.
 Es una clase diseñada para entender, aplicar y anticiparte.`,
-    imagen: "/reformas-fiscales.png",
+    imagen: "/reformas_fiscales.png",
     fecha: "29 Diciembre 2025",
     videoId: "OJ-4I5JI8gM&list",
     destacado: true
@@ -67,7 +67,7 @@ Es una clase diseñada para entender, aplicar y anticiparte.`,
 ✅ Errores comunes que pueden generar multas o revisiones del SAT
 ✅ Qué debes ajustar desde hoy en tus procesos contables
 ✅ Cómo prepararte correctamente para el entorno fiscal 2026`,
-    imagen: "/eventoReforma-Fiscal.jpg",
+    imagen: "/ResolucionMiscelanea.png",
     fecha: "8 Enero 2026",
     videoId: "BOWw8dRq2YE&list",
     destacado: true
