@@ -20,7 +20,7 @@ export default async function CursoDetalle({ params }: Props) {
     return notFound();
   }
 
-  return (
+return (
     <main className="bg-white min-h-screen">
       {/* SECCIÓN SUPERIOR / BREADCRUMBS */}
       <div className="bg-slate-50 py-8 border-b border-slate-100">
@@ -34,14 +34,15 @@ export default async function CursoDetalle({ params }: Props) {
       <div className="max-w-6xl mx-auto px-6 py-12 md:py-20">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
           
-          {/* COLUMNA IZQUIERDA: VISUAL */}
+          {/* COLUMNA IZQUIERDA: VISUAL CORREGIDO */}
           <div className="lg:col-span-5">
-            <div className="relative aspect-square w-full shadow-2xl shadow-red-100">
+            {/* Cambié bg-white para que si la imagen no es cuadrada, el fondo sea limpio */}
+            <div className="relative aspect-square w-full shadow-2xl shadow-red-100 bg-white rounded-[3rem] overflow-hidden border border-slate-50">
               <Image
                 src={curso.imagen}
                 alt={curso.titulo}
                 fill
-                className="object-cover rounded-[3rem]"
+                className="object-contain p-6" // <- CAMBIO CLAVE: de cover a contain + un poco de padding
                 priority
               />
               {/* Badge de confianza */}
