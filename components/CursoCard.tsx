@@ -15,6 +15,7 @@ export default function CursoCard({ curso }: Props) {
     fiscal: "bg-blue-100 text-blue-700",
     nomina: "bg-green-100 text-green-700",
     contabilidad: "bg-purple-100 text-purple-700",
+    mentalidad: "bg-yellow-100 text-yellow-700",
   }
 
   return (
@@ -81,7 +82,7 @@ export default function CursoCard({ curso }: Props) {
 
       {/* CONTENIDO */}
 
-      <div className="p-4 md:p-6 flex flex-col flex-grow">
+      <div className="p-4 md:p-6 flex flex-col grow">
 
 
         {/* META */}
@@ -108,7 +109,7 @@ export default function CursoCard({ curso }: Props) {
 
         {/* DESCRIPCION */}
 
-        <p className="text-sm text-slate-600 mb-6 line-clamp-3 flex-grow">
+        <p className="text-sm text-slate-600 mb-6 line-clamp-3 grow">
 
           {curso.descripcion}
 
