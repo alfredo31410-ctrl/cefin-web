@@ -5,6 +5,10 @@ import Image from "next/image"
 import Link from "next/link"
 import { Calendar, Clock, CheckCircle2, ShieldCheck, ArrowLeft } from "lucide-react"
 
+// 1. ESTO ES CLAVE: Permite que Next.js busque en la base de datos 
+// eventos que no existían cuando se hizo el build inicial.
+export const dynamicParams = true; 
+
 export async function generateStaticParams() {
   const todos = [...eventosLocales, ...getAllEventos()]
   return todos.map((evento) => ({
@@ -75,7 +79,6 @@ export default async function EventoDetalle({ params }: Props) {
                 {evento.descripcionLarga || evento.descripcion}
               </p>
 
-              {/* Sección de beneficios sugerida */}
               <h3 className="text-2xl font-black text-slate-900 mb-6">¿Qué vas a aprender?</h3>
               <ul className="space-y-4 mb-12">
                 {["Actualización normativa 2026", "Casos prácticos reales", "Material de apoyo descargable"].map((item, i) => (
@@ -93,7 +96,10 @@ export default async function EventoDetalle({ params }: Props) {
             <div className="sticky top-28 bg-slate-50 border border-slate-200 p-8 rounded-[2.5rem] shadow-2xl shadow-slate-200/50">
               <div className="mb-6">
                 <p className="text-slate-400 text-sm font-bold uppercase mb-1">Inversión Especial</p>
-                <div className="text-4xl font-black text-slate-900">$13,737 <span className="text-lg font-medium">MXN</span></div>
+                {/* 2. PRECIO DINÁMICO: Para que no siempre salga el mismo monto */}
+                <div className="text-4xl font-black text-slate-900">
+                  {evento.precio} <span className="text-lg font-medium">MXN</span>
+                </div>
               </div>
 
               <div className="space-y-4 mb-8">
