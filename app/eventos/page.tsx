@@ -5,12 +5,26 @@ import { HeroEventos, CTAEventos } from "@/components/EventosVisuals"
 import EventosClient from "@/components/EventosClient"
 
 export default function EventosPage() {
-  // Esto corre en el servidor (fs funciona aquí)
   const eventosCMS = getAllEventos()
   const todosLosEventos = [...eventosLocales, ...eventosCMS]
 
+  const ahora = new Date().getTime()
+
   const eventosOrdenados = todosLosEventos.sort((a, b) => {
-    return new Date(a.fecha).getTime() - new Date(b.fecha).getTime()
+    const fechaA = new Date(a.fecha).getTime()
+    const fechaB = new Date(b.fecha).getTime()
+
+    const estaFinalizadoA = fechaA < ahora
+    const estaFinalizadoB = fechaB < ahora
+
+    // 1. Si uno está finalizado y el otro no, el finalizado va al final
+    if (estaFinalizadoA !== estaFinalizadoB) {
+      return estaFinalizadoA ? 1 : -1
+    }
+
+    // 2. Si ambos están en el mismo estado (ambos futuros o ambos pasados),
+    // ordenarlos por fecha (el más cercano primero)
+    return fechaA - fechaB
   })
 
   return (

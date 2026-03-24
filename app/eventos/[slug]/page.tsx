@@ -22,12 +22,17 @@ type Props = {
 
 export default async function EventoDetalle({ params }: Props) {
   const { slug } = await params
-  const todos = [...eventosLocales, ...getAllEventos()]
-  const evento = todos.find((e) => e.slug === slug)
+const todos = [...eventosLocales, ...getAllEventos()]
+const evento = todos.find((e) => e.slug === slug)
 
-  if (!evento) {
-    notFound()
-  }
+if (!evento) {
+  notFound()
+}
+
+// Lógica de tiempo
+const ahora = new Date()
+const fechaEvento = new Date(evento.fecha as any)
+const esPasado = ahora > fechaEvento
 
   const fechaFormateada = (evento.fecha as any) instanceof Date 
     ? (evento.fecha as any).toLocaleDateString('es-MX', { 
@@ -38,7 +43,7 @@ export default async function EventoDetalle({ params }: Props) {
   return (
     <main className="bg-white min-h-screen pb-20">
       {/* HEADER / HERO DEL EVENTO */}
-      <div className="relative w-full h-[350px] md:h-[500px] mb-12">
+      <div className="relative w-full h-87.5 md:h-125 mb-12">
         <Image
           src={evento.imagen}
           alt={evento.titulo}
@@ -46,7 +51,7 @@ export default async function EventoDetalle({ params }: Props) {
           className="object-cover brightness-[0.8]"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end">
+        <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent flex items-end">
           <div className="max-w-6xl mx-auto w-full px-6 pb-12">
             <Link href="/eventos" className="text-white/70 hover:text-white flex items-center gap-2 mb-6 transition text-sm font-bold uppercase tracking-widest">
               <ArrowLeft size={16} /> Volver a eventos
