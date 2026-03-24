@@ -17,37 +17,52 @@ export type Evento = {
 const eventosLocales: Evento[] = [
   {
     id: 1,
-    titulo: "Seminario Reformas Fiscales 2026",
-    slug: "reformas-fiscales-2026", // URL: /eventos/reformas-fiscales-2026
-    descripcion: "Actualízate con los cambios fiscales más importantes del SAT.",
-    descripcionLarga: `En este seminario aprenderás:
-• Cambios fiscales 2026
-• Estrategias fiscales
-• Nuevas obligaciones SAT
-• Casos prácticos reales`,
-    imagen: "/eventoReforma-Fiscal.jpg",
-    fecha: "2026-05-10 11:00:00",
-    lugar: "Aguascalientes / Online",
-    precio: "$999 MXN",
+    titulo: "Contador 360° Rumbo a 2026",
+    slug: "contador-360-rumbo-a-2026", // URL: /eventos/contador-360-rumbo-a-2026
+    descripcion: "Prepárate para el futuro del contaduría con este seminario especializado.",
+    descripcionLarga: `Programa:
+• Reformas fiscales 2026
+• Metas Estrategicas 2026
+• Contador 360° rumbo a 2026`,
+    imagen: "/evento_cdmx_2025.png",
+    fecha: "2025-12-05 10:00:00",
+    lugar: "CDMX / Presencial",
+    precio: "$--- MXN",
     hotmart: "https://pay.hotmart.com/XXXX",
-    destacado: true
+    destacado: false
   },
   {
     id: 2,
-    titulo: "Curso Intensivo Nómina e IMSS",
-    slug: "nomina-imss-2026", // URL: /eventos/nomina-imss-2026
-    descripcion: "Domina el cálculo correcto de nómina y obligaciones IMSS.",
-    descripcionLarga: `Curso intensivo donde aprenderás:
-• Cálculo de ISR
-• IMSS
-• Subsidio al empleo
-• Timbrado de nómina`,
-    imagen: "/eventoNomina-IMSS.png",
-    fecha: "2026-04-15 11:00:00",
-    lugar: "Online en vivo",
-    precio: "$799 MXN",
+    titulo: "Contador 360° Rumbo a 2026 - Edición Guadalajara",
+    slug: "contador-360-rumbo-a-2026-guadalajara", // URL: /eventos/contador-360-rumbo-a-2026-guadalajara
+    descripcion: "Un espacio exclusivo para una experiencia de alto nivel",
+    descripcionLarga: `Programa:
+• Reformas fiscales 2026
+• Metas Estrategicas 2026
+• Contador 360° rumbo a 2026`,
+    imagen: "/evento_guadalajara_2026.png",
+    fecha: "2026-01-24 10:00:00",
+    lugar: "Guadalajara / Presencial",
+    precio: "$--- MXN",
+    hotmart: "https://pay.hotmart.com/ZZZZ",
+    destacado: false
+  },
+  {
+    id: 3,
+    titulo: "NIF sin miedo",
+    slug: "nif-sin-miedo", // URL: /eventos/nif-sin-miedo
+    descripcion: "Aprende a manejar el NIF sin temor y aprovecha al máximo tus beneficios fiscales.",
+    descripcionLarga: `Programa:
+• Que son las NIF y como se aplican
+• Poatulados basicos
+• Casos reales: Efectivo, Cuentas por cobrar, Activo fijo, Pasivos y Capital
+• Bases de estados financieros`,
+    imagen: "/nif-monterey.png",
+    fecha: "2026-02-27 10:00:00",
+    lugar: "Monterrey / Presencial",
+    precio: "$--- MXN",
     hotmart: "https://pay.hotmart.com/YYYY",
-    destacado: true
+    destacado: false
   }
 ]
 
