@@ -79,30 +79,46 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* ===== CONTACTO DIRECTO ===== */}
-          <div>
-            <h4 className="text-white font-bold mb-6">Contacto</h4>
-            <div className="space-y-5 text-sm">
-              <a href="tel:+524494554578" className="flex items-center gap-3 hover:text-white transition group">
-                <div className="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-red-500 group-hover:bg-red-500 group-hover:text-white transition-colors">
-                  <Phone size={18} />
-                </div>
-                +52 449 455 4578
-              </a>
-              <a href="mailto:contacto@cefincapacitacion.com" className="flex items-center gap-3 hover:text-white transition group">
-                <div className="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-red-500 group-hover:bg-red-500 group-hover:text-white transition-colors">
-                  <Mail size={18} />
-                </div>
-                contacto@cefincapacitacion.com
-              </a>
-              <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-lg bg-slate-800 flex items-center justify-center text-red-500 shrink-0">
-                  <MapPin size={18} />
-                </div>
-                <span className="leading-snug">Av. Universidad 811, Aguascalientes, Ags.</span>
-              </div>
-            </div>
-          </div>
+ {/* ===== CONTACTO DIRECTO ===== */}
+<div>
+  <h4 className="text-white font-bold mb-6">Contacto</h4>
+  <div className="space-y-5 text-sm">
+    
+    {/* TELÉFONO */}
+    <a href="tel:+524494554578" className="flex items-center gap-4 text-slate-400 hover:text-white transition group">
+      {/* Contenedor del icono con tamaño fijo */}
+      <div className="w-10 h-10 rounded-xl bg-slate-800/50 flex items-center justify-center text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shrink-0 shadow-sm">
+        <Phone size={20} />
+      </div>
+      <span className="font-medium">+52 449 455 4578</span>
+    </a>
+
+    {/* EMAIL */}
+    <a href="mailto:contacto@cefincapacitacion.com" className="flex items-center gap-4 text-slate-400 hover:text-white transition group">
+      <div className="w-10 h-10 rounded-xl bg-slate-800/50 flex items-center justify-center text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shrink-0 shadow-sm">
+        <Mail size={20} />
+      </div>
+      <span className="font-medium">contacto@cefincapacitacion.com</span>
+    </a>
+
+    {/* UBICACIÓN */}
+    <a 
+      href="https://www.google.com/maps/search/?api=1&query=Av.+Universidad+811,+Aguascalientes,+Ags." 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      className="flex items-center gap-4 text-slate-400 hover:text-white transition group"
+    >
+      <div className="w-10 h-10 rounded-xl bg-slate-800/50 flex items-center justify-center text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shrink-0 shadow-sm">
+        <MapPin size={20} />
+      </div>
+      <span className="leading-snug font-medium">
+        Av. Universidad 811, Plaza Santa Fe. <br />
+        Local 38, Aguascalientes, Ags.
+      </span>
+    </a>
+
+  </div>
+</div>
 
           {/* ===== NEWSLETTER / INFO ===== */}
           <div>

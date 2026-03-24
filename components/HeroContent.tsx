@@ -39,7 +39,7 @@ export default function HeroContent() {
         transition={{ duration: 0.7, delay: 0.4 }}
         className="text-lg md:text-xl max-w-2xl mx-auto mb-10 text-slate-200 font-medium leading-relaxed"
       >
-        Domina reformas fiscales, CFDI 4.0 y cumplimiento SAT con capacitación práctica impartida por especialistas en materia contable.
+        Domina reformas fiscales, Contabilidad con NIF y cumplimiento SAT con capacitación práctica impartida por especialistas en materia contable.
       </motion.p>
 
       {/* BOTONES CON ACCESIBILIDAD Y CONTRASTE 100 */}
@@ -68,13 +68,8 @@ export default function HeroContent() {
       </motion.div>
 
       <div className="mt-12 flex items-center justify-center gap-2 opacity-70">
-        <div className="flex -space-x-2">
-          {[1,2,3].map(i => (
-            <div key={i} className="w-6 h-6 rounded-full bg-slate-700 border-2 border-slate-900" />
-          ))}
-        </div>
         <p className="text-xs font-bold tracking-widest uppercase text-slate-300">
-          +5,000 CONTADORES CAPACITADOS
+          +35,000 CONTADORES CAPACITADOS
         </p>
       </div>
     </div>

@@ -19,40 +19,17 @@ export default function CursoCard({ curso }: Props) {
   }
 
   return (
-
     <motion.div
       whileHover={{ y: -6 }}
-      className="
-        group
-        bg-white
-        rounded-xl
-        shadow-sm
-        hover:shadow-xl
-        transition-all
-        duration-300
-        overflow-hidden
-        flex
-        flex-col
-        h-full
-        border
-        border-slate-100
-        hover:-translate-y-1
-      "
+      className="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full border border-slate-100"
     >
-
-      {/* IMAGEN CORREGIDA */}
+      {/* IMAGEN */}
       <div className="relative w-full h-44 md:h-48 lg:h-52 overflow-hidden bg-white">
         <Image
           src={curso.imagen}
           alt={curso.titulo}
           fill
-          className="
-            object-contain
-            p-2
-            transition-transform
-            duration-500
-            group-hover:scale-105
-          "
+          className="object-contain p-2 transition-transform duration-500 group-hover:scale-105"
         />
 
         {/* BADGE */}
@@ -74,9 +51,8 @@ export default function CursoCard({ curso }: Props) {
         </div>
       </div>
 
-      {/* CONTENIDO (Sin cambios) */}
+      {/* CONTENIDO */}
       <div className="p-4 md:p-6 flex flex-col flex-grow">
-
         {/* META */}
         <div className="flex items-center gap-2 md:gap-3 mb-3 text-[11px] font-medium text-slate-400 uppercase tracking-widest">
           <span>👤 {curso.instructor}</span>
@@ -85,7 +61,7 @@ export default function CursoCard({ curso }: Props) {
         </div>
 
         {/* TITULO */}
-        <h3 className="text-base md:text-lg lg:text-xl font-bold mb-2 text-slate-800 line-clamp-2">
+        <h3 className="text-base md:text-lg lg:text-xl font-bold mb-2 text-slate-800 line-clamp-2 min-h-[3rem]">
           {curso.titulo}
         </h3>
 
@@ -94,37 +70,50 @@ export default function CursoCard({ curso }: Props) {
           {curso.descripcion}
         </p>
 
-        {/* FOOTER */}
-        <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+        {/* FOOTER REESTRUCTURADO */}
+        <div className="pt-4 border-t border-slate-100 flex flex-col gap-3">
+          
+          {/* FILA 1: PRECIO Y BOTÓN PRINCIPAL */}
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex flex-col">
+              <span className="text-[10px] text-slate-400 uppercase font-bold leading-none mb-1">
+                Inversión
+              </span>
+              <span className="font-extrabold text-lg md:text-xl text-red-600">
+                {curso.precio}
+              </span>
+            </div>
 
-          {/* PRECIO */}
-          <div className="flex flex-col">
-            <span className="text-[10px] text-slate-400 uppercase font-bold">
-              Inversión
-            </span>
-            <span className="font-extrabold text-lg md:text-xl text-red-600">
-              {curso.precio}
-            </span>
+            <Link
+              href={`/cursos/${curso.slug}`}
+              className="bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 group-hover:bg-red-600 whitespace-nowrap shadow-sm active:scale-95"
+            >
+              Ver curso
+            </Link>
           </div>
 
-          {/* BOTON */}
+          {/* FILA 2: BOTÓN SECUNDARIO (EN PRODUCCIÓN) */}
           <Link
-            href={`/cursos/${curso.slug}`}
+            href="/proximamente"
             className="
-              bg-slate-900
-              text-white
-              px-4 py-2
-              rounded-lg
-              text-sm
-              font-bold
+              w-full 
+              py-2 
+              text-center 
+              text-[11px] 
+              font-bold 
+              uppercase 
+              tracking-widest 
+              text-slate-400 
+              bg-slate-50 
+              rounded-lg 
+              border border-dashed border-slate-200 
+              hover:bg-red-50 
+              hover:text-red-600 
+              hover:border-red-200 
               transition-all
-              duration-300
-              group-hover:bg-red-600
-              whitespace-nowrap
-              shadow-sm
             "
           >
-            Ver curso
+            🚧 En producción (Ver temario)
           </Link>
 
         </div>

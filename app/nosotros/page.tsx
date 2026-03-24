@@ -34,9 +34,9 @@ export default function NosotrosPage() {
             <div className="w-12 h-12 bg-red-600 rounded-xl mb-6 flex items-center justify-center text-2xl">🎯</div>
             <h3 className="text-2xl font-bold mb-4">Nuestra misión</h3>
             <p className="text-slate-300 leading-relaxed text-lg">
-              Capacitar, actualizar y empoderar contadores con herramientas
-              prácticas que les permitan cumplir correctamente con sus
-              obligaciones fiscales y crecer profesionalmente.
+              Ofrecer entrenamientos contables y fiscales que empoderen al profesional
+              desde la practica, fortaleciendo su seguridad tecnica y elevando su calidad
+              de vida. Todo esto con un enfoque calido, acualizado y centrado en las personas.
             </p>
           </div>
 
@@ -44,9 +44,9 @@ export default function NosotrosPage() {
             <div className="w-12 h-12 bg-slate-100 rounded-xl mb-6 flex items-center justify-center text-2xl">🚀</div>
             <h3 className="text-2xl font-bold mb-4 text-slate-900">Nuestra visión</h3>
             <p className="text-slate-600 leading-relaxed text-lg">
-              Ser la plataforma de referencia en capacitación fiscal y
-              contable en México, formando profesionales con criterio,
-              seguridad y alto nivel técnico.
+            Ser la comunidad de contadores mas influyente y respteada de habla hispana.
+            Transformamos la contabilidad con educacion de alto valor, impacto, real y un prfundo
+            sentido humano.
             </p>
           </div>
         </section>

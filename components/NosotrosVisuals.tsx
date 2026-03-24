@@ -47,15 +47,14 @@ export function HeroNosotros() {
 
 export function ImpactoStats() {
   const stats = [
-    { label: "Contadores capacitados", value: "+30,000" },
-    { label: "Empresas asesoradas", value: "+260" },
-    { label: "Experiencia profesional", value: "+15 años" },
+    { label: "Contadores capacitados", value: "+35,000" },
+    { label: "Experiencia profesional", value: "+7 años" },
     { label: "Enfoque práctico", value: "100%" },
   ]
 
   return (
     <section className="mb-32">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
         {stats.map((stat, index) => (
           <motion.div
             key={index}

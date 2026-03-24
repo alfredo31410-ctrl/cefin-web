@@ -165,7 +165,7 @@ export default function Navbar() {
 
           <NavLink
             href="/blog"
-            label="Blog"
+            label="Cursos Gratuitos"
             linkClass={linkClass}
             isActive={isActive}
           />

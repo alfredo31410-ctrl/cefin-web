@@ -1,9 +1,7 @@
 import { FileText, TrendingUp, Users } from "lucide-react";
 import Image from "next/image";
 import { membresias } from "@/data/membresias";
-import { testimonios } from "@/data/testimonios";
 import MembresiaCard from "@/components/MembresiaCard";
-import TestimonioCard from "@/components/TestimonioCard";
 import EventoCard from "@/components/EventoCard";
 import { blog } from "@/data/blogs";
 import BlogCard from "@/components/BlogCard";
@@ -11,6 +9,7 @@ import Container from "@/components/Container";
 import Grid from "@/components/Grid";
 import Reveal from "@/components/Reveal";
 import HeroContent from "@/components/HeroContent";
+import TestimoniosCarrusel from "@/components/TestimoniosCarrusel";
 import { getEventosDestacados } from "@/lib/eventos";
 import { eventos as eventosLocales } from "@/data/eventos";
 
@@ -152,24 +151,23 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* ================= TESTIMONIOS ================= */}
-      <section className="py-16 bg-white overflow-visible">
-        <Container>
-          <Reveal>
-            <div className="mb-10 text-center">
-              <p className="text-sm text-red-600 uppercase font-semibold mb-2">Testimonios</p>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Lo que dicen nuestros alumnos</h2>
-            </div>
-            {/* Sin pb-12 extra aquí porque los testimonios suelen tener sombras más pequeñas */}
-            <div className="grid md:grid-cols-3 gap-8 justify-items-center">
-              {testimonios.map((testimonio) => (
-                <TestimonioCard key={testimonio.id} testimonio={testimonio} />
-              ))}
-            </div>
-          </Reveal>
-        </Container>
-      </section>
+     {/* ================= TESTIMONIOS ================= */}
+<section className="py-16 bg-white overflow-hidden">
+  <Container>
+    <Reveal>
+      <div className="mb-10 text-center">
+        <p className="text-sm text-red-600 uppercase font-semibold mb-2">Testimonios</p>
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+          Lo que dicen nuestros alumnos
+        </h2>
+      </div>
 
+      {/* Llamamos al nuevo componente dinámico */}
+      <TestimoniosCarrusel />
+      
+    </Reveal>
+  </Container>
+</section>
      {/* ================= BENEFICIOS ================= */}
 <section className="py-24 bg-slate-50">
   <Container>
