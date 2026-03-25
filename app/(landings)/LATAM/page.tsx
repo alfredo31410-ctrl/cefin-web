@@ -7,7 +7,7 @@ export default function LandingLatam() {
 
   useEffect(() => {
     // Configura la fecha de la clase: 26 de Marzo de 2026
-    const targetDate = new Date("2026-03-26T19:00:00").getTime();
+    const targetDate = new Date("2026-03-26T17:00:00").getTime();
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
