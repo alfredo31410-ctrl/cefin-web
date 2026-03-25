@@ -1,14 +1,10 @@
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import { Inter } from 'next/font/google'; // Sugerencia: Inter es más moderna
-
+import { Inter } from 'next/font/google';
+import ContentWrapper from "@/components/ContentWrapper";
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  // Usamos un template para que cada página (Nosotros, Cursos) tenga su título propio
   title: {
     default: "CEFIN | Actualización Fiscal para Contadores",
     template: "%s | CEFIN"
@@ -20,20 +16,13 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "CEFIN" }],
   creator: "CEFIN",
-  metadataBase: new URL("https://cefincapacitacion.com"), // Tu nuevo dominio oficial
+  metadataBase: new URL("https://cefincapacitacion.com"),
   openGraph: {
     title: "CEFIN | Capacitación Fiscal para Contadores",
     description: "Transforma tu ejercicio profesional con cursos y membresías diseñadas para el contador actual.",
-    url: "https://cefincapacitacion.com", // Actualizado al oficial
+    url: "https://cefincapacitacion.com",
     siteName: "CEFIN",
-    images: [
-      {
-        url: "/og-image.jpg", // Asegúrate que este archivo exista en /public
-        width: 1200,
-        height: 630,
-        alt: "CEFIN capacitación fiscal en México",
-      },
-    ],
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "CEFIN capacitación fiscal en México" }],
     locale: "es_MX",
     type: "website",
   },
@@ -51,15 +40,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className={`${inter.className} bg-white text-slate-900 antialiased min-h-screen flex flex-col`}>
-        <Navbar />
-        <main className="grow">
+      <body className={`${inter.className} antialiased min-h-screen flex flex-col`}>
+        {/* El Wrapper se encarga de decidir si muestra Nav/Footer */}
+        <ContentWrapper>
           {children}
-        </main>
-        <Footer />
-        <WhatsAppButton />
+        </ContentWrapper>
         
-        {/* El script de Schema.org DEBE ir dentro del body o Next lo rechazará */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -67,7 +53,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "CEFIN",
-              // ... resto de tu json
+              "url": "https://cefincapacitacion.com",
+              "logo": "https://cefincapacitacion.com/logo.png" 
             })
           }}
         />
