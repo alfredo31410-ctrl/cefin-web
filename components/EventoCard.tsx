@@ -11,7 +11,6 @@ type Props = {
 }
 
 export default function EventoCard({ evento }: Props) {
-  // 1. Lógica para saber si el evento ya pasó
   const ahora = new Date();
   const fechaEvento = new Date(evento.fecha as any);
   const esPasado = ahora > fechaEvento;
@@ -22,9 +21,9 @@ export default function EventoCard({ evento }: Props) {
 
   return (
     <motion.div
-      whileHover={!esPasado ? { y: -5 } : {}} // No animar si ya pasó
+      whileHover={{ y: -5 }} // Ahora permitimos la animación para invitar al clic
       className={`group rounded-xl shadow-sm transition-all duration-300 overflow-hidden flex flex-col h-full border ${
-        esPasado ? "bg-slate-50 border-slate-200 grayscale-[0.5]" : "bg-white border-slate-100 hover:shadow-md"
+        esPasado ? "bg-white border-slate-200 opacity-90" : "bg-white border-slate-100 hover:shadow-md"
       }`}
     >
       {/* 1. IMAGEN */}
@@ -33,10 +32,9 @@ export default function EventoCard({ evento }: Props) {
           src={evento.imagen}
           alt={evento.titulo}
           fill
-          className="object-contain p-3 transition-transform duration-500 group-hover:scale-105"
+          className={`object-contain p-3 transition-transform duration-500 group-hover:scale-105 ${esPasado ? "grayscale-[0.5]" : ""}`}
         />
         <div className="absolute top-2 left-2">
-          {/* BADGE DINÁMICO */}
           <span className={`${
             esPasado ? "bg-slate-500" : "bg-red-600"
           } text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-sm`}>
@@ -46,26 +44,28 @@ export default function EventoCard({ evento }: Props) {
       </div>
 
       {/* 2. CONTENIDO */}
-      <div className="p-4 flex flex-col flex-grow">
+      <div className="p-4 flex flex-col grow">
         <div className="flex items-center gap-2 mb-2 text-[10px] font-medium text-slate-400 uppercase">
           <span className="truncate">📍 {evento.lugar}</span>
           <span>•</span>
           <span className="shrink-0">📅 {fechaTexto}</span>
         </div>
 
-        <h3 className={`text-sm md:text-base font-bold mb-2 line-clamp-2 leading-tight min-h-[2.5rem] ${
-          esPasado ? "text-slate-500" : "text-slate-800"
+        <h3 className={`text-sm md:text-base font-bold mb-2 line-clamp-2 leading-tight min-h-10 ${
+          esPasado ? "text-slate-600" : "text-slate-800"
         }`}>
           {evento.titulo}
         </h3>
 
-        {/* 3. COUNTDOWN (Ocultar o mostrar mensaje si ya pasó) */}
+        {/* 3. ESTADO DEL TIEMPO */}
         <div className="mb-4 py-2 border-y border-slate-50">
           {!esPasado ? (
             <Countdown fecha={String(evento.fecha)} />
           ) : (
-            <div className="text-[10px] font-bold text-slate-400 text-center uppercase tracking-widest">
+            <div className="flex items-center justify-center gap-2 text-[10px] font-bold text-slate-400 text-center uppercase tracking-widest">
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
               Evento concluido
+              <span className="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
             </div>
           )}
         </div>
@@ -74,7 +74,7 @@ export default function EventoCard({ evento }: Props) {
         <div className="mt-auto pt-3 flex items-center justify-between gap-2">
           <div className="flex flex-col shrink-0">
             <span className="text-[9px] text-slate-400 uppercase font-bold">Inversión</span>
-            <span className={`font-extrabold text-base ${esPasado ? "text-slate-400" : "text-red-600"}`}>
+            <span className={`font-extrabold text-base ${esPasado ? "text-slate-400 line-through" : "text-red-600"}`}>
               {evento.precio}
             </span>
           </div>
@@ -83,11 +83,11 @@ export default function EventoCard({ evento }: Props) {
             href={`/eventos/${evento.slug}`}
             className={`${
               esPasado 
-                ? "bg-slate-300 cursor-not-allowed" 
-                : "bg-slate-900 hover:bg-red-600"
-            } text-white px-3 py-1.5 rounded-lg text-[11px] font-bold transition-colors whitespace-nowrap`}
+                ? "bg-slate-100 text-slate-600 hover:bg-slate-200 border border-slate-200" 
+                : "bg-slate-900 text-white hover:bg-red-600"
+            } px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all whitespace-nowrap`}
           >
-            {esPasado ? "Ver detalles" : "Ver evento"}
+            {esPasado ? "Ver resumen" : "Ver evento"}
           </Link>
         </div>
       </div>
