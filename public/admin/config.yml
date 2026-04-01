@@ -20,23 +20,27 @@ collections:
     label_singular: "Curso"
     folder: "content/cursos"
     create: true
-    slug: "{{slug}}"
+    # El nombre del archivo se basará en el campo 'titulo'
+    slug: "{{titulo}}" 
     summary: "{{titulo}} ({{categoria}})"
     fields:
-      - { label: "ID Único", name: "id", widget: "number", value_type: "int", hint: "Ej: 101. Debe ser un número único." }
       - { label: "Título del Curso", name: "titulo", widget: "string", hint: "Ej: Diplomado en Sueldos y Salarios 2026" }
-      - { label: "Slug (URL)", name: "slug", widget: "string", hint: "Ej: curso-nomina-2026", pattern: ['^[a-z0-9-]+$', "Solo minúsculas y guiones"] }
-      - label: "Categoría"
-        name: "categoria"
-        widget: "select"
-        options: ["fiscal", "nomina", "contabilidad"]
+      - { 
+          label: "Slug (URL)", 
+          name: "slug", 
+          widget: "slug", 
+          fromField: "titulo", 
+          hint: "Se genera automáticamente. No usar espacios ni acentos." 
+        }
+      - { label: "ID Único", name: "id", widget: "number", value_type: "int", hint: "Número único para orden interno." }
+      - { label: "Categoría", name: "categoria", widget: "select", options: ["fiscal", "nomina", "contabilidad"] }
       - { label: "Precio", name: "precio", widget: "string", hint: "Ej: $1,499 MXN" }
-      - { label: "Link Hotmart", name: "hotmart", widget: "string", hint: "Pega el link de pago" }
+      - { label: "Link Hotmart", name: "hotmart", widget: "string" }
       - { label: "Imagen Portada", name: "imagen", widget: "image" }
       - { label: "Instructor", name: "instructor", widget: "select", options: ["Alfredo Cobos", "Marisol Galvan"], default: "Alfredo Cobos" }
-      - { label: "Duración", name: "duracion", widget: "string", hint: "Ej: 10 horas" }
+      - { label: "Duración", name: "duracion", widget: "string" }
       - { label: "¿Destacar?", name: "destacado", widget: "boolean", default: true }
-      - { label: "Descripción SEO", name: "descripcion", widget: "text", hint: "Resumen corto para la tarjeta" }
+      - { label: "Descripción SEO", name: "descripcion", widget: "text" }
       - { label: "Temario Completo", name: "body", widget: "markdown" }
 
   # ==========================================
@@ -47,19 +51,24 @@ collections:
     label_singular: "Evento"
     folder: "content/eventos"
     create: true
-    slug: "{{slug}}"
+    slug: "{{titulo}}"
     summary: "{{titulo}} - {{fecha}}"
     fields:
-      - { label: "Título", name: "titulo", widget: "string", hint: "Ej: Seminario Reformas Fiscales 2026" }
-      - { label: "Slug", name: "slug", widget: "string", hint: "Ej: seminario-reformas-2026" }
-      - { label: "Fecha y Hora", name: "fecha", widget: "datetime", format: "YYYY-MM-DD HH:mm:ss", date_format: "DD/MM/YYYY", time_format: "HH:mm" }
-      - { label: "Lugar / Modalidad", name: "lugar", widget: "string", hint: "Ej: Aguascalientes / Online en Vivo" }
-      - { label: "Costo", name: "costo", widget: "string", hint: "Ej: $999 MXN" }
-      - { label: "Link Registro", name: "hotmart", widget: "string", hint: "Link de pago o registro" }
-      - { label: "Imagen", name: "imagen", widget: "image", hint: "Formato sugerido: 1200x675px" }
+      - { label: "Título", name: "titulo", widget: "string" }
+      - { 
+          label: "Slug", 
+          name: "slug", 
+          widget: "slug", 
+          fromField: "titulo" 
+        }
+      - { label: "Fecha y Hora", name: "fecha", widget: "datetime", format: "YYYY-MM-DD HH:mm:ss" }
+      - { label: "Lugar / Modalidad", name: "lugar", widget: "string" }
+      - { label: "Costo", name: "costo", widget: "string" }
+      - { label: "Link Registro", name: "hotmart", widget: "string" }
+      - { label: "Imagen", name: "imagen", widget: "image" }
       - { label: "¿Destacar en Home?", name: "destacado", widget: "boolean", default: true }
-      - { label: "Resumen", name: "descripcion", widget: "text", hint: "Texto que aparece en la invitación" }
-      - { label: "Detalles del Evento", name: "body", widget: "markdown", hint: "Puntos clave o agenda del evento" }
+      - { label: "Resumen", name: "descripcion", widget: "text" }
+      - { label: "Detalles del Evento", name: "body", widget: "markdown" }
 
   # ==========================================
   # ✍️ COLECCIÓN DE BLOG
@@ -69,15 +78,19 @@ collections:
     label_singular: "Post"
     folder: "content/blog"
     create: true
-    slug: "{{slug}}"
-    
+    slug: "{{titulo}}"
     fields:
-      - { label: "ID Único", name: "id", widget: "number", value_type: "int" }
       - { label: "Título", name: "titulo", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string", hint: "Ej: clase-cuca-cufin" }
-      - { label: "YouTube Video ID", name: "videoId", widget: "string", hint: "Solo el código final. Ej: de youtube.com/watch?v=dQw4w9WgXcQ el ID es dQw4w9WgXcQ", required: false }
+      - { 
+          label: "Slug", 
+          name: "slug", 
+          widget: "slug", 
+          fromField: "titulo" 
+        }
+      - { label: "ID Único", name: "id", widget: "number", value_type: "int" }
+      - { label: "YouTube Video ID", name: "videoId", widget: "string", required: false }
       - { label: "Fecha", name: "fecha", widget: "datetime", format: "DD MMMM YYYY" }
-      - { label: "Imagen de Portada", name: "imagen", widget: "image", hint: "Usa la misma miniatura del video" }
+      - { label: "Imagen de Portada", name: "imagen", widget: "image" }
       - { label: "¿Destacado?", name: "destacado", widget: "boolean", default: false }
       - { label: "Descripción Corta", name: "descripcion", widget: "text" }
       - { label: "Contenido Completo", name: "body", widget: "markdown" }

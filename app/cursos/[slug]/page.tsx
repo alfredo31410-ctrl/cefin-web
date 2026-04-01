@@ -1,33 +1,52 @@
 import { cursos as cursosStatic } from "@/data/cursos";
-import { getAllCursos } from "@/lib/cursos"; // Asegúrate que esta función sea async
+import { getAllCursos } from "@/lib/cursos"; 
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { CheckCircle2, Trophy, BookOpen, Clock, ArrowLeft } from "lucide-react";
 
-// CONFIGURACIÓN CLAVE PARA EVITAR EL 404
-export const dynamicParams = true; // Permite generar páginas nuevas on-demand
-export const revalidate = 60;      // Revisa cambios en el CMS cada minuto
+// 1. Definimos la interfaz para evitar errores de "any"
+interface Curso {
+  id?: number | string;
+  slug: string;
+  titulo?: string;
+  title?: string;
+  imagen: string;
+  precio: string;
+  hotmart: string;
+  descripcion?: string;
+  descripcionLarga?: string;
+}
 
+// 2. Corregimos la definición de Props para Next.js 15 (si es tu caso)
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
-export default async function CursoDetalle({ params }: Props) {
-  const { slug } = await params;
+export const dynamicParams = true; 
+export const revalidate = 60; 
 
-  // Traemos los cursos del CMS de forma asíncrona
-  const cursosCMS = await getAllCursos(); 
-  
-  // Combinamos con los locales
-  const cursos = [...cursosStatic, ...cursosCMS];
-  
-  // Buscamos el curso por el slug
-  const curso = cursos.find((c) => c.slug === slug);
+export default async function CursoDetalle({ params }: Props) {
+  // 3. Resolvemos los params
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
+
+  // 4. Traemos y tipamos los cursos del CMS
+  const cursosCMS: Curso[] = await getAllCursos();
+  const cursos: Curso[] = [...cursosStatic, ...cursosCMS];
+
+  // 5. Buscamos con seguridad usando Optional Chaining
+  const curso = cursos.find(
+    (c) => c.slug?.toLowerCase() === slug.toLowerCase()
+  );
 
   if (!curso) {
     return notFound();
   }
+
+  // Normalización de datos
+  const tituloMostrar = curso.titulo || curso.title || "Curso sin título";
+  const imagenMostrar = curso.imagen || "/placeholder.jpg";
 
   return (
     <main className="bg-white min-h-screen">
@@ -44,19 +63,17 @@ export default async function CursoDetalle({ params }: Props) {
 
       <div className="max-w-6xl mx-auto px-6 py-12 md:py-20">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-          {/* COLUMNA IZQUIERDA: IMAGEN */}
           <div className="lg:col-span-5">
             <div className="relative aspect-square w-full shadow-2xl shadow-red-100 bg-white rounded-[3rem] border border-slate-50">
               <div className="absolute inset-0 overflow-hidden p-6 rounded-[3rem]">
                 <Image
-                  src={curso.imagen}
-                  alt={curso.titulo}
+                  src={imagenMostrar}
+                  alt={tituloMostrar}
                   fill
                   className="object-contain"
                   priority
                 />
               </div>
-
               <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-3xl shadow-xl flex items-center gap-3 border border-slate-50 z-10">
                 <div className="bg-green-100 p-2 rounded-full text-green-600">
                   <Trophy size={20} />
@@ -69,16 +86,9 @@ export default async function CursoDetalle({ params }: Props) {
             </div>
           </div>
 
-          {/* COLUMNA DERECHA: CONTENIDO */}
           <div className="lg:col-span-7 py-4">
-            <div className="flex items-center gap-2 mb-6">
-              <span className="bg-red-50 text-red-600 px-3 py-1 rounded-lg text-xs font-black uppercase tracking-widest">
-                Curso Especializado
-              </span>
-            </div>
-
             <h1 className="text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-[1.1]">
-              {curso.titulo}
+              {tituloMostrar}
             </h1>
 
             <div className="flex flex-wrap gap-6 mb-8 text-slate-500 font-bold text-sm">
@@ -92,7 +102,7 @@ export default async function CursoDetalle({ params }: Props) {
 
             <div className="prose prose-lg max-w-none text-slate-600 mb-10 leading-relaxed">
               <p className="whitespace-pre-line">
-                {curso.descripcionLarga || curso.descripcion}
+                {curso.descripcionLarga || curso.descripcion || "Sin descripción disponible."}
               </p>
             </div>
 
@@ -110,11 +120,6 @@ export default async function CursoDetalle({ params }: Props) {
               >
                 Acceder ahora
               </a>
-            </div>
-
-            <div className="mt-8 flex items-center justify-center md:justify-start gap-3 text-slate-400">
-              <CheckCircle2 size={16} className="text-green-500" />
-              <span className="text-xs font-medium">Pago seguro y garantía de satisfacción de 7 días.</span>
             </div>
           </div>
         </div>
