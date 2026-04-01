@@ -1,7 +1,8 @@
 backend:
   name: github
-  repo: JohnBecerra16/cefin-web
+  repo: alfredo31410-ctrl/cefin-web
   branch: main
+  always_fork: false
   base_url: https://decap-oauth.vercel.app
   auth_endpoint: auth
 
