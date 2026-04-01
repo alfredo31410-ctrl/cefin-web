@@ -10,6 +10,10 @@ type Props = {
 }
 
 export default function InstructorCard({ instructor }: Props) {
+  // Lógica simple para detectar género por nombre
+  const esInstructora = instructor.nombre.includes("Marisol");
+  const etiquetaRol = esInstructora ? "Instructora Experta" : "Instructor Experto";
+
   return (
     <motion.div
       whileHover={{ y: -8 }}
@@ -45,15 +49,15 @@ export default function InstructorCard({ instructor }: Props) {
           "
         />
         {/* Overlay para dar profundidad */}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-linear-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
 
       {/* CONTENIDO */}
-      <div className="p-5 md:p-6 flex flex-col flex-grow text-center">
+      <div className="p-5 md:p-6 flex flex-col grow text-center">
         
-        {/* CATEGORÍA O ROL (Opcional) */}
+        {/* CATEGORÍA O ROL DINÁMICO */}
         <span className="text-[10px] uppercase tracking-widest font-bold text-red-600 mb-2">
-          Instructor Experto
+          {etiquetaRol}
         </span>
 
         {/* NOMBRE */}

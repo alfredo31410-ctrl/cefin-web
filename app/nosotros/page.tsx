@@ -44,8 +44,8 @@ export default function NosotrosPage() {
             <div className="w-12 h-12 bg-slate-100 rounded-xl mb-6 flex items-center justify-center text-2xl">🚀</div>
             <h3 className="text-2xl font-bold mb-4 text-slate-900">Nuestra visión</h3>
             <p className="text-slate-600 leading-relaxed text-lg">
-            Ser la comunidad de contadores mas influyente y respteada de habla hispana.
-            Transformamos la contabilidad con educacion de alto valor, impacto, real y un prfundo
+            Ser la comunidad de contadores mas influyente y respetada de habla hispana.
+            Transformamos la contabilidad con educacion de alto valor, impacto, real y un profundo
             sentido humano.
             </p>
           </div>

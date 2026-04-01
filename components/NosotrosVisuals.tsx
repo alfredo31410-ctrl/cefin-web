@@ -31,15 +31,15 @@ export function HeroNosotros() {
         </div>
       </div>
 
-      <div className="relative h-80 md:h-[500px] w-full rounded-3xl overflow-hidden shadow-2xl">
+      <div className="relative h-80 md:h-125 w-full rounded-3xl overflow-hidden shadow-2xl">
         <Image
-          src="/equipo-cefin.jpg"
+          src="/equipo-cefin.jpeg"
           alt="Equipo CEFIN"
           fill
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-t from-slate-900/40 to-transparent"></div>
       </div>
     </motion.section>
   )
