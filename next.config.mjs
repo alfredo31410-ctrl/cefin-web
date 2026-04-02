@@ -1,14 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
+  async rewrites() {
+    return [
       {
-        protocol: 'https',
-        hostname: 'i.pinimg.com',
-        port: '',
-        pathname: '/**',
+        // Cuando alguien entre a cefin.mx/landings/...
+        source: '/landings/:path*',
+        // Tu web principal traerá el contenido de este link:
+        destination: 'https://cefin-landings-z9uk.vercel.app/landings/:path*', 
       },
-    ],
+    ]
   },
 };
 
