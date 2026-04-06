@@ -10,7 +10,6 @@ type Props = {
 }
 
 export default function CursoCard({ curso }: Props) {
-
   const coloresCategoria = {
     fiscal: "bg-blue-100 text-blue-700",
     nomina: "bg-green-100 text-green-700",
@@ -18,12 +17,18 @@ export default function CursoCard({ curso }: Props) {
     mentalidad: "bg-yellow-100 text-yellow-700",
   }
 
+  const rutasEspeciales: Record<string, string> = {
+    "asesor-fiscal-medicos": "/cursos/asesor-fiscal-medicos",
+    "plataformas-digitales": "/cursos/plataformas-digitales",
+  }
+
+  const cursoHref = rutasEspeciales[curso.slug] || `/cursos/${curso.slug}`
+
   return (
     <motion.div
       whileHover={{ y: -6 }}
       className="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full border border-slate-100"
     >
-      {/* IMAGEN */}
       <div className="relative w-full h-44 md:h-48 lg:h-52 overflow-hidden bg-white">
         <Image
           src={curso.imagen}
@@ -32,7 +37,6 @@ export default function CursoCard({ curso }: Props) {
           className="object-contain p-2 transition-transform duration-500 group-hover:scale-105"
         />
 
-        {/* BADGE */}
         <div className="absolute top-3 left-3">
           <span
             className={`
@@ -51,29 +55,22 @@ export default function CursoCard({ curso }: Props) {
         </div>
       </div>
 
-      {/* CONTENIDO */}
       <div className="p-4 md:p-6 flex flex-col flex-grow">
-        {/* META */}
         <div className="flex items-center gap-2 md:gap-3 mb-3 text-[11px] font-medium text-slate-400 uppercase tracking-widest">
           <span>👤 {curso.instructor}</span>
           <span>•</span>
           <span>⏱️ {curso.duracion}</span>
         </div>
 
-        {/* TITULO */}
         <h3 className="text-base md:text-lg lg:text-xl font-bold mb-2 text-slate-800 line-clamp-2 min-h-[3rem]">
           {curso.titulo}
         </h3>
 
-        {/* DESCRIPCION */}
         <p className="text-sm text-slate-600 mb-6 line-clamp-3 flex-grow">
           {curso.descripcion}
         </p>
 
-        {/* FOOTER REESTRUCTURADO */}
         <div className="pt-4 border-t border-slate-100 flex flex-col gap-3">
-          
-          {/* FILA 1: PRECIO Y BOTÓN PRINCIPAL */}
           <div className="flex items-center justify-between gap-3">
             <div className="flex flex-col">
               <span className="text-[10px] text-slate-400 uppercase font-bold leading-none mb-1">
@@ -85,14 +82,13 @@ export default function CursoCard({ curso }: Props) {
             </div>
 
             <Link
-              href={`/cursos/${curso.slug}`}
+              href={cursoHref}
               className="bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 group-hover:bg-red-600 whitespace-nowrap shadow-sm active:scale-95"
             >
               Ver curso
             </Link>
           </div>
 
-          {/* FILA 2: BOTÓN SECUNDARIO (EN PRODUCCIÓN) */}
           <Link
             href="/proximamente"
             className="
@@ -115,7 +111,6 @@ export default function CursoCard({ curso }: Props) {
           >
             🚧 En producción (Ver temario)
           </Link>
-
         </div>
       </div>
     </motion.div>

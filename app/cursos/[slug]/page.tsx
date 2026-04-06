@@ -96,7 +96,7 @@ export default async function CursoDetalle({ params }: Props) {
                 <BookOpen size={18} className="text-red-500" /> 10+ Módulos
               </div>
               <div className="flex items-center gap-2">
-                <Clock size={18} className="text-red-500" /> Acceso de por vida
+                <Clock size={18} className="text-red-500" /> Acceso por 12 meses
               </div>
             </div>
 
