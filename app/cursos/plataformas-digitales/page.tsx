@@ -21,38 +21,38 @@ declare global {
 }
 
 const VIDEO_ID = "kHDw7r4ShJQ";
-const PAYMENT_URL = "https://pay.hotmart.com/TU_LINK_AQUI";
-const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || "";
+const PAYMENT_URL = "https://pay.hotmart.com/Q105254575O?off=ax75adly&checkoutMode=10";
+const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID_PLATAFORMAS || "";
 const TRANSFORMATION_IMAGE = "/PLATAFORMAS-DIGITALES.png";
 
-const UNLOCK_SECONDS = 120;
 const CTA_SECONDS = 60;
+const UNLOCK_SECONDS = 120;
 
 const LANDING_DATA = {
   title:
-    "Cómo convertirte en asesor fiscal de plataformas digitales para personas físicas y dejar de cobrar como contador general.",
+    "Cómo convertirte en experto fiscal de Plataformas Digitales y dejar de cobrar como contador general.",
   subtitle:
-    "Si atiendes contribuyentes de Uber, DiDi, Rappi, Airbnb o freelancers… probablemente estás dejando dinero sobre la mesa",
+    "Si atiendes Uber, Airbnb o Amazon… probablemente estás perdiendo dinero (y ni lo sabes)",
   price: "$1,527",
   priceCurrency: "MXN",
   realityTitle: "Esto es lo que está pasando hoy con muchos contadores:",
   realityItems: [
-    "Atienden personas físicas en plataformas digitales… pero sin una estructura clara.",
-    "Confunden retenciones, ingresos acumulables y pagos definitivos.",
-    "Aplican el régimen sin criterio técnico real.",
-    "Y terminan resolviendo sobre la marcha.",
+    "Atienden clientes de plataformas… pero sin entender las retenciones.",
+    "Confunden el esquema de pagos definitivos con pagos provisionales.",
+    "No saben cómo gestionar el IVA acreditable correctamente.",
+    "Y terminan resolviendo discrepancias cuando el SAT ya envió la carta invitación.",
   ],
   opportunityItems: [
     "Dejas de competir por precio",
-    "Empiezas a cobrar por tu criterio",
-    "Te conviertes en referencia para tus clientes",
+    "Empiezas a cobrar por tu criterio técnico",
+    "Te conviertes en referencia para la Gig Economy",
   ],
   learnItems: [
-    "Cómo tributan realmente las personas físicas en plataformas digitales",
-    "Cómo identificar correctamente retenciones e ingresos acumulables",
-    "Cómo aplicar el régimen con criterio técnico",
-    "Cómo evitar errores comunes que cuestan dinero",
-    "Cómo asesorar con criterio fiscal real",
+    "Cómo funciona realmente el régimen de plataformas",
+    "Gestión correcta de retenciones de ISR e IVA",
+    "Diferencia entre esquemas de pago y su conveniencia",
+    "Cómo evitar errores en la declaración que generan multas",
+    "Estrategia fiscal para repartidores, anfitriones y vendedores",
   ],
 };
 
@@ -176,8 +176,8 @@ function FichaInscripcion({ onCheckout }: { onCheckout: () => void }) {
           </h3>
 
           <p className="mt-3 text-base leading-relaxed text-slate-600 md:text-lg">
-            Especialízate en un nicho rentable, deja de improvisar y empieza a
-            cobrar por tu criterio.
+            Especialízate en la economía digital, deja de improvisar y empieza a
+            cobrar por tu dominio técnico.
           </p>
 
           <div className="mt-5 flex flex-wrap gap-3 text-sm md:text-base">
@@ -209,7 +209,7 @@ function FichaInscripcion({ onCheckout }: { onCheckout: () => void }) {
             onClick={onCheckout}
             className="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-red-600 px-6 py-4 text-center text-base font-black text-white transition duration-300 hover:bg-red-700 md:text-lg"
           >
-            Quiero especializarme en plataformas digitales ahora
+            Quiero especializarme en plataformas ahora
           </a>
         </div>
       </div>
@@ -262,7 +262,12 @@ function UnlockBridge({
                   : "pointer-events-none translate-y-2 opacity-0"
               }`}
             >
-
+              <PrimaryButton
+                onClick={onCheckout}
+                className="px-6 py-4 text-base md:text-xl"
+              >
+                Quiero especializarme en plataformas ahora
+              </PrimaryButton>
             </div>
           </>
         )}
@@ -271,7 +276,7 @@ function UnlockBridge({
   );
 }
 
-export default function LandingPlataformasPersonasFisicas() {
+export default function LandingPlataformas() {
   const [isLocked, setIsLocked] = useState(true);
   const [showCTA, setShowCTA] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
@@ -286,7 +291,7 @@ export default function LandingPlataformasPersonasFisicas() {
     initMetaPixel(PIXEL_ID);
 
     track("ViewContent", {
-      content_name: "Landing Asesor Fiscal de Plataformas Digitales PF",
+      content_name: "Landing Asesor Fiscal de Plataformas",
       value: 1527,
       currency: "MXN",
     });
@@ -312,8 +317,8 @@ export default function LandingPlataformasPersonasFisicas() {
 
             if (!videoTrackedRef.current) {
               videoTrackedRef.current = true;
-              track("ViewContent", {
-                content_name: "VSL Plataformas Digitales PF iniciada",
+              track("StartTrial", {
+                content_name: "VSL Plataformas iniciada",
                 content_category: "Video",
               });
             }
@@ -327,9 +332,8 @@ export default function LandingPlataformasPersonasFisicas() {
                 unlockedRef.current = true;
                 setIsLocked(false);
 
-                track("Lead", {
-                  content_name:
-                    "Contenido desbloqueado landing plataformas digitales PF",
+                track("CompleteRegistration", {
+                  content_name: "Contenido desbloqueado plataformas",
                 });
               }
 
@@ -380,7 +384,7 @@ export default function LandingPlataformasPersonasFisicas() {
 
   const handleCheckoutClick = () => {
     track("InitiateCheckout", {
-      content_name: "Asesor Fiscal de Plataformas Digitales PF",
+      content_name: "Asesor Fiscal de Plataformas",
       value: 1527,
       currency: "MXN",
     });
@@ -456,7 +460,7 @@ export default function LandingPlataformasPersonasFisicas() {
                 }`}
               >
                 <PrimaryButton onClick={handleCheckoutClick}>
-                  Quiero especializarme en plataformas digitales ahora
+                  Quiero especializarme en plataformas ahora
                 </PrimaryButton>
               </div>
 
@@ -493,12 +497,11 @@ export default function LandingPlataformasPersonasFisicas() {
                   <div className="mt-8 h-px w-full bg-white/10" />
 
                   <p className="mt-8 text-2xl font-black leading-tight text-white md:text-3xl">
-                    👉 El resultado: Trabajan más… pero no ganan más.
+                    👉 El resultado: Clientes con multas y tú con más trabajo.
                   </p>
 
                   <p className="mt-4 text-lg text-slate-300 md:text-xl">
-                    Y lo más grave: Ni siquiera saben exactamente dónde está el
-                    error.
+                    Y lo más grave: Estás cobrando honorarios de contador general por una especialidad técnica.
                   </p>
                 </div>
               </div>
@@ -517,13 +520,11 @@ export default function LandingPlataformasPersonasFisicas() {
             <Container>
               <div className="mx-auto max-w-4xl text-center">
                 <h2 className="text-3xl font-black leading-tight text-slate-900 md:text-5xl">
-                  El problema es que nadie te enseñó cómo aplicar correctamente
-                  los impuestos en un sector específico como plataformas
-                  digitales para personas físicas.
+                  El problema es que nadie te enseñó cómo aplicar correctamente las reglas del SAT en el sector digital.
                 </h2>
 
                 <p className="mt-6 text-xl font-bold leading-relaxed text-slate-700 md:text-2xl">
-                  Y ese detalle… cambia completamente el resultado.
+                  Y en plataformas, un error de cálculo puede dejar a tu cliente sin utilidades.
                 </p>
               </div>
             </Container>
@@ -533,12 +534,11 @@ export default function LandingPlataformasPersonasFisicas() {
             <Container>
               <div className="mx-auto max-w-5xl text-center">
                 <h2 className="text-3xl font-black leading-tight text-slate-900 md:text-5xl">
-                  El sector de plataformas digitales es uno de los que más está
-                  creciendo…
+                  El sector digital es el de mayor crecimiento…
                 </h2>
 
                 <p className="mt-5 text-xl leading-relaxed text-slate-700 md:text-2xl">
-                  Pero solo para contadores que saben lo que hacen.
+                  Pero solo para contadores que dominan la normativa específica.
                 </p>
 
                 <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -557,12 +557,14 @@ export default function LandingPlataformasPersonasFisicas() {
           <section className="bg-slate-950 py-20 text-white md:py-24">
             <Container>
               <div className="mx-auto max-w-5xl text-center">
-                
+                <SectionEyebrow dark center>
+                  Transformación
+                </SectionEyebrow>
 
                 <div className="mt-8 overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl">
                   <img
                     src={TRANSFORMATION_IMAGE}
-                    alt="Antes y después - Asesor fiscal de plataformas digitales"
+                    alt="Antes y después - Especialista en Plataformas"
                     className="w-full object-cover"
                   />
                 </div>
@@ -579,13 +581,10 @@ export default function LandingPlataformasPersonasFisicas() {
 
                 <div className="mt-8 rounded-[2rem] border border-red-100 bg-red-50 p-8 md:p-10">
                   <div className="space-y-4 text-lg font-semibold leading-relaxed text-slate-800 md:text-xl">
+                    <p>✔ Ya tienes clientes en Uber, Didi o Airbnb y quieres blindarlos</p>
+                    <p>✔ Quieres especializarte en la economía de plataformas</p>
                     <p>
-                      ✔ Ya tienes clientes de plataformas digitales y quieres
-                      hacerlo bien
-                    </p>
-                    <p>✔ Quieres especializarte en un nicho rentable</p>
-                    <p>
-                      ✔ Buscas dejar de improvisar y trabajar con estructura
+                      ✔ Buscas optimizar la carga fiscal de tus clientes legalmente
                     </p>
                   </div>
                 </div>
@@ -599,7 +598,7 @@ export default function LandingPlataformasPersonasFisicas() {
                 <SectionEyebrow center>Lo que vas a aprender</SectionEyebrow>
 
                 <h2 className="mt-4 text-center text-3xl font-black leading-tight text-slate-900 md:text-5xl">
-                  Aplicación fiscal real para plataformas digitales
+                  Dominio fiscal en la era digital
                 </h2>
 
                 <div className="mt-12 grid gap-5 md:grid-cols-2">
@@ -613,7 +612,7 @@ export default function LandingPlataformasPersonasFisicas() {
                 </div>
 
                 <p className="mt-8 text-center text-xl font-black text-slate-700 md:text-2xl">
-                  👉 Esto no es teoría. Es aplicación directa.
+                  👉 Esto no es teoría. Es práctica pura sobre el portal del SAT.
                 </p>
               </div>
             </Container>
@@ -623,23 +622,22 @@ export default function LandingPlataformasPersonasFisicas() {
             <Container>
               <div className="mx-auto max-w-4xl text-center">
                 <h2 className="text-3xl font-black leading-tight text-slate-900 md:text-5xl">
-                  Este tipo de conocimiento normalmente se cobra en consultorías
-                  de miles de pesos…
+                  Este conocimiento te ahorrará horas de investigación y errores costosos…
                 </h2>
 
                 <p className="mt-5 text-xl leading-relaxed text-slate-700 md:text-2xl">
-                  Pero hoy puedes acceder a todo el curso por:
+                  Hoy puedes acceder a la especialización completa por:
                 </p>
 
-                <div className="mt-10 rounded-[2rem] bg-slate-950 px-8 py-10 text-white shadow-[0_20px_60px_rgba(15,23,42,0.24)]">
+                <div className="mt-10 rounded-[2rem] bg-slate-950 px-8 py-10 text-white shadow-[0_20px_60_rgba(15,23,42,0.24)]">
                   <p className="text-5xl font-black text-red-400 md:text-7xl">
                     {LANDING_DATA.price} {LANDING_DATA.priceCurrency}
                   </p>
 
                   <div className="mt-8 space-y-3 text-lg text-slate-200 md:text-xl">
-                    <p>✔ Acceso inmediato</p>
-                    <p>✔ Contenido práctico</p>
-                    <p>✔ Enfoque 100% aplicable</p>
+                    <p>✔ Acceso inmediato de por vida</p>
+                    <p>✔ Casos prácticos reales</p>
+                    <p>✔ Enfoque en resolución de problemas</p>
                   </div>
                 </div>
               </div>
@@ -650,12 +648,11 @@ export default function LandingPlataformasPersonasFisicas() {
             <Container>
               <div className="mx-auto max-w-4xl text-center">
                 <h2 className="text-3xl font-black leading-tight md:text-5xl">
-                  Este curso no estará disponible en estas condiciones de forma
-                  permanente.
+                  Las plataformas digitales son el presente de la contabilidad.
                 </h2>
 
                 <p className="mt-6 text-xl font-bold leading-relaxed text-red-50 md:text-2xl">
-                  👉 Si estás viendo esto ahora… es el momento de entrar.
+                  👉 No te quedes atrás. Domina el régimen hoy.
                 </p>
               </div>
             </Container>
@@ -665,7 +662,7 @@ export default function LandingPlataformasPersonasFisicas() {
             <Container>
               <div className="mx-auto max-w-4xl text-center">
                 <PrimaryButton onClick={handleCheckoutClick}>
-                  Quiero especializarme en plataformas digitales ahora
+                  Quiero especializarme en plataformas ahora
                 </PrimaryButton>
               </div>
             </Container>

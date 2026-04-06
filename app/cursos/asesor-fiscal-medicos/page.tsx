@@ -20,13 +20,13 @@ declare global {
   }
 }
 
-const VIDEO_ID = "LXb3EKWsInQ";
-const PAYMENT_URL = "https://pay.hotmart.com/TU_LINK_AQUI";
-const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || "";
+const VIDEO_ID = "eLiK3h77YfU";
+const PAYMENT_URL = "https://pay.hotmart.com/Q105254575O?off=ax75adly&checkoutMode=10";
+const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID_MEDICOS || "";
 const TRANSFORMATION_IMAGE = "/MEDICOS-RETARGUETING.png";
 
-const UNLOCK_SECONDS = 60;
-const CTA_SECONDS = 120;
+const CTA_SECONDS =60;
+const UNLOCK_SECONDS = 120;
 
 const LANDING_DATA = {
   title:
@@ -317,7 +317,7 @@ export default function LandingMedicos() {
 
             if (!videoTrackedRef.current) {
               videoTrackedRef.current = true;
-              track("ViewContent", {
+              track("StartTrial", {
                 content_name: "VSL Médicos iniciada",
                 content_category: "Video",
               });
@@ -332,8 +332,8 @@ export default function LandingMedicos() {
                 unlockedRef.current = true;
                 setIsLocked(false);
 
-                track("Lead", {
-                  content_name: "Contenido desbloqueado landing médicos",
+                track("CompleteRegistration", {
+                  content_name: "Contenido desbloqueado médicos",
                 });
               }
 
@@ -585,7 +585,9 @@ export default function LandingMedicos() {
                   <div className="space-y-4 text-lg font-semibold leading-relaxed text-slate-800 md:text-xl">
                     <p>✔ Ya tienes clientes médicos y quieres hacerlo bien</p>
                     <p>✔ Quieres especializarte en un nicho rentable</p>
-                    <p>✔ Buscas dejar de improvisar y trabajar con estructura</p>
+                    <p>
+                      ✔ Buscas dejar de improvisar y trabajar con estructura
+                    </p>
                   </div>
                 </div>
               </div>

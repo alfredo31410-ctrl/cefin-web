@@ -1,7 +1,7 @@
-import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from 'next/font/google';
 import ContentWrapper from "@/components/ContentWrapper";
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -41,11 +41,15 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth">
       <body className={`${inter.className} antialiased min-h-screen flex flex-col`}>
-        {/* El Wrapper se encarga de decidir si muestra Nav/Footer */}
+
+
+
+        {/* Wrapper */}
         <ContentWrapper>
           {children}
         </ContentWrapper>
         
+        {/* Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
