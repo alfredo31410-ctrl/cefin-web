@@ -21,7 +21,7 @@ declare global {
 }
 
 const VIDEO_ID = "kHDw7r4ShJQ";
-const PAYMENT_URL = "https://pay.hotmart.com/Q105254575O?off=ax75adly&checkoutMode=10";
+const PAYMENT_URL = "https://pay.hotmart.com/F105256630I?off=9hj3ikmv&checkoutMode=10";
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID_PLATAFORMAS || "";
 const TRANSFORMATION_IMAGE = "/PLATAFORMAS-DIGITALES.png";
 
