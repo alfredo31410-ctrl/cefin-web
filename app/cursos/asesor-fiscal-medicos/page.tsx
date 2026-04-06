@@ -57,8 +57,15 @@ const LANDING_DATA = {
 };
 
 function initMetaPixel(pixelId: string) {
-  if (!pixelId || typeof window === "undefined" || window.fbq) return;
+if (typeof window === "undefined") return;
 
+const fbq = window.fbq as
+  | ((...args: unknown[]) => void)
+  | undefined;
+
+if (!fbq) return;
+
+fbq("track", event || {});
   ((f: Window & typeof globalThis, b: Document, e: string) => {
     if (f.fbq) return;
 
@@ -86,13 +93,22 @@ function initMetaPixel(pixelId: string) {
     firstScript.parentNode?.insertBefore(script, firstScript);
   })(window, document, "script");
 
-  window.fbq?.("init", pixelId);
-  window.fbq?.("track", "PageView");
+if (typeof window.fbq === "function") {
+  window.fbq("init", pixelId);
+  window.fbq("track", "PageView");
+}
 }
 
 function track(event: string, params?: Record<string, unknown>) {
-  if (typeof window === "undefined" || typeof window.fbq !== "function") return;
-  window.fbq("track", event, params || {});
+ if (typeof window === "undefined") return;
+
+const fbq = window.fbq as
+  | ((...args: unknown[]) => void)
+  | undefined;
+
+if (!fbq) return;
+
+fbq("track", event, params || {});
 }
 
 function SectionEyebrow({
