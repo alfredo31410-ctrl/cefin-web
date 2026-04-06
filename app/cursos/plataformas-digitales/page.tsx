@@ -78,7 +78,7 @@ function initMetaPixel(pixelId: string) {
     f.fbq = fbq;
     if (!f._fbq) f._fbq = fbq;
 
-    const script = b.createElement(e);
+    const script = b.createElement(e) as HTMLScriptElement;
     script.async = true;
     script.src = "https://connect.facebook.net/en_US/fbevents.js";
 
