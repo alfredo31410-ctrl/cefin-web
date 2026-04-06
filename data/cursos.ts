@@ -3,6 +3,7 @@ import { slugify } from "./slugify";
 export type Curso = {
   id: number;
   slug: string;
+  slugOverride?: string; // 👈 nuevo
   titulo: string;
   descripcion: string;
   descripcionLarga: string;
@@ -19,6 +20,7 @@ const cursosBase: Omit<Curso, "slug">[] = [
   {
     id: 1,
     titulo: "Contabilidad e Impuestos para Médicos",
+    slugOverride: "asesor-fiscal-medicos", // 🔥 aquí
     descripcion:
       "Aprende a manejar la contabilidad y optimizar los impuestos de médicos y profesionales de la salud con estrategias prácticas, claras y 100% aplicables. Entrenamiento intensivo con la C.P. Marisol Galván.",
     descripcionLarga: `Dominarás:
@@ -98,5 +100,5 @@ Este no es un curso más. Es el inicio de una transformación profesional.`,
 
 export const cursos: Curso[] = cursosBase.map((curso) => ({
   ...curso,
-  slug: slugify(curso.titulo),
+  slug: curso.slugOverride || slugify(curso.titulo),
 }));
