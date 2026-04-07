@@ -21,11 +21,12 @@ declare global {
 }
 
 const VIDEO_ID = "eLiK3h77YfU";
-const PAYMENT_URL = "https://pay.hotmart.com/Q105254575O?off=ax75adly&checkoutMode=10";
+const PAYMENT_URL =
+  "https://pay.hotmart.com/Q105254575O?off=ax75adly&checkoutMode=10";
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID_MEDICOS || "";
 const TRANSFORMATION_IMAGE = "/MEDICOS-RETARGUETING.png";
 
-const CTA_SECONDS =60;
+const CTA_SECONDS = 60;
 const UNLOCK_SECONDS = 120;
 
 const LANDING_DATA = {
@@ -57,58 +58,35 @@ const LANDING_DATA = {
 };
 
 function initMetaPixel(pixelId: string) {
-if (typeof window === "undefined") return;
+  if (!pixelId || typeof window === "undefined" || window.fbq) return;
 
-const fbq = window.fbq as
-  | ((...args: unknown[]) => void)
-  | undefined;
-
-if (!fbq) return;
-
-fbq("track", event || {});
-  ((f: Window & typeof globalThis, b: Document, e: string) => {
+  (function (f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
     if (f.fbq) return;
-
-    const fbq = function (...args: unknown[]) {
-      if ((fbq as any).callMethod) {
-        (fbq as any).callMethod.apply(fbq, args);
-      } else {
-        (fbq as any).queue.push(args);
-      }
+    n = f.fbq = function () {
+      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
     };
+    if (!f._fbq) f._fbq = n;
+    n.push = n;
+    n.loaded = !0;
+    n.version = "2.0";
+    n.queue = [];
+    t = b.createElement(e);
+    t.async = !0;
+    t.src = v;
+    s = b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t, s);
+  })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
 
-    (fbq as any).push = fbq;
-    (fbq as any).loaded = true;
-    (fbq as any).version = "2.0";
-    (fbq as any).queue = [];
-
-    f.fbq = fbq;
-    if (!f._fbq) f._fbq = fbq;
-
-    const script = b.createElement(e) as HTMLScriptElement;
-    script.async = true;
-    script.src = "https://connect.facebook.net/en_US/fbevents.js";
-
-    const firstScript = b.getElementsByTagName(e)[0];
-    firstScript.parentNode?.insertBefore(script, firstScript);
-  })(window, document, "script");
-
-if (typeof window.fbq === "function") {
-  window.fbq("init", pixelId);
-  window.fbq("track", "PageView");
-}
+  const fbq = (window as any).fbq;
+  if (typeof fbq === "function") {
+    fbq("init", pixelId);
+    fbq("track", "PageView");
+  }
 }
 
 function track(event: string, params?: Record<string, unknown>) {
- if (typeof window === "undefined") return;
-
-const fbq = window.fbq as
-  | ((...args: unknown[]) => void)
-  | undefined;
-
-if (!fbq) return;
-
-fbq("track", event, params || {});
+  if (typeof window === "undefined" || typeof window.fbq !== "function") return;
+  window.fbq("track", event, params || {});
 }
 
 function SectionEyebrow({
