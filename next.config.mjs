@@ -3,10 +3,15 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        // El usuario ve esto en el navegador
+        // 1. Rewrite para las páginas visibles
         source: '/landings/:path*',
-        // La web principal jala el contenido de aquí (quitamos el /landings extra)
-        destination: 'https://cefin-landings-z9uk.vercel.app/:path*', 
+        destination: 'https://cefin-landings-z9uk.vercel.app/landings/:path*', 
+      },
+      {
+        // 2. NUEVO: Rewrite para los archivos internos de Next.js (JS, CSS, Chunks)
+        // Esto evita los errores 404 que ves en la consola
+        source: '/_next/static/:path*',
+        destination: 'https://cefin-landings-z9uk.vercel.app/_next/static/:path*',
       },
     ]
   },
