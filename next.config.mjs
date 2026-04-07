@@ -3,10 +3,10 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        // Cuando alguien entre a cefin.mx/landings/...
+        // El usuario ve esto en el navegador
         source: '/landings/:path*',
-        // Tu web principal traerá el contenido de este link:
-        destination: 'https://cefin-landings-z9uk.vercel.app/landings/:path*', 
+        // La web principal jala el contenido de aquí (quitamos el /landings extra)
+        destination: 'https://cefin-landings-z9uk.vercel.app/:path*', 
       },
     ]
   },

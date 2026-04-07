@@ -184,6 +184,10 @@ function FichaInscripcion({ onCheckout }: { onCheckout: () => void }) {
             <span className="rounded-full bg-slate-50 px-4 py-2 font-semibold text-slate-700">
               ✔ Enfoque 100% aplicable
             </span>
+             <span className="rounded-full bg-slate-50 px-4 py-2 font-semibold text-slate-700">
+              ✔ Accede a una sesión en vivo grupal de preguntas y respuestas en
+              el factor CEFIN el lunes siguiente a tu inscripción a las 11 a.m.
+            </span>
           </div>
         </div>
 
@@ -586,6 +590,12 @@ export default function LandingPlataformas() {
                     <p>
                       ✔ Buscas dejar de improvisar y trabajar con estructura
                     </p>
+                    <p>
+                      ✔ Quieres tener un enfoque claro y aplicable en tu práctica
+                    </p>
+                    <p>
+                      ✔ Accede a una sesión en vivo grupal de preguntas y respuestas en el factor CEFIN el lunes siguiente a tu inscripción a las 11 a.m.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -639,6 +649,9 @@ export default function LandingPlataformas() {
                     <p>✔ Acceso inmediato</p>
                     <p>✔ Contenido práctico</p>
                     <p>✔ Enfoque 100% aplicable</p>
+                    <p>
+                      ✔ Accede a una sesión en vivo grupal de preguntas y respuestas en el factor CEFIN el lunes siguiente a tu inscripción a las 11 a.m.
+                    </p>
                   </div>
                 </div>
               </div>

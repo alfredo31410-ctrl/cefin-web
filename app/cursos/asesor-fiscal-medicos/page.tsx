@@ -75,7 +75,12 @@ function initMetaPixel(pixelId: string) {
     t.src = v;
     s = b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t, s);
-  })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+  })(
+    window,
+    document,
+    "script",
+    "https://connect.facebook.net/en_US/fbevents.js",
+  );
 
   const fbq = (window as any).fbq;
   if (typeof fbq === "function") {
@@ -183,6 +188,10 @@ function FichaInscripcion({ onCheckout }: { onCheckout: () => void }) {
             </span>
             <span className="rounded-full bg-slate-50 px-4 py-2 font-semibold text-slate-700">
               ✔ Enfoque 100% aplicable
+            </span>
+            <span className="rounded-full bg-slate-50 px-4 py-2 font-semibold text-slate-700">
+              ✔ Accede a una sesión en vivo grupal de preguntas y respuestas en
+              el factor CEFIN el lunes siguiente a tu inscripción a las 11 a.m.
             </span>
           </div>
         </div>
@@ -635,6 +644,11 @@ export default function LandingMedicos() {
                     <p>✔ Acceso inmediato</p>
                     <p>✔ Contenido práctico</p>
                     <p>✔ Enfoque 100% aplicable</p>
+                    <p>
+                      ✔ Accede a una sesión en vivo grupal de preguntas y
+                      respuestas en el factor CEFIN el lunes siguiente a tu
+                      inscripción a las 11 a.m.
+                    </p>
                   </div>
                 </div>
               </div>
