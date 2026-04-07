@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Container from "@/components/Container";
 
+// --- DECLARACIONES DE TIPOS PARA WINDOW ---
 declare global {
   interface Window {
     YT?: {
@@ -20,6 +21,7 @@ declare global {
   }
 }
 
+// --- CONSTANTES DE CONFIGURACIÓN ---
 const VIDEO_ID = "kHDw7r4ShJQ";
 const PAYMENT_URL = "https://pay.hotmart.com/F105256630I?off=9hj3ikmv&checkoutMode=10";
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID_PLATAFORMAS || "";
@@ -29,10 +31,8 @@ const CTA_SECONDS = 60;
 const UNLOCK_SECONDS = 120;
 
 const LANDING_DATA = {
-  title:
-    "Cómo convertirte en experto fiscal de Plataformas Digitales y dejar de cobrar como contador general.",
-  subtitle:
-    "Si atiendes Uber, Airbnb o Amazon… probablemente estás perdiendo dinero (y ni lo sabes)",
+  title: "Cómo convertirte en experto fiscal de Plataformas Digitales y dejar de cobrar como contador general.",
+  subtitle: "Si atiendes Uber, Airbnb o Amazon… probablemente estás perdiendo dinero (y ni lo sabes)",
   price: "$1,527",
   priceCurrency: "MXN",
   realityTitle: "Esto es lo que está pasando hoy con muchos contadores:",
@@ -56,53 +56,40 @@ const LANDING_DATA = {
   ],
 };
 
+// --- FUNCIONES DE TRACKING (META PIXEL) ---
 function initMetaPixel(pixelId: string) {
-if (typeof window === "undefined") return;
+  if (!pixelId || typeof window === "undefined" || window.fbq) return;
 
-const fbq = window.fbq as
-  | ((...args: unknown[]) => void)
-  | undefined;
-
-if (!fbq) return;
-
-fbq("track", event || {});
-  ((f: Window & typeof globalThis, b: Document, e: string) => {
+  (function (f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
     if (f.fbq) return;
-
-    const fbq = function (...args: unknown[]) {
-      if ((fbq as any).callMethod) {
-        (fbq as any).callMethod.apply(fbq, args);
-      } else {
-        (fbq as any).queue.push(args);
-      }
+    n = f.fbq = function () {
+      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
     };
+    if (!f._fbq) f._fbq = n;
+    n.push = n;
+    n.loaded = !0;
+    n.version = "2.0";
+    n.queue = [];
+    t = b.createElement(e);
+    t.async = !0;
+    t.src = v;
+    s = b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t, s);
+  })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
 
-    (fbq as any).push = fbq;
-    (fbq as any).loaded = true;
-    (fbq as any).version = "2.0";
-    (fbq as any).queue = [];
-
-    f.fbq = fbq;
-    if (!f._fbq) f._fbq = fbq;
-
-    const script = b.createElement(e) as HTMLScriptElement;
-    script.async = true;
-    script.src = "https://connect.facebook.net/en_US/fbevents.js";
-
-    const firstScript = b.getElementsByTagName(e)[0];
-    firstScript.parentNode?.insertBefore(script, firstScript);
-  })(window, document, "script");
-
-if (typeof window.fbq === "function") {
-  window.fbq("init", pixelId);
-  window.fbq("track", "PageView");
-}
+  const fbq = (window as any).fbq;
+  if (typeof fbq === "function") {
+    fbq("init", pixelId);
+    fbq("track", "PageView");
+  }
 }
 
 function track(event: string, params?: Record<string, unknown>) {
   if (typeof window === "undefined" || typeof window.fbq !== "function") return;
   window.fbq("track", event, params || {});
 }
+
+// --- COMPONENTES AUXILIARES ---
 
 function SectionEyebrow({
   children,
@@ -114,13 +101,11 @@ function SectionEyebrow({
   dark?: boolean;
 }) {
   return (
-    <p
-      className={[
-        "text-sm font-black uppercase tracking-[0.18em]",
-        center ? "text-center" : "",
-        dark ? "text-red-400" : "text-red-600",
-      ].join(" ")}
-    >
+    <p className={[
+      "text-sm font-black uppercase tracking-[0.18em]",
+      center ? "text-center" : "",
+      dark ? "text-red-400" : "text-red-600",
+    ].join(" ")}>
       {children}
     </p>
   );
@@ -160,12 +145,7 @@ function SurfaceCard({
   className?: string;
 }) {
   return (
-    <div
-      className={[
-        "rounded-[2rem] border border-slate-200 bg-white shadow-sm",
-        className,
-      ].join(" ")}
-    >
+    <div className={["rounded-[2rem] border border-slate-200 bg-white shadow-sm", className].join(" ")}>
       {children}
     </div>
   );
@@ -179,46 +159,28 @@ function FichaInscripcion({ onCheckout }: { onCheckout: () => void }) {
           <p className="inline-flex rounded-full bg-red-50 px-4 py-1 text-sm font-bold uppercase tracking-wide text-red-700">
             Inscripción abierta
           </p>
-
           <h3 className="mt-3 text-2xl font-black leading-tight text-slate-900 md:text-3xl">
             Asesor Fiscal de Plataformas Digitales
           </h3>
-
           <p className="mt-3 text-base leading-relaxed text-slate-600 md:text-lg">
-            Especialízate en la economía digital, deja de improvisar y empieza a
-            cobrar por tu dominio técnico.
+            Especialízate en la economía digital, deja de improvisar y empieza a cobrar por tu dominio técnico.
           </p>
-
           <div className="mt-5 flex flex-wrap gap-3 text-sm md:text-base">
-            <span className="rounded-full bg-slate-50 px-4 py-2 font-semibold text-slate-700">
-              ✔ Acceso inmediato
-            </span>
-            <span className="rounded-full bg-slate-50 px-4 py-2 font-semibold text-slate-700">
-              ✔ Contenido práctico
-            </span>
-            <span className="rounded-full bg-slate-50 px-4 py-2 font-semibold text-slate-700">
-              ✔ Enfoque 100% aplicable
-            </span>
+            <span className="rounded-full bg-slate-50 px-4 py-2 font-semibold text-slate-700">✔ Acceso inmediato</span>
+            <span className="rounded-full bg-slate-50 px-4 py-2 font-semibold text-slate-700">✔ Contenido práctico</span>
+            <span className="rounded-full bg-slate-50 px-4 py-2 font-semibold text-slate-700">✔ Enfoque 100% aplicable</span>
           </div>
         </div>
-
         <div className="min-w-[260px] rounded-[1.5rem] bg-slate-950 p-6 text-white">
-          <p className="text-sm uppercase tracking-[0.18em] text-red-300">
-            Inversión hoy
-          </p>
-
-          <p className="mt-2 text-4xl font-black md:text-5xl">
-            {LANDING_DATA.price}
-          </p>
-
+          <p className="text-sm uppercase tracking-[0.18em] text-red-300">Inversión hoy</p>
+          <p className="mt-2 text-4xl font-black md:text-5xl">{LANDING_DATA.price}</p>
           <p className="text-sm text-slate-300">{LANDING_DATA.priceCurrency}</p>
-
           <a
             href={PAYMENT_URL}
             onClick={onCheckout}
             className="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-red-600 px-6 py-4 text-center text-base font-black text-white transition duration-300 hover:bg-red-700 md:text-lg"
           >
-            Quiero especializarme en plataformas ahora
+            Quiero especializarme ahora
           </a>
         </div>
       </div>
@@ -237,44 +199,24 @@ function UnlockBridge({
 }) {
   return (
     <div className="mt-8 md:mt-10">
-      <div
-        className={`mx-auto max-w-3xl rounded-[1.75rem] border px-6 py-5 text-center transition-all duration-500 md:px-8 md:py-6 ${
-          isLocked
-            ? "border-slate-200 bg-slate-50 text-slate-700"
-            : "border-red-100 bg-red-50 text-slate-800"
-        }`}
-      >
+      <div className={`mx-auto max-w-3xl rounded-[1.75rem] border px-6 py-5 text-center transition-all duration-500 md:px-8 md:py-6 ${
+        isLocked ? "border-slate-200 bg-slate-50 text-slate-700" : "border-red-100 bg-red-50 text-slate-800"
+      }`}>
         {isLocked ? (
           <>
-            <p className="text-sm font-black uppercase tracking-[0.15em] text-red-600">
-              Contenido bloqueado
-            </p>
+            <p className="text-sm font-black uppercase tracking-[0.15em] text-red-600">Contenido bloqueado</p>
             <p className="mt-2 text-lg font-semibold leading-relaxed md:text-xl">
-              Sigue viendo la clase para desbloquear el resto del contenido y
-              acceder a la oferta completa.
+              Sigue viendo la clase para desbloquear el resto del contenido y acceder a la oferta completa.
             </p>
           </>
         ) : (
           <>
-            <p className="text-sm font-black uppercase tracking-[0.15em] text-red-600">
-              Contenido desbloqueado
-            </p>
+            <p className="text-sm font-black uppercase tracking-[0.15em] text-red-600">Contenido desbloqueado</p>
             <p className="mt-2 text-lg font-semibold leading-relaxed md:text-xl">
-              Ya puedes ver toda la información y avanzar hacia tu
-              especialización.
+              Ya puedes ver toda la información y avanzar hacia tu especialización.
             </p>
-
-            <div
-              className={`mt-5 transition-all duration-500 ${
-                showCTA
-                  ? "translate-y-0 opacity-100"
-                  : "pointer-events-none translate-y-2 opacity-0"
-              }`}
-            >
-              <PrimaryButton
-                onClick={onCheckout}
-                className="px-6 py-4 text-base md:text-xl"
-              >
+            <div className={`mt-5 transition-all duration-500 ${showCTA ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"}`}>
+              <PrimaryButton onClick={onCheckout} className="px-6 py-4 text-base md:text-xl">
                 Quiero especializarme en plataformas ahora
               </PrimaryButton>
             </div>
@@ -285,6 +227,7 @@ function UnlockBridge({
   );
 }
 
+// --- COMPONENTE PRINCIPAL ---
 export default function LandingPlataformas() {
   const [isLocked, setIsLocked] = useState(true);
   const [showCTA, setShowCTA] = useState(false);
@@ -298,7 +241,6 @@ export default function LandingPlataformas() {
 
   useEffect(() => {
     initMetaPixel(PIXEL_ID);
-
     track("ViewContent", {
       content_name: "Landing Asesor Fiscal de Plataformas",
       value: 1527,
@@ -326,10 +268,7 @@ export default function LandingPlataformas() {
 
             if (!videoTrackedRef.current) {
               videoTrackedRef.current = true;
-              track("StartTrial", {
-                content_name: "VSL Plataformas iniciada",
-                content_category: "Video",
-              });
+              track("StartTrial", { content_name: "VSL Plataformas iniciada", content_category: "Video" });
             }
 
             if (intervalRef.current) clearInterval(intervalRef.current);
@@ -340,10 +279,7 @@ export default function LandingPlataformas() {
               if (currentTime >= UNLOCK_SECONDS && !unlockedRef.current) {
                 unlockedRef.current = true;
                 setIsLocked(false);
-
-                track("CompleteRegistration", {
-                  content_name: "Contenido desbloqueado plataformas",
-                });
+                track("CompleteRegistration", { content_name: "Contenido desbloqueado plataformas" });
               }
 
               if (currentTime >= CTA_SECONDS && !shownCTARef.current) {
@@ -356,11 +292,7 @@ export default function LandingPlataformas() {
       });
     };
 
-    const existingScript = document.querySelector(
-      'script[src="https://www.youtube.com/iframe_api"]',
-    );
-
-    if (!existingScript) {
+    if (!document.querySelector('script[src="https://www.youtube.com/iframe_api"]')) {
       const script = document.createElement("script");
       script.src = "https://www.youtube.com/iframe_api";
       document.body.appendChild(script);
@@ -372,25 +304,16 @@ export default function LandingPlataformas() {
       setupPlayer();
     };
 
-    if (window.YT?.Player) {
-      setupPlayer();
-    }
+    if (window.YT?.Player) setupPlayer();
 
     return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-      }
-
+      if (intervalRef.current) clearInterval(intervalRef.current);
       playerRef.current?.destroy?.();
       playerRef.current = null;
     };
   }, [hasStarted]);
 
-  const handleStartVideo = () => {
-    setHasStarted(true);
-  };
-
+  const handleStartVideo = () => setHasStarted(true);
   const handleCheckoutClick = () => {
     track("InitiateCheckout", {
       content_name: "Asesor Fiscal de Plataformas",
@@ -406,18 +329,16 @@ export default function LandingPlataformas() {
       </div>
 
       <main className="relative overflow-x-hidden">
+        {/* Hero Section */}
         <section className="relative bg-gradient-to-b from-slate-50 via-white to-white pb-8 pt-36 md:pb-12 md:pt-44">
           <Container>
-            <div className="mx-auto max-w-5xl">
-              <div className="text-center">
-                <h1 className="text-4xl font-black leading-[1.02] text-slate-900 md:text-6xl">
-                  {LANDING_DATA.title}
-                </h1>
-
-                <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-slate-700 md:text-2xl">
-                  {LANDING_DATA.subtitle}
-                </p>
-              </div>
+            <div className="mx-auto max-w-5xl text-center">
+              <h1 className="text-4xl font-black leading-[1.02] text-slate-900 md:text-6xl">
+                {LANDING_DATA.title}
+              </h1>
+              <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed text-slate-700 md:text-2xl">
+                {LANDING_DATA.subtitle}
+              </p>
 
               <div className="mt-10 overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-2 shadow-[0_20px_80px_rgba(15,23,42,0.12)] md:p-3">
                 <div className="relative aspect-video overflow-hidden rounded-[1.5rem] bg-black">
@@ -425,99 +346,54 @@ export default function LandingPlataformas() {
                     <button
                       type="button"
                       onClick={handleStartVideo}
-                      aria-label="Reproducir video"
                       className="absolute inset-0 z-10 flex items-center justify-center"
                     >
                       <div
                         className="absolute inset-0 bg-cover bg-center opacity-90"
-                        style={{
-                          backgroundImage: `url('https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg')`,
-                        }}
+                        style={{ backgroundImage: `url('https://img.youtube.com/vi/${VIDEO_ID}/maxresdefault.jpg')` }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/30" />
-
-                      <div className="absolute bottom-5 left-5 right-5 text-left text-white md:bottom-8 md:left-8 md:right-8">
-                        <p className="max-w-2xl text-sm font-semibold text-white/80 md:text-base">
-                          Reproduce la clase para desbloquear el contenido y ver
-                          la oferta completa.
-                        </p>
-                      </div>
-
                       <div className="relative z-10 flex h-24 w-24 items-center justify-center rounded-full bg-red-600 shadow-2xl transition duration-300 hover:scale-110 md:h-28 md:w-28">
-                        <svg
-                          className="h-12 w-12 translate-x-1 fill-current text-white md:h-14 md:w-14"
-                          viewBox="0 0 24 24"
-                        >
+                        <svg className="h-12 w-12 translate-x-1 fill-current text-white md:h-14 md:w-14" viewBox="0 0 24 24">
                           <path d="M8 5v14l11-7z" />
                         </svg>
                       </div>
                     </button>
                   ) : (
-                    <div
-                      id="main-player"
-                      className="absolute inset-0 h-full w-full"
-                    />
+                    <div id="main-player" className="absolute inset-0 h-full w-full" />
                   )}
                 </div>
               </div>
 
-              <div
-                className={`mt-10 text-center transition-all duration-700 ${
-                  showCTA
-                    ? "translate-y-0 opacity-100"
-                    : "pointer-events-none translate-y-4 opacity-0"
-                }`}
-              >
+              <div className={`mt-10 transition-all duration-700 ${showCTA ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"}`}>
                 <PrimaryButton onClick={handleCheckoutClick}>
                   Quiero especializarme en plataformas ahora
                 </PrimaryButton>
               </div>
 
-              <UnlockBridge
-                isLocked={isLocked}
-                showCTA={showCTA}
-                onCheckout={handleCheckoutClick}
-              />
+              <UnlockBridge isLocked={isLocked} showCTA={showCTA} onCheckout={handleCheckoutClick} />
             </div>
           </Container>
         </section>
 
-        <div
-          className={`transition-all duration-700 ${
-            isLocked
-              ? "pointer-events-none opacity-35 blur-[6px]"
-              : "opacity-100 blur-0"
-          }`}
-        >
-          <section className="bg-white pb-10 pt-12 md:pb-12 md:pt-16">
+        {/* Content Section (Locked/Blur) */}
+        <div className={`transition-all duration-700 ${isLocked ? "pointer-events-none opacity-35 blur-[6px]" : "opacity-100 blur-0"}`}>
+          <section className="bg-white py-12">
             <Container>
               <div className="mx-auto max-w-4xl">
-                <h2 className="text-3xl font-black leading-tight text-slate-900 md:text-5xl">
-                  {LANDING_DATA.realityTitle}
-                </h2>
-
-                <div className="mt-8 rounded-[2rem] bg-slate-950 p-8 text-white shadow-[0_20px_60px_rgba(15,23,42,0.24)] md:p-10">
-                  <div className="space-y-4 text-lg leading-relaxed text-slate-200 md:text-xl">
-                    {LANDING_DATA.realityItems.map((item) => (
-                      <p key={item}>{item}</p>
-                    ))}
+                <h2 className="text-3xl font-black text-slate-900 md:text-5xl">{LANDING_DATA.realityTitle}</h2>
+                <div className="mt-8 rounded-[2rem] bg-slate-950 p-8 text-white shadow-2xl md:p-10">
+                  <div className="space-y-4 text-lg text-slate-200 md:text-xl">
+                    {LANDING_DATA.realityItems.map((item) => <p key={item}>{item}</p>)}
                   </div>
-
                   <div className="mt-8 h-px w-full bg-white/10" />
-
-                  <p className="mt-8 text-2xl font-black leading-tight text-white md:text-3xl">
-                    👉 El resultado: Clientes con multas y tú con más trabajo.
-                  </p>
-
-                  <p className="mt-4 text-lg text-slate-300 md:text-xl">
-                    Y lo más grave: Estás cobrando honorarios de contador general por una especialidad técnica.
-                  </p>
+                  <p className="mt-8 text-2xl font-black">👉 El resultado: Clientes con multas y tú con más trabajo.</p>
                 </div>
               </div>
             </Container>
           </section>
 
-          <section className="bg-white pb-16 pt-4 md:pb-20 md:pt-6">
+          <section className="bg-white py-6">
             <Container>
               <div className="mx-auto max-w-5xl">
                 <FichaInscripcion onCheckout={handleCheckoutClick} />
@@ -525,175 +401,24 @@ export default function LandingPlataformas() {
             </Container>
           </section>
 
-          <section className="bg-slate-50 py-20 md:py-24">
-            <Container>
-              <div className="mx-auto max-w-4xl text-center">
-                <h2 className="text-3xl font-black leading-tight text-slate-900 md:text-5xl">
-                  El problema es que nadie te enseñó cómo aplicar correctamente las reglas del SAT en el sector digital.
-                </h2>
-
-                <p className="mt-6 text-xl font-bold leading-relaxed text-slate-700 md:text-2xl">
-                  Y en plataformas, un error de cálculo puede dejar a tu cliente sin utilidades.
-                </p>
-              </div>
-            </Container>
-          </section>
-
-          <section className="bg-white py-20 md:py-24">
+          {/* Más secciones... */}
+          <section className="bg-slate-950 py-20 text-white">
             <Container>
               <div className="mx-auto max-w-5xl text-center">
-                <h2 className="text-3xl font-black leading-tight text-slate-900 md:text-5xl">
-                  El sector digital es el de mayor crecimiento…
-                </h2>
-
-                <p className="mt-5 text-xl leading-relaxed text-slate-700 md:text-2xl">
-                  Pero solo para contadores que dominan la normativa específica.
-                </p>
-
-                <div className="mt-12 grid gap-6 md:grid-cols-3">
-                  {LANDING_DATA.opportunityItems.map((item) => (
-                    <SurfaceCard key={item} className="h-full p-8">
-                      <h3 className="text-2xl font-black leading-tight text-slate-900">
-                        {item}
-                      </h3>
-                    </SurfaceCard>
-                  ))}
+                <SectionEyebrow dark center>Transformación</SectionEyebrow>
+                <div className="mt-8 overflow-hidden rounded-[2rem] border border-white/10">
+                  <img src={TRANSFORMATION_IMAGE} alt="Transformación" className="w-full" />
                 </div>
               </div>
             </Container>
           </section>
 
-          <section className="bg-slate-950 py-20 text-white md:py-24">
-            <Container>
-              <div className="mx-auto max-w-5xl text-center">
-                <SectionEyebrow dark center>
-                  Transformación
-                </SectionEyebrow>
-
-                <div className="mt-8 overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl">
-                  <img
-                    src={TRANSFORMATION_IMAGE}
-                    alt="Antes y después - Especialista en Plataformas"
-                    className="w-full object-cover"
-                  />
-                </div>
-              </div>
-            </Container>
-          </section>
-
-          <section className="bg-white py-20 md:py-24">
-            <Container>
-              <div className="mx-auto max-w-4xl">
-                <h2 className="text-3xl font-black leading-tight text-slate-900 md:text-5xl">
-                  Este curso es para ti si:
-                </h2>
-
-                <div className="mt-8 rounded-[2rem] border border-red-100 bg-red-50 p-8 md:p-10">
-                  <div className="space-y-4 text-lg font-semibold leading-relaxed text-slate-800 md:text-xl">
-                    <p>✔ Ya tienes clientes en Uber, Didi o Airbnb y quieres blindarlos</p>
-                    <p>✔ Quieres especializarte en la economía de plataformas</p>
-                    <p>
-                      ✔ Buscas optimizar la carga fiscal de tus clientes legalmente
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Container>
-          </section>
-
-          <section className="bg-slate-50 py-20 md:py-24">
-            <Container>
-              <div className="mx-auto max-w-5xl">
-                <SectionEyebrow center>Lo que vas a aprender</SectionEyebrow>
-
-                <h2 className="mt-4 text-center text-3xl font-black leading-tight text-slate-900 md:text-5xl">
-                  Dominio fiscal en la era digital
-                </h2>
-
-                <div className="mt-12 grid gap-5 md:grid-cols-2">
-                  {LANDING_DATA.learnItems.map((item) => (
-                    <SurfaceCard key={item} className="p-6">
-                      <p className="text-lg font-semibold leading-relaxed text-slate-800">
-                        {item}
-                      </p>
-                    </SurfaceCard>
-                  ))}
-                </div>
-
-                <p className="mt-8 text-center text-xl font-black text-slate-700 md:text-2xl">
-                  👉 Esto no es teoría. Es práctica pura sobre el portal del SAT.
-                </p>
-              </div>
-            </Container>
-          </section>
-
-          <section className="bg-white py-20 md:py-24">
-            <Container>
-              <div className="mx-auto max-w-4xl text-center">
-                <h2 className="text-3xl font-black leading-tight text-slate-900 md:text-5xl">
-                  Este conocimiento te ahorrará horas de investigación y errores costosos…
-                </h2>
-
-                <p className="mt-5 text-xl leading-relaxed text-slate-700 md:text-2xl">
-                  Hoy puedes acceder a la especialización completa por:
-                </p>
-
-                <div className="mt-10 rounded-[2rem] bg-slate-950 px-8 py-10 text-white shadow-[0_20px_60_rgba(15,23,42,0.24)]">
-                  <p className="text-5xl font-black text-red-400 md:text-7xl">
-                    {LANDING_DATA.price} {LANDING_DATA.priceCurrency}
-                  </p>
-
-                  <div className="mt-8 space-y-3 text-lg text-slate-200 md:text-xl">
-                    <p>✔ Acceso inmediato de por vida</p>
-                    <p>✔ Casos prácticos reales</p>
-                    <p>✔ Enfoque en resolución de problemas</p>
-                  </div>
-                </div>
-              </div>
-            </Container>
-          </section>
-
-          <section className="bg-red-600 py-20 text-white md:py-24">
-            <Container>
-              <div className="mx-auto max-w-4xl text-center">
-                <h2 className="text-3xl font-black leading-tight md:text-5xl">
-                  Las plataformas digitales son el presente de la contabilidad.
-                </h2>
-
-                <p className="mt-6 text-xl font-bold leading-relaxed text-red-50 md:text-2xl">
-                  👉 No te quedes atrás. Domina el régimen hoy.
-                </p>
-              </div>
-            </Container>
-          </section>
-
-          <section className="bg-white py-20 md:py-24">
-            <Container>
-              <div className="mx-auto max-w-4xl text-center">
-                <PrimaryButton onClick={handleCheckoutClick}>
+          <section className="bg-white py-20 text-center">
+             <Container>
+               <PrimaryButton onClick={handleCheckoutClick}>
                   Quiero especializarme en plataformas ahora
-                </PrimaryButton>
-              </div>
-            </Container>
-          </section>
-
-          <section className="bg-slate-50 pb-24 pt-6 md:pb-28">
-            <Container>
-              <div className="mx-auto max-w-5xl">
-                <SurfaceCard className="p-8 md:p-10">
-                  <p className="text-lg leading-relaxed text-slate-700 md:text-xl">
-                    Tienes acceso al contenido para verlo a tu ritmo por todo un
-                    año y empezar a aplicarlo desde el primer momento.
-                  </p>
-
-                  <p className="mt-5 text-lg leading-relaxed text-slate-700 md:text-xl">
-                    Además accedes a un Tutor de Inteligencia Artificial que
-                    responde todas tus dudas a partir de los temas estudiados en
-                    clase, en tiempo real.
-                  </p>
-                </SurfaceCard>
-              </div>
-            </Container>
+               </PrimaryButton>
+             </Container>
           </section>
         </div>
       </main>
