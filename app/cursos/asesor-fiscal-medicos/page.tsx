@@ -295,7 +295,7 @@ export default function LandingMedicos() {
 
     track("ViewContent", {
       content_name: "Landing Asesor Fiscal de Médicos",
-      value: 1527,
+      value: 75,
       currency: "MXN",
     });
   }, []);
@@ -323,6 +323,8 @@ export default function LandingMedicos() {
               track("StartTrial", {
                 content_name: "VSL Médicos iniciada",
                 content_category: "Video",
+                value: 150,
+                currency: "MXN",
               });
             }
 
@@ -337,6 +339,8 @@ export default function LandingMedicos() {
 
                 track("CompleteRegistration", {
                   content_name: "Contenido desbloqueado médicos",
+                  value: 400,
+                  currency: "MXN",
                 });
               }
 

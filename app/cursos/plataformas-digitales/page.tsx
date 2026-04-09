@@ -288,11 +288,11 @@ export default function LandingPlataformas() {
   useEffect(() => {
     initMetaPixel(PIXEL_ID);
 
-    track("ViewContent", {
-      content_name: "Landing Asesor Fiscal de Plataformas",
-      value: 1527,
-      currency: "MXN",
-    });
+track("ViewContent", {
+  content_name: "Landing Asesor Fiscal de Plataformas",
+  value: 75,
+  currency: "MXN",
+});
   }, []);
 
   useEffect(() => {
@@ -315,10 +315,12 @@ export default function LandingPlataformas() {
 
             if (!videoTrackedRef.current) {
               videoTrackedRef.current = true;
-              track("StartTrial", {
-                content_name: "VSL Plataformas iniciada",
-                content_category: "Video",
-              });
+       track("StartTrial", {
+  content_name: "VSL Plataformas iniciada",
+  content_category: "Video",
+  value: 150,
+  currency: "MXN",
+});
             }
 
             if (intervalRef.current) clearInterval(intervalRef.current);
@@ -331,8 +333,10 @@ export default function LandingPlataformas() {
                 setIsLocked(false);
 
                 track("CompleteRegistration", {
-                  content_name: "Contenido desbloqueado plataformas",
-                });
+  content_name: "Contenido desbloqueado plataformas",
+  value: 400,
+  currency: "MXN",
+});
               }
 
               if (currentTime >= CTA_SECONDS && !shownCTARef.current) {
