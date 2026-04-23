@@ -10,6 +10,14 @@ const nextConfig = {
         source: '/_next/image',
         destination: 'https://cefin-landings-z9uk.vercel.app/_next/image',
       },
+      {
+        source: '/quizz',
+        destination: 'https://quizz-app-phi-eight.vercel.app',
+      },
+      {
+        source: '/quizz/:path*',
+        destination: 'https://quizz-app-phi-eight.vercel.app/:path*',
+      },
     ];
   },
 };
