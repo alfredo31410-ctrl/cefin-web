@@ -2,12 +2,11 @@
 
 import { useEffect, useRef } from "react";
 import Script from "next/script";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { META_PIXEL_ID, trackMetaPageView } from "@/lib/meta-pixel";
 
 export default function MetaPixel() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const hasTrackedInitialPageView = useRef(false);
 
   useEffect(() => {
@@ -17,7 +16,7 @@ export default function MetaPixel() {
       return;
     }
     trackMetaPageView();
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   if (!META_PIXEL_ID) return null;
 
