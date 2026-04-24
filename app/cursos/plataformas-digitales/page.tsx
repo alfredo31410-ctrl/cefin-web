@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Container from "@/components/Container";
+import { trackMetaEvent } from "@/lib/meta-pixel";
 
 declare global {
   interface Window {
@@ -15,15 +16,12 @@ declare global {
       };
     };
     onYouTubeIframeAPIReady?: () => void;
-    fbq?: (...args: unknown[]) => void;
-    _fbq?: unknown;
   }
 }
 
 const VIDEO_ID = "kHDw7r4ShJQ";
 const PAYMENT_URL =
   "https://pay.hotmart.com/F105256630I?off=9hj3ikmv&checkoutMode=10";
-const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID_PLATAFORMAS || "";
 const TRANSFORMATION_IMAGE = "/PLATAFORMAS-DIGITALES.png";
 
 const CTA_SECONDS = 60;
@@ -56,38 +54,6 @@ const LANDING_DATA = {
     "Estrategia fiscal para repartidores, anfitriones y vendedores",
   ],
 };
-
-function initMetaPixel(pixelId: string) {
-  if (!pixelId || typeof window === "undefined" || window.fbq) return;
-
-  (function (f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
-    if (f.fbq) return;
-    n = f.fbq = function () {
-      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-    };
-    if (!f._fbq) f._fbq = n;
-    n.push = n;
-    n.loaded = !0;
-    n.version = "2.0";
-    n.queue = [];
-    t = b.createElement(e);
-    t.async = !0;
-    t.src = v;
-    s = b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t, s);
-  })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-
-  const fbq = (window as any).fbq;
-  if (typeof fbq === "function") {
-    fbq("init", pixelId);
-    fbq("track", "PageView");
-  }
-}
-
-function track(event: string, params?: Record<string, unknown>) {
-  if (typeof window === "undefined" || typeof window.fbq !== "function") return;
-  window.fbq("track", event, params || {});
-}
 
 function SectionEyebrow({
   children,
@@ -286,13 +252,11 @@ export default function LandingPlataformas() {
   const videoTrackedRef = useRef(false);
 
   useEffect(() => {
-    initMetaPixel(PIXEL_ID);
-
-track("ViewContent", {
-  content_name: "Landing Asesor Fiscal de Plataformas",
-  value: 75,
-  currency: "MXN",
-});
+    trackMetaEvent("ViewContent", {
+      content_name: "Landing Asesor Fiscal de Plataformas",
+      value: 75,
+      currency: "MXN",
+    });
   }, []);
 
   useEffect(() => {
@@ -315,12 +279,12 @@ track("ViewContent", {
 
             if (!videoTrackedRef.current) {
               videoTrackedRef.current = true;
-       track("StartTrial", {
-  content_name: "VSL Plataformas iniciada",
-  content_category: "Video",
-  value: 150,
-  currency: "MXN",
-});
+              trackMetaEvent("StartTrial", {
+                content_name: "VSL Plataformas iniciada",
+                content_category: "Video",
+                value: 150,
+                currency: "MXN",
+              });
             }
 
             if (intervalRef.current) clearInterval(intervalRef.current);
@@ -332,11 +296,11 @@ track("ViewContent", {
                 unlockedRef.current = true;
                 setIsLocked(false);
 
-                track("CompleteRegistration", {
-  content_name: "Contenido desbloqueado plataformas",
-  value: 400,
-  currency: "MXN",
-});
+                trackMetaEvent("CompleteRegistration", {
+                  content_name: "Contenido desbloqueado plataformas",
+                  value: 400,
+                  currency: "MXN",
+                });
               }
 
               if (currentTime >= CTA_SECONDS && !shownCTARef.current) {
@@ -385,7 +349,7 @@ track("ViewContent", {
   };
 
   const handleCheckoutClick = () => {
-    track("InitiateCheckout", {
+    trackMetaEvent("InitiateCheckout", {
       content_name: "Asesor Fiscal de Plataformas",
       value: 1527,
       currency: "MXN",

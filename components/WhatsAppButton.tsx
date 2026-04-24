@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
+import { trackMetaEvent } from "@/lib/meta-pixel";
 
 export default function WhatsAppButton() {
   // Configuración del mensaje
@@ -15,6 +16,12 @@ export default function WhatsAppButton() {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() =>
+        trackMetaEvent("Contact", {
+          content_name: "WhatsApp flotante",
+          content_category: "Contacto",
+        })
+      }
       initial={{ opacity: 0, y: 40, scale: 0.8 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       whileHover={{ scale: 1.05, y: -5 }} // Efecto de elevación al pasar el mouse

@@ -4,6 +4,7 @@ import { useState } from "react"
 import Container from "@/components/Container"
 import { HeroContacto, WhatsAppBanner } from "@/components/ContactoVisuals"
 import MapaContacto from "@/components/MapaContacto"
+import { trackMetaEvent } from "@/lib/meta-pixel"
 
 export default function ContactoPage() {
   const [status, setStatus] = useState<"IDLE" | "SENDING" | "SUCCESS" | "ERROR">("IDLE")
@@ -25,6 +26,10 @@ export default function ContactoPage() {
 
     if (response.ok) {
       setStatus("SUCCESS")
+      trackMetaEvent("Lead", {
+        content_name: "Formulario de contacto",
+        content_category: "Contacto",
+      })
       ;(e.target as HTMLFormElement).reset()
     } else {
       setStatus("ERROR")

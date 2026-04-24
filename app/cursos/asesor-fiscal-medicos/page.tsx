@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Container from "@/components/Container";
+import { trackMetaEvent } from "@/lib/meta-pixel";
 
 declare global {
   interface Window {
@@ -15,15 +16,12 @@ declare global {
       };
     };
     onYouTubeIframeAPIReady?: () => void;
-    fbq?: (...args: unknown[]) => void;
-    _fbq?: unknown;
   }
 }
 
 const VIDEO_ID = "eLiK3h77YfU";
 const PAYMENT_URL =
   "https://pay.hotmart.com/Q105254575O?off=ax75adly&checkoutMode=10";
-const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID_MEDICOS || "";
 const TRANSFORMATION_IMAGE = "/MEDICOS-RETARGUETING.png";
 
 const CTA_SECONDS = 60;
@@ -56,43 +54,6 @@ const LANDING_DATA = {
     "Cómo asesorar con criterio fiscal real",
   ],
 };
-
-function initMetaPixel(pixelId: string) {
-  if (!pixelId || typeof window === "undefined" || window.fbq) return;
-
-  (function (f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
-    if (f.fbq) return;
-    n = f.fbq = function () {
-      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-    };
-    if (!f._fbq) f._fbq = n;
-    n.push = n;
-    n.loaded = !0;
-    n.version = "2.0";
-    n.queue = [];
-    t = b.createElement(e);
-    t.async = !0;
-    t.src = v;
-    s = b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t, s);
-  })(
-    window,
-    document,
-    "script",
-    "https://connect.facebook.net/en_US/fbevents.js",
-  );
-
-  const fbq = (window as any).fbq;
-  if (typeof fbq === "function") {
-    fbq("init", pixelId);
-    fbq("track", "PageView");
-  }
-}
-
-function track(event: string, params?: Record<string, unknown>) {
-  if (typeof window === "undefined" || typeof window.fbq !== "function") return;
-  window.fbq("track", event, params || {});
-}
 
 function SectionEyebrow({
   children,
@@ -291,9 +252,7 @@ export default function LandingMedicos() {
   const videoTrackedRef = useRef(false);
 
   useEffect(() => {
-    initMetaPixel(PIXEL_ID);
-
-    track("ViewContent", {
+    trackMetaEvent("ViewContent", {
       content_name: "Landing Asesor Fiscal de Médicos",
       value: 75,
       currency: "MXN",
@@ -320,7 +279,7 @@ export default function LandingMedicos() {
 
             if (!videoTrackedRef.current) {
               videoTrackedRef.current = true;
-              track("StartTrial", {
+              trackMetaEvent("StartTrial", {
                 content_name: "VSL Médicos iniciada",
                 content_category: "Video",
                 value: 150,
@@ -337,7 +296,7 @@ export default function LandingMedicos() {
                 unlockedRef.current = true;
                 setIsLocked(false);
 
-                track("CompleteRegistration", {
+                trackMetaEvent("CompleteRegistration", {
                   content_name: "Contenido desbloqueado médicos",
                   value: 400,
                   currency: "MXN",
@@ -390,7 +349,7 @@ export default function LandingMedicos() {
   };
 
   const handleCheckoutClick = () => {
-    track("InitiateCheckout", {
+    trackMetaEvent("InitiateCheckout", {
       content_name: "Asesor Fiscal de Médicos",
       value: 1527,
       currency: "MXN",
