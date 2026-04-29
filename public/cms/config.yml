@@ -1,0 +1,69 @@
+backend:
+  name: github
+  repo: alfredo31410-ctrl/cefin-web
+  branch: main
+  always_fork: false
+  base_url: https://decap-oauth.vercel.app
+  auth_endpoint: auth
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+display_url: https://cefincapacitacion.com
+logo_url: "/logo.png"
+
+collections:
+  - name: "cursos"
+    label: "Cursos"
+    label_singular: "Curso"
+    folder: "content/cursos"
+    create: true
+    slug: "{{titulo}}"
+    summary: "{{titulo}} ({{categoria}})"
+    fields:
+      - { label: "Titulo del Curso", name: "titulo", widget: "string" }
+      - { name: "slug", widget: "slug", fromField: "titulo", label: "Slug", hidden: true }
+      - { label: "Categoria", name: "categoria", widget: "select", options: ["fiscal", "nomina", "contabilidad"] }
+      - { label: "Precio", name: "precio", widget: "string" }
+      - { label: "Link Hotmart", name: "hotmart", widget: "string" }
+      - { label: "Imagen Portada", name: "imagen", widget: "image" }
+      - { label: "Instructor", name: "instructor", widget: "select", options: ["Alfredo Cobos", "Marisol Galvan"], default: "Alfredo Cobos" }
+      - { label: "Duracion", name: "duracion", widget: "string" }
+      - { label: "Destacar", name: "destacado", widget: "boolean", default: true }
+      - { label: "Descripcion SEO", name: "descripcion", widget: "text" }
+      - { label: "Temario Completo", name: "body", widget: "markdown" }
+
+  - name: "eventos"
+    label: "Eventos"
+    label_singular: "Evento"
+    folder: "content/eventos"
+    create: true
+    slug: "{{titulo}}"
+    summary: "{{titulo}} - {{fecha}}"
+    fields:
+      - { label: "Titulo", name: "titulo", widget: "string" }
+      - { name: "slug", widget: "slug", fromField: "titulo", hidden: true }
+      - { label: "Fecha y Hora", name: "fecha", widget: "datetime", format: "YYYY-MM-DD HH:mm:ss" }
+      - { label: "Lugar / Modalidad", name: "lugar", widget: "string" }
+      - { label: "Costo", name: "costo", widget: "string" }
+      - { label: "Link Registro", name: "hotmart", widget: "string" }
+      - { label: "Imagen", name: "imagen", widget: "image" }
+      - { label: "Destacar en Home", name: "destacado", widget: "boolean", default: true }
+      - { label: "Resumen", name: "descripcion", widget: "text" }
+      - { label: "Detalles del Evento", name: "body", widget: "markdown" }
+
+  - name: "blog"
+    label: "Blog y Clases YT"
+    label_singular: "Post"
+    folder: "content/blog"
+    create: true
+    slug: "{{titulo}}"
+    fields:
+      - { label: "Titulo", name: "titulo", widget: "string" }
+      - { name: "slug", widget: "slug", fromField: "titulo", hidden: true }
+      - { label: "YouTube Video ID", name: "videoId", widget: "string", required: false }
+      - { label: "Fecha", name: "fecha", widget: "datetime", format: "DD MMMM YYYY" }
+      - { label: "Imagen de Portada", name: "imagen", widget: "image" }
+      - { label: "Destacado", name: "destacado", widget: "boolean", default: false }
+      - { label: "Descripcion Corta", name: "descripcion", widget: "text" }
+      - { label: "Contenido Completo", name: "body", widget: "markdown" }

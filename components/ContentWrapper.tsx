@@ -10,18 +10,20 @@ export default function ContentWrapper({ children }: { children: React.ReactNode
   
   // Detectamos si la ruta actual es la landing de LATAM
   const isLanding = pathname?.includes("/LATAM");
+  const isAdmin = pathname?.startsWith("/admin");
+  const hidePublicChrome = isLanding || isAdmin;
 
   return (
     <>
       {/* Si NO es landing, mostramos la Navbar */}
-      {!isLanding && <Navbar />}
+      {!hidePublicChrome && <Navbar />}
       
-      <main className={`grow ${isLanding ? 'bg-black' : 'bg-white text-slate-900'}`}>
+      <main className={`grow ${hidePublicChrome ? "bg-black" : "bg-white text-slate-900"}`}>
         {children}
       </main>
 
       {/* Si NO es landing, mostramos Footer y WhatsApp */}
-      {!isLanding && (
+      {!hidePublicChrome && (
         <>
           <Footer />
           <WhatsAppButton />

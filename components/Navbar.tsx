@@ -11,6 +11,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { trackMetaEvent } from "@/lib/meta-pixel";
 
 export default function Navbar() {
   /*
@@ -196,6 +197,12 @@ export default function Navbar() {
 
         <Link
           href="/membresias"
+          onClick={() =>
+            trackMetaEvent("ViewContent", {
+              content_name: "Navbar inscribirme desktop",
+              content_category: "Navegacion",
+            })
+          }
           className="hidden md:block bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition"
         >
           Inscribirme
@@ -264,7 +271,13 @@ export default function Navbar() {
 
             <Link
               href="/membresias"
-              onClick={closeMenu}
+              onClick={() => {
+                trackMetaEvent("ViewContent", {
+                  content_name: "Navbar inscribirme mobile",
+                  content_category: "Navegacion",
+                });
+                closeMenu();
+              }}
               className="bg-red-600 text-white text-center py-3 rounded-md"
             >
               Inscribirme

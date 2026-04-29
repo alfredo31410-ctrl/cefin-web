@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { Calendar, Clock, CheckCircle2, ShieldCheck, ArrowLeft, Lock } from "lucide-react"
+import TrackedLink from "@/components/TrackedLink"
 
 export const dynamicParams = true; 
 
@@ -126,12 +127,17 @@ export default async function EventoDetalle({ params }: Props) {
                       Este evento se llevó a cabo el {fechaFormateada}. Por el momento no hay nuevas fechas disponibles.
                     </p>
                   </div>
-                  <Link
+                  <TrackedLink
                     href="/contacto"
+                    eventName="Lead"
+                    eventParams={{
+                      content_name: "Evento cerrado pedir informes",
+                      content_category: "Eventos",
+                    }}
                     className="w-full bg-slate-800 hover:bg-slate-900 text-white py-5 rounded-2xl font-black text-center block transition-all text-lg uppercase tracking-tight"
                   >
                     Pedir informes
-                  </Link>
+                  </TrackedLink>
                 </div>
               ) : (
                 // VISTA CUANDO EL EVENTO ES PRÓXIMO
@@ -147,14 +153,21 @@ export default async function EventoDetalle({ params }: Props) {
                     </div>
                   </div>
 
-                  <a
+                  <TrackedLink
                     href={evento.hotmart}
+                    eventName="InitiateCheckout"
+                    eventParams={{
+                      content_name: evento.titulo,
+                      content_category: "Eventos",
+                      value: String(evento.precio),
+                      currency: "MXN",
+                    }}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full bg-red-600 hover:bg-red-700 text-white py-5 rounded-2xl font-black text-center block transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-red-200 text-lg uppercase tracking-tight"
                   >
                     Inscribirme ahora
-                  </a>
+                  </TrackedLink>
                 </>
               )}
 

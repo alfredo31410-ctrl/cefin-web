@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link"; // Usamos Link para mejor rendimiento interno
+import TrackedLink from "@/components/TrackedLink";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -10,16 +10,15 @@ const fadeUp = {
 
 export default function HeroContent() {
   return (
-    <div className="relative z-10 text-center max-w-4xl px-6 pt-28 md:pt-32">
-      
+    <div className="relative z-10 max-w-4xl px-6 pt-28 text-center md:pt-32">
       <motion.p
         variants={fadeUp}
         initial="hidden"
         animate="visible"
         transition={{ duration: 0.6 }}
-        className="text-sm uppercase tracking-[0.2em] text-red-400 font-black mb-4"
+        className="mb-4 text-sm font-black uppercase tracking-[0.2em] text-red-400"
       >
-        Capacitación fiscal profesional en México
+        Capacitacion fiscal profesional en Mexico
       </motion.p>
 
       <motion.h1
@@ -27,9 +26,9 @@ export default function HeroContent() {
         initial="hidden"
         animate="visible"
         transition={{ duration: 0.7, delay: 0.2 }}
-        className="text-4xl md:text-7xl font-black mb-6 leading-[1.1] tracking-tighter text-white"
+        className="mb-6 text-4xl font-black leading-[1.1] tracking-tighter text-white md:text-7xl"
       >
-        Actualización fiscal inteligente
+        Actualizacion fiscal inteligente
       </motion.h1>
 
       <motion.p
@@ -37,38 +36,48 @@ export default function HeroContent() {
         initial="hidden"
         animate="visible"
         transition={{ duration: 0.7, delay: 0.4 }}
-        className="text-lg md:text-xl max-w-2xl mx-auto mb-10 text-slate-200 font-medium leading-relaxed"
+        className="mx-auto mb-10 max-w-2xl text-lg font-medium leading-relaxed text-slate-200 md:text-xl"
       >
-        Domina reformas fiscales, Contabilidad con NIF y cumplimiento SAT con capacitación práctica impartida por especialistas en materia contable.
+        Domina reformas fiscales, Contabilidad con NIF y cumplimiento SAT con
+        capacitacion practica impartida por especialistas en materia contable.
       </motion.p>
 
-      {/* BOTONES CON ACCESIBILIDAD Y CONTRASTE 100 */}
       <motion.div
         variants={fadeUp}
         initial="hidden"
         animate="visible"
         transition={{ duration: 0.7, delay: 0.6 }}
-        className="flex flex-col sm:flex-row justify-center items-center gap-5"
+        className="flex flex-col items-center justify-center gap-5 sm:flex-row"
       >
-        <Link 
-          href="/cursos" 
-          aria-label="Explorar catálogo de cursos fiscales"
-          className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-4 rounded-xl font-black transition-all hover:scale-105 shadow-xl shadow-emerald-900/20 text-center"
+        <TrackedLink
+          href="/cursos"
+          eventName="ViewContent"
+          eventParams={{
+            content_name: "Hero cursos",
+            content_category: "Navegacion",
+          }}
+          ariaLabel="Explorar catalogo de cursos fiscales"
+          className="w-full rounded-xl bg-emerald-600 px-10 py-4 text-center font-black text-white shadow-xl shadow-emerald-900/20 transition-all hover:scale-105 hover:bg-emerald-700 sm:w-auto"
         >
           VER CURSOS
-        </Link>
+        </TrackedLink>
 
-        <Link 
-          href="/membresias" 
-          aria-label="Conocer planes de membresía anual"
-          className="w-full sm:w-auto border-2 border-white/30 hover:border-white text-white px-10 py-4 rounded-xl font-black transition-all hover:bg-white hover:text-slate-900 text-center backdrop-blur-sm"
+        <TrackedLink
+          href="/membresias"
+          eventName="ViewContent"
+          eventParams={{
+            content_name: "Hero membresias",
+            content_category: "Navegacion",
+          }}
+          ariaLabel="Conocer planes de membresia anual"
+          className="w-full rounded-xl border-2 border-white/30 px-10 py-4 text-center font-black text-white backdrop-blur-sm transition-all hover:bg-white hover:text-slate-900 sm:w-auto"
         >
-          MEMBRESÍAS 2026
-        </Link>
+          MEMBRESIAS 2026
+        </TrackedLink>
       </motion.div>
 
       <div className="mt-12 flex items-center justify-center gap-2 opacity-70">
-        <p className="text-xs font-bold tracking-widest uppercase text-slate-300">
+        <p className="text-xs font-bold uppercase tracking-widest text-slate-300">
           +35,000 CONTADORES CAPACITADOS
         </p>
       </div>
