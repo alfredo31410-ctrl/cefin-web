@@ -11,6 +11,7 @@ export default function AdminEventosPage() {
       items={eventos}
       createLabel="Nuevo evento"
       collectionName="eventos"
+      createHref="/admin/eventos/nuevo"
     />
   );
 }

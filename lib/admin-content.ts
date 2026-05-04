@@ -17,6 +17,7 @@ export type AdminEntry = {
   ctaLabel: string;
   meta: string;
   editCmsUrl: string;
+  adminEditHref?: string;
 };
 
 function truncate(text: string, max = 96) {
@@ -77,6 +78,7 @@ export function getAdminEventos(): AdminEntry[] {
     ctaLabel: evento.hotmart ? "Hotmart" : "Sin enlace",
     meta: asText(evento.fecha),
     editCmsUrl: `/cms/index.html#/collections/eventos/entries/${evento.slug}`,
+    adminEditHref: `/admin/eventos/${evento.slug}`,
   }));
 
   const locales = eventosLocales.map((evento) => ({
@@ -91,6 +93,7 @@ export function getAdminEventos(): AdminEntry[] {
     ctaLabel: evento.hotmart ? "Hotmart" : "Sin enlace",
     meta: asText(evento.fecha),
     editCmsUrl: `/cms/index.html#/collections/eventos/entries/${evento.slug}`,
+    adminEditHref: `/admin/eventos/${evento.slug}`,
   }));
 
   return [...locales, ...cms];
