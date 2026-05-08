@@ -7,6 +7,7 @@ import {
   HeroBlog,
   BlogListAnimated,
   FeaturedFreeCourse,
+  LiveBlogNotice,
 } from "@/components/BlogVisuals"
 
 export default function BlogPage() {
@@ -36,6 +37,8 @@ export default function BlogPage() {
             gratuitas para mantenerte al dia y avanzar en tu practica.
           </p>
         </div>
+
+        <LiveBlogNotice />
 
         <BlogListAnimated>
           <Grid>
