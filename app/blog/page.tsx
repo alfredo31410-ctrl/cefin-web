@@ -1,9 +1,13 @@
 import { getAllBlogs } from "@/lib/blogs"
 import BlogCard from "@/components/BlogCard"
-import { blog as blogsLocales } from "@/data/blogs"
+import { blog as blogsLocales, featuredFreeCourse } from "@/data/blogs"
 import Container from "@/components/Container"
 import Grid from "@/components/Grid"
-import { HeroBlog, BlogListAnimated } from "@/components/BlogVisuals"
+import {
+  HeroBlog,
+  BlogListAnimated,
+  FeaturedFreeCourse,
+} from "@/components/BlogVisuals"
 
 export default function BlogPage() {
   const blogsCMS = getAllBlogs()
@@ -18,6 +22,20 @@ export default function BlogPage() {
       <Container>
         
         <HeroBlog />
+        <FeaturedFreeCourse {...featuredFreeCourse} />
+
+        <div className="mb-8">
+          <span className="text-[11px] font-black uppercase tracking-[0.22em] text-red-600">
+            Mas cursos gratuitos
+          </span>
+          <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-900 md:text-4xl">
+            Explora otras capacitaciones gratuitas
+          </h2>
+          <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600 md:text-lg">
+            Aqui puedes seguir descubriendo sesiones, actualizaciones y clases
+            gratuitas para mantenerte al dia y avanzar en tu practica.
+          </p>
+        </div>
 
         <BlogListAnimated>
           <Grid>

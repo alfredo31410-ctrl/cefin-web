@@ -12,6 +12,21 @@ export type Blog = {
   slug: string
 }
 
+export const featuredFreeCourse = {
+  eyebrow: "Curso gratis destacado",
+  titulo: "Basica Contabilidad",
+  descripcion:
+    "Empieza con una clase gratuita para construir bases contables claras y entender mejor la logica financiera de los negocios.",
+  bullets: [
+    "Ideal para quienes quieren reforzar fundamentos antes de avanzar a temas mas tecnicos",
+    "Formato claro, practico y pensado para aplicar desde el primer vistazo",
+    "Acceso desde una landing dedicada dentro de tu otra app de campañas",
+  ],
+  imagen: "/academia-contabilidad-banner.png",
+  ctaHref: "https://cefin.mx/landings/academia-contabilidad",
+  ctaLabel: "Ver detalles del curso gratis",
+}
+
 const blogBase = [
   {
     id: 1,
