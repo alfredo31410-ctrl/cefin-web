@@ -39,6 +39,9 @@ export type CourseLandingData = {
     viewContentName: string;
     startTrialName: string;
     checkoutName: string;
+    productId?: string;
+    offerId?: string;
+    funnelName?: string;
   };
 };
 
@@ -123,6 +126,9 @@ export const medicosLanding: CourseLandingData = {
     viewContentName: "Landing Asesor Fiscal de Medicos",
     startTrialName: "VSL Medicos iniciada",
     checkoutName: "Asesor Fiscal de Medicos",
+    productId: "Q105254575O",
+    offerId: "ax75adly",
+    funnelName: "Medicos Evergreen",
   },
 };
 

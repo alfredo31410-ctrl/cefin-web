@@ -1,0 +1,12 @@
+
+> cefin@0.1.0 dev
+> next dev
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.73:3000
+- Environments: .env.local
+
+✓ Starting...
+✓ Ready in 4.1s
+ GET /cursos/asesor-fiscal-medicos 200 in 2.9s (compile: 2.7s, render: 240ms)

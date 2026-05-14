@@ -146,6 +146,28 @@ function EnrollmentCard({
   );
 }
 
+function getCourseTrackingParams(data: CourseLandingData) {
+  const params: Record<string, unknown> = {
+    content_category: "Curso",
+    content_type: "product",
+  };
+
+  if (data.tracking.productId) {
+    params.content_ids = [data.tracking.productId];
+    params.product_id = data.tracking.productId;
+  }
+
+  if (data.tracking.offerId) {
+    params.offer_id = data.tracking.offerId;
+  }
+
+  if (data.tracking.funnelName) {
+    params.funnel_name = data.tracking.funnelName;
+  }
+
+  return params;
+}
+
 export default function CourseLandingTemplate({
   data,
 }: {
@@ -157,6 +179,7 @@ export default function CourseLandingTemplate({
 
   useEffect(() => {
     trackMetaEvent("ViewContent", {
+      ...getCourseTrackingParams(data),
       content_name: data.tracking.viewContentName,
       value: 75,
       currency: "MXN",
@@ -184,6 +207,7 @@ export default function CourseLandingTemplate({
             if (!videoTrackedRef.current) {
               videoTrackedRef.current = true;
               trackMetaEvent("StartTrial", {
+                ...getCourseTrackingParams(data),
                 content_name: data.tracking.startTrialName,
                 content_category: "Video",
                 value: 150,
@@ -225,6 +249,7 @@ export default function CourseLandingTemplate({
     const numericValue = Number(data.price.replace(/[^0-9.]/g, ""));
 
     trackMetaEvent("InitiateCheckout", {
+      ...getCourseTrackingParams(data),
       content_name: data.tracking.checkoutName,
       value: Number.isFinite(numericValue) ? numericValue : 0,
       currency: data.priceCurrency,
