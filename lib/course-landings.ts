@@ -307,3 +307,100 @@ export const constructorasLanding: CourseLandingData = {
     checkoutName: "Constructoras Diplomado de Impuestos y Contabilidad",
   },
 };
+
+export const asesor360Landing: CourseLandingData = {
+  slug: "sistema-360-asesor-contable",
+  title:
+    "Sistema 360° - Asesor Contable para entender, interpretar y asesorar con seguridad.",
+  subtitle:
+    "Muchos contadores saben registrar operaciones, pero muy pocos entienden realmente qué están haciendo.",
+  paymentUrl:
+    "https://pay.hotmart.com/W105817830D?off=v3ssj5g6&checkoutMode=10",
+  heroImage: "/sistema-360-asesor-contable.png",
+  heroImageAlt: "Sistema 360° - Asesor Contable",
+  heroSupportText:
+    "Ruta contable integral con cursos, acompañamiento y recursos para convertir criterio en asesoría.",
+  transformationImage: "/sistema-360-asesor-contable.png",
+  price: "$9,987",
+  priceCurrency: "MXN",
+  openEnrollmentLabel: "Inscripción especial",
+  enrollmentTitle: "Sistema 360° - Asesor Contable",
+  enrollmentDescription:
+    "Entra a una ruta contable completa para dejar de entregar solo reportes y empezar a explicar lo que el negocio necesita decidir.",
+  enrollmentBadges: [
+    "Nuestros mejores 8 cursos contables",
+    "6 meses de sesiones en vivo del Factor CEFIN",
+    "Norma IA para dudas contables",
+    "Recursos para clientes, cobro y crecimiento del despacho",
+  ],
+  heroCta: "Quiero asegurar mi acceso al Sistema 360",
+  realityTitle: "Esto le pasa a muchos contadores cuando solo registran:",
+  realityItems: [
+    "Cumplen con operaciones, pero no siempre entienden lo que revelan.",
+    "Entregan reportes sin convertirlos en decisiones para el cliente.",
+    "Dudan al explicar NIF, costos, estados financieros y riesgos contables.",
+    "Y terminan cobrando por ejecución cuando podrían cobrar por criterio.",
+  ],
+  realityResult:
+    "El resultado: trabajan mucho, pero su asesoría todavía no se percibe como una ventaja real.",
+  realityWarning:
+    "Sistema 360° está pensado para ordenar esa visión y convertirla en una práctica contable más completa.",
+  problemTitle:
+    "El problema no es aprender más temas sueltos. Es conectar la contabilidad para asesorar mejor.",
+  problemSubtitle:
+    "Cuando entiendes lo que estás registrando, puedes interpretar, explicar y guiar decisiones con más seguridad.",
+  sectorTitle:
+    "La asesoría contable vale más cuando el cliente entiende que estás viendo el negocio completo.",
+  sectorSubtitle:
+    "Por eso esta ruta junta formación técnica, sesiones en vivo y herramientas para crecer como asesor.",
+  opportunityItems: [
+    "Dejas de quedarte solo en el registro",
+    "Explicas resultados con más criterio",
+    "Construyes una asesoría contable 360°",
+  ],
+  audienceItems: [
+    "Quieres dominar una ruta contable más completa",
+    "Buscas interpretar estados financieros con seguridad",
+    "Quieres cobrar mejor por tu criterio y no solo por operar",
+    "Te interesa fortalecer tu despacho con herramientas prácticas",
+  ],
+  learnEyebrow: "Lo que incluye",
+  learnTitle: "Una ruta contable con formación y recursos para avanzar",
+  learnItems: [
+    "Nuestros mejores 8 cursos contables",
+    "Guía para Conseguir a tus Primeros 5 Clientes",
+    "Incubadora de Despachos Contables",
+    "Reprograma tu Relación con el Dinero - Finanzas Personales para Contadores",
+    "El Arte de Saber Cobrar para Contadores",
+    "Resolución Miscelánea Fiscal 2026",
+    "Inteligencia Artificial y Excel para Contadores",
+    "Norma - IA para dudas contables y Taller de Contabilidad Electrónica",
+  ],
+  learnClosing:
+    "No es solo contenido: es una ruta para pensar, asesorar y crecer con más estructura.",
+  valueTitle:
+    "Todo este ecosistema tiene un precio normal de $67,405.00 MXN...",
+  valueSubtitle: "Pero hoy puedes entrar al Sistema 360 por:",
+  valueItems: [
+    "Acceso a 6 meses de sesiones en vivo del Factor CEFIN todos los lunes",
+    "Formación contable para interpretar y asesorar mejor",
+    "Recursos para atraer clientes y fortalecer tu despacho",
+    "Herramientas de IA y talleres complementarios",
+  ],
+  urgencyTitle:
+    "Si quieres dejar de operar en automático, esta es una mejor forma de avanzar.",
+  urgencySubtitle:
+    "Asegura tu acceso a la ruta completa y empieza a construir una asesoría contable con más criterio.",
+  footerNotes: [
+    "Sistema 360° te ayuda a conectar técnica contable, lectura del negocio y crecimiento profesional.",
+    "La meta es que tus números no terminen solo en un reporte, sino en una asesoría que el cliente valore.",
+  ],
+  tracking: {
+    viewContentName: "Landing Sistema 360 Asesor Contable",
+    startTrialName: "Landing Sistema 360 vista",
+    checkoutName: "Sistema 360 Asesor Contable",
+    productId: "W105817830D",
+    offerId: "v3ssj5g6",
+    funnelName: "Sistema 360 Asesor Contable",
+  },
+};

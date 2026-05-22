@@ -96,6 +96,39 @@ Este no es un curso más. Es el inicio de una transformación profesional.`,
     destacado: true,
     hotmart: "https://pay.hotmart.com/S100738570C",
   },
+  {
+    id: 4,
+    titulo: "Sistema 360° - Asesor Contable",
+    slugOverride: "sistema-360-asesor-contable",
+    descripcion:
+      "Muchos contadores saben registrar operaciones, pero muy pocos entienden realmente qué están haciendo.",
+    descripcionLarga: `Muchos contadores saben registrar operaciones, pero muy pocos entienden realmente qué están haciendo.
+
+Incluye:
+Nuestros mejores 8 cursos contables.
+
+Además, te llevas estos regalos:
+Acceso a 6 meses de Sesiones en Vivo del Factor CEFIN todos los lunes.
+Guía para Conseguir a tus Primeros 5 Clientes.
+Incubadora de Despachos Contables.
+Reprograma tu Relación con el Dinero - Finanzas Personales para Contadores.
+El Arte de Saber Cobrar para Contadores.
+Resolución Miscelánea Fiscal 2026.
+Inteligencia Artificial y Excel para Contadores.
+Norma - IA, Agente de Inteligencia Artificial para Dudas Contables.
+Taller de Contabilidad Electrónica.
+
+Precio normal: $67,405.00 MXN.
+Inversión especial: $9,987.00 MXN.`,
+    precio: "$9,987 MXN",
+    imagen: "/sistema-360-asesor-contable.png",
+    categoria: "contabilidad",
+    duracion: "Ruta 360",
+    instructor: "Alfredo Cobos",
+    destacado: true,
+    hotmart:
+      "https://pay.hotmart.com/Y105942158X?off=57a4x11n&checkoutMode=10",
+  },
 ];
 
 export const cursos: Curso[] = cursosBase.map((curso) => ({
