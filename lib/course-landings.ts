@@ -131,7 +131,6 @@ export const medicosLanding: CourseLandingData = {
     funnelName: "Medicos Evergreen",
   },
 };
-
 export const plataformasLanding: CourseLandingData = {
   slug: "plataformas-digitales",
   title:
@@ -402,5 +401,117 @@ export const asesor360Landing: CourseLandingData = {
     productId: "W105817830D",
     offerId: "v3ssj5g6",
     funnelName: "Sistema 360 Asesor Contable",
+  },
+};
+
+export const metodoCefinContadorEmpresarioLanding: CourseLandingData = {
+  slug: "metodo-cefin-contador-a-empresario",
+  title: "Método CEFIN: Contador a Empresario Contable",
+  subtitle:
+    "Deja de operar tu despacho como si solo fueras el contador que resuelve pendientes. Aprende a construir una visión empresarial para vender mejor, cobrar mejor, liderar mejor y hacer crecer tu despacho con estrategia.",
+  paymentUrl:
+    "https://pay.hotmart.com/A106207243T?off=ul4f4uez&checkoutMode=10",
+  heroImage: "/metodo-cefin-contador-empreario.png",
+  heroImageAlt: "Método CEFIN: Contador a Empresario Contable",
+  heroSupportText:
+    "Una ruta estratégica para transformar tu despacho contable en un negocio más ordenado, rentable y profesional.",
+  transformationImage: "/metodo-cefin-contador-empreario.png",
+  price: "$3,687",
+  priceCurrency: "MXN",
+  openEnrollmentLabel: "Inscripción especial",
+  enrollmentTitle: "Método CEFIN: Contador a Empresario Contable",
+  enrollmentDescription:
+    "Accede a una formación integral para dejar de depender solo de recomendaciones, clientes difíciles o precios bajos, y comenzar a dirigir tu despacho con mentalidad empresarial.",
+  enrollmentBadges: [
+    "Incubadora CEFIN de Despachos Contables",
+    "Asesor Empresarial CEFIN IA para dudas estratégicas",
+    "Cursos de ventas, cobro, liderazgo y autoridad digital",
+    "Formación para estructurar un despacho más rentable",
+  ],
+  heroCta: "Quiero transformar mi despacho contable",
+
+  realityTitle:
+    "Esto le pasa a muchos contadores cuando no ven su despacho como empresa:",
+  realityItems: [
+    "Saben contabilidad e impuestos, pero no tienen una estrategia clara para conseguir clientes.",
+    "Atienden urgencias todo el día, pero sienten que su despacho no crece como debería.",
+    "Cobran barato porque no han estructurado sus servicios ni comunicado su verdadero valor.",
+    "Trabajan demasiado, lideran poco y terminan atrapados en la operación diaria.",
+  ],
+  realityResult:
+    "El resultado: tienen conocimiento, experiencia y capacidad, pero siguen funcionando como técnicos dentro de su propio despacho.",
+  realityWarning:
+    "El Método CEFIN está diseñado para ayudarte a cambiar esa forma de trabajar y comenzar a construir un despacho con visión empresarial.",
+
+  problemTitle:
+    "El problema no es que te falte conocimiento contable. El problema es que nadie te enseñó a convertir ese conocimiento en un negocio rentable.",
+  problemSubtitle:
+    "Para crecer como contador no basta con saber declarar, registrar o cumplir obligaciones. También necesitas aprender a vender, cobrar, liderar, posicionarte y mejorar la experiencia de tus clientes.",
+
+  sectorTitle:
+    "El contador que aprende a pensar como empresario deja de competir por precio y empieza a posicionarse por valor.",
+  sectorSubtitle:
+    "Por eso esta ruta reúne estrategia, mentalidad, liderazgo, ventas, cobro, autoridad digital y herramientas de inteligencia artificial para tomar mejores decisiones dentro de tu despacho.",
+
+  opportunityItems: [
+    "Construyes un despacho más ordenado y estratégico",
+    "Aprendes a vender y cobrar con mayor seguridad",
+    "Dejas de operar solo como técnico y empiezas a dirigir como empresario",
+  ],
+
+  audienceItems: [
+    "Eres contador y quieres conseguir más y mejores clientes",
+    "Tienes despacho, pero sientes que todo depende de ti",
+    "Quieres cobrar mejor sin sentir culpa o inseguridad",
+    "Necesitas ordenar tus servicios, precios, procesos y comunicación",
+    "Quieres posicionarte con más autoridad y dejar de competir solo por precio",
+    "Buscas apoyarte en herramientas de IA para tomar decisiones estratégicas",
+  ],
+
+  learnEyebrow: "¿Qué contiene?",
+  learnTitle:
+    "Una ruta completa para convertir tu despacho contable en un negocio más rentable",
+  learnItems: [
+    "Incubadora CEFIN de Despachos Contables",
+    "Curso Rompe tus Techos Mentales",
+    "Asesor Empresarial CEFIN IA - Agente de Inteligencia Artificial para dudas estratégicas de tu despacho",
+    "Curso Autoridad Digital para Contadores",
+    "Curso Autoliderazgo del Empresario Contable",
+    "Curso Director de Equipo Contable",
+    "Curso Ventas para Despachos Contables",
+    "Curso El Arte de Saber Cobrar: Honorarios Contables",
+    "Curso Experiencia del Cliente Contable",
+  ],
+  learnClosing:
+    "No es solo formación. Es una ruta para que cambies la forma en la que piensas, vendes, cobras, lideras y haces crecer tu despacho contable.",
+
+  valueTitle:
+    "Todo lo que necesitas para empezar a pensar y actuar como empresario contable.",
+  valueSubtitle: "Hoy puedes acceder al Método CEFIN por:",
+  valueItems: [
+    "- Formación para estructurar y profesionalizar tu despacho.",
+    "- Cursos enfocados en ventas, cobro, liderazgo y experiencia del cliente.",
+    "- Herramientas para fortalecer tu autoridad digital como contador.",
+    "- Asesor Empresarial CEFIN IA para resolver dudas estratégicas de crecimiento.",
+    "- Recursos para dejar de improvisar y comenzar a tomar decisiones con visión de negocio.",
+  ],
+
+  urgencyTitle:
+    "Si ya sabes contabilidad, ahora necesitas aprender a convertir ese conocimiento en un despacho rentable.",
+  urgencySubtitle:
+    "Asegura tu acceso al Método CEFIN y empieza a construir un despacho contable más ordenado, estratégico y profesional.",
+
+  footerNotes: [
+    "El Método CEFIN te ayuda a pasar de contador operativo a empresario contable.",
+    "La meta es que dejes de vender solo tiempo, declaraciones o trámites, y empieces a construir servicios que tus clientes valoren y estén dispuestos a pagar mejor.",
+  ],
+
+  tracking: {
+    viewContentName: "Landing Método CEFIN Contador a Empresario",
+    startTrialName: "Landing Método CEFIN vista",
+    checkoutName: "Método CEFIN Contador a Empresario Contable",
+    productId: "W105817830D",
+    offerId: "v3ssj5g6",
+    funnelName: "Método CEFIN Contador a Empresario",
   },
 };

@@ -129,6 +129,23 @@ Inversión especial: $9,987.00 MXN.`,
     hotmart:
       "https://pay.hotmart.com/Y105942158X?off=57a4x11n&checkoutMode=10",
   },
+  {
+    id: 5,
+    titulo: "Método CEFIN: Contador a Empresario Contable",
+    slugOverride: "metodo-cefin-contador-a-empresario",
+    descripcion:
+      "Transforma tu despacho contable en un negocio más ordenado, rentable y profesional con estrategias de ventas, cobro, liderazgo y posicionamiento.",
+    descripcionLarga:
+      "Una ruta estratégica para dejar de operar únicamente como contador y comenzar a dirigir tu despacho con mentalidad empresarial.",
+    precio: "$3,687 MXN",
+    imagen: "/metodo-cefin-contador-empreario.png",
+    categoria: "mentalidad",
+    duracion: "9 cursos",
+    instructor: "Alfredo Cobos",
+    destacado: true,
+    hotmart:
+      "https://pay.hotmart.com/A106207243T?off=ul4f4uez&checkoutMode=10&bid=1781113657950",
+  },
 ];
 
 export const cursos: Curso[] = cursosBase.map((curso) => ({
