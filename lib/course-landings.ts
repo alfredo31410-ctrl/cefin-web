@@ -411,11 +411,11 @@ export const metodoCefinContadorEmpresarioLanding: CourseLandingData = {
     "Deja de operar tu despacho como si solo fueras el contador que resuelve pendientes. Aprende a construir una visión empresarial para vender mejor, cobrar mejor, liderar mejor y hacer crecer tu despacho con estrategia.",
   paymentUrl:
     "https://pay.hotmart.com/A106207243T?off=ul4f4uez&checkoutMode=10",
-  heroImage: "/metodo-cefin-contador-empreario.png",
+  heroImage: "/metodo-cefin-contador-empresario.png",
   heroImageAlt: "Método CEFIN: Contador a Empresario Contable",
   heroSupportText:
     "Una ruta estratégica para transformar tu despacho contable en un negocio más ordenado, rentable y profesional.",
-  transformationImage: "/metodo-cefin-contador-empreario.png",
+  transformationImage: "/metodo-cefin-contador-empresario.png",
   price: "$3,687",
   priceCurrency: "MXN",
   openEnrollmentLabel: "Inscripción especial",

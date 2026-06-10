@@ -138,7 +138,7 @@ Inversión especial: $9,987.00 MXN.`,
     descripcionLarga:
       "Una ruta estratégica para dejar de operar únicamente como contador y comenzar a dirigir tu despacho con mentalidad empresarial.",
     precio: "$3,687 MXN",
-    imagen: "/metodo-cefin-contador-empreario.png",
+    imagen: "/metodo-cefin-contador-empresario.png",
     categoria: "mentalidad",
     duracion: "9 cursos",
     instructor: "Alfredo Cobos",
