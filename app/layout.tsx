@@ -1,10 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from 'next/font/google';
 import ContentWrapper from "@/components/ContentWrapper";
 import MetaPixel from "@/components/MetaPixel";
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: {
@@ -42,7 +39,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className={`${inter.className} antialiased min-h-screen flex flex-col`}>
+      <body className="antialiased min-h-screen flex flex-col">
         <MetaPixel />
 
         {/* Wrapper */}
