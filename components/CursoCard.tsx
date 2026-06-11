@@ -10,68 +10,72 @@ type Props = {
 }
 
 export default function CursoCard({ curso }: Props) {
-  const coloresCategoria = {
+  const coloresCategoria: Record<Curso["categoria"], string> = {
     fiscal: "bg-blue-100 text-blue-700",
     nomina: "bg-green-100 text-green-700",
     contabilidad: "bg-purple-100 text-purple-700",
     mentalidad: "bg-yellow-100 text-yellow-700",
   }
 
-  const rutasEspeciales: Record<string, string> = {
-    "asesor-fiscal-medicos": "/cursos/asesor-fiscal-medicos",
-    "plataformas-digitales": "/cursos/plataformas-digitales",
-  }
-
-  const cursoHref = rutasEspeciales[curso.slug] || `/cursos/${curso.slug}`
+  const cardUrl = curso.cardUrl?.trim()
+  const cursoHref = cardUrl || `/cursos/${curso.slug}`
+  const abrirEnNuevaPestana = Boolean(cardUrl && curso.abrirEnNuevaPestana)
 
   return (
     <motion.div
       whileHover={{ y: -6 }}
-      className="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full border border-slate-100"
+      className="h-full"
     >
-      <div className="relative w-full h-44 md:h-48 lg:h-52 overflow-hidden bg-white">
-        <Image
-          src={curso.imagen}
-          alt={curso.titulo}
-          fill
-          className="object-contain p-2 transition-transform duration-500 group-hover:scale-105"
-        />
+      <Link
+        href={cursoHref}
+        target={abrirEnNuevaPestana ? "_blank" : undefined}
+        rel={abrirEnNuevaPestana ? "noopener noreferrer" : undefined}
+        aria-label={`Ver curso: ${curso.titulo}`}
+        className="group flex h-full flex-col overflow-hidden rounded-xl border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
+      >
+        <div className="relative w-full h-44 md:h-48 lg:h-52 overflow-hidden bg-white">
+          <Image
+            src={curso.imagen}
+            alt={curso.titulo}
+            fill
+            className="object-contain p-2 transition-transform duration-500 group-hover:scale-105"
+          />
 
-        <div className="absolute top-3 left-3">
-          <span
-            className={`
-              px-2 py-1 md:px-3 md:py-1
-              rounded-full
-              text-[10px] md:text-xs
-              font-bold
-              uppercase
-              tracking-wider
-              shadow-sm
-              ${(coloresCategoria as any)[curso.categoria] || "bg-slate-100 text-slate-700"}
-            `}
-          >
-            {curso.categoria}
-          </span>
+          <div className="absolute top-3 left-3">
+            <span
+              className={`
+                px-2 py-1 md:px-3 md:py-1
+                rounded-full
+                text-[10px] md:text-xs
+                font-bold
+                uppercase
+                tracking-wider
+                shadow-sm
+                ${coloresCategoria[curso.categoria]}
+              `}
+            >
+              {curso.categoria}
+            </span>
+          </div>
         </div>
-      </div>
 
-      <div className="p-4 md:p-6 flex flex-col flex-grow">
-        <div className="flex items-center gap-2 md:gap-3 mb-3 text-[11px] font-medium text-slate-400 uppercase tracking-widest">
-          <span>👤 {curso.instructor}</span>
-          <span>•</span>
-          <span>⏱️ {curso.duracion}</span>
-        </div>
+        <div className="p-4 md:p-6 flex flex-col flex-grow">
+          <div className="flex items-center gap-2 md:gap-3 mb-3 text-[11px] font-medium text-slate-400 uppercase tracking-widest">
+            <span>👤 {curso.instructor}</span>
+            <span>•</span>
+            <span>⏱️ {curso.duracion}</span>
+          </div>
 
-        <h3 className="text-base md:text-lg lg:text-xl font-bold mb-2 text-slate-800 line-clamp-2 min-h-[3rem]">
-          {curso.titulo}
-        </h3>
+          <h3 className="text-base md:text-lg lg:text-xl font-bold mb-2 text-slate-800 line-clamp-2 min-h-[3rem]">
+            {curso.titulo}
+          </h3>
 
-        <p className="text-sm text-slate-600 mb-6 line-clamp-3 flex-grow">
-          {curso.descripcion}
-        </p>
+          <p className="text-sm text-slate-600 mb-6 line-clamp-3 flex-grow">
+            {curso.descripcion}
+          </p>
 
-        <div className="pt-4 border-t border-slate-100 flex flex-col gap-3">
-          <div className="flex items-center justify-between gap-3">
+          <div className="pt-4 border-t border-slate-100">
+            <div className="flex items-center justify-between gap-3">
             <div className="flex flex-col">
               <span className="text-[10px] text-slate-400 uppercase font-bold leading-none mb-1">
                 Inversión
@@ -81,38 +85,16 @@ export default function CursoCard({ curso }: Props) {
               </span>
             </div>
 
-            <Link
-              href={cursoHref}
+            <span
+              aria-hidden="true"
               className="bg-slate-900 text-white px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 group-hover:bg-red-600 whitespace-nowrap shadow-sm active:scale-95"
             >
               Ver curso
-            </Link>
+            </span>
+            </div>
           </div>
-
-          <Link
-            href="/proximamente"
-            className="
-              w-full 
-              py-2 
-              text-center 
-              text-[11px] 
-              font-bold 
-              uppercase 
-              tracking-widest 
-              text-slate-400 
-              bg-slate-50 
-              rounded-lg 
-              border border-dashed border-slate-200 
-              hover:bg-red-50 
-              hover:text-red-600 
-              hover:border-red-200 
-              transition-all
-            "
-          >
-            🚧 En producción (Ver temario)
-          </Link>
         </div>
-      </div>
+      </Link>
     </motion.div>
   )
 }

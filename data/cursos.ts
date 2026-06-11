@@ -14,6 +14,8 @@ export type Curso = {
   instructor: string;
   destacado: boolean;
   hotmart: string;
+  cardUrl?: string;
+  abrirEnNuevaPestana?: boolean;
 };
 
 const cursosBase: Omit<Curso, "slug">[] = [
@@ -162,6 +164,8 @@ Deja de depender de recomendaciones y empieza a generar tus propios clientes con
   instructor: "CEFIN",
   destacado: false,
   hotmart: "#",
+  cardUrl: "https://cefin.mx/landings/low-tickets/primeros-clientes",
+  abrirEnNuevaPestana: true,
 },
 
 {
@@ -180,6 +184,8 @@ Trabaja con mayor claridad, profesionalismo y seguridad.`,
   instructor: "CEFIN",
   destacado: false,
   hotmart: "#",
+  cardUrl: "",
+  abrirEnNuevaPestana: true,
 },
 
 {
@@ -198,6 +204,8 @@ Deja de cobrar al tanteo y empieza a vender con confianza.`,
   instructor: "CEFIN",
   destacado: false,
   hotmart: "#",
+  cardUrl: "",
+  abrirEnNuevaPestana: true,
 },
 
 {
@@ -216,6 +224,8 @@ Aprende a registrar operaciones con lógica y seguridad desde cero.`,
   instructor: "CEFIN",
   destacado: false,
   hotmart: "#",
+  cardUrl: "",
+  abrirEnNuevaPestana: true,
 },
 ];
 
