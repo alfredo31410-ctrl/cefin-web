@@ -146,6 +146,77 @@ Inversión especial: $9,987.00 MXN.`,
     hotmart:
       "https://pay.hotmart.com/A106207243T?off=ul4f4uez&checkoutMode=10&bid=1781113657950",
   },
+  {
+  id: 6,
+  titulo: "Tus Primeros 5 Clientes Contables",
+  descripcion:
+    "Guía práctica para atraer, contactar y convertir prospectos en clientes para tu despacho contable.",
+  descripcionLarga: `Aprende a identificar a quién puedes ayudar, cómo presentar tus servicios, qué mensajes enviar y cómo convertir conversaciones en clientes reales.
+
+Deja de depender de recomendaciones y empieza a generar tus propios clientes con una estrategia clara.`,
+
+  precio: "$297 MXN",
+  imagen: "/clientes-contables.png",
+  categoria: "mentalidad",
+  duracion: "Guía práctica",
+  instructor: "CEFIN",
+  destacado: false,
+  hotmart: "#",
+},
+
+{
+  id: 7,
+  titulo: "Crea tu Contrato de Servicios Contables",
+  descripcion:
+    "Aprende qué debe incluir un contrato contable para evitar problemas y formalizar mejor tus servicios.",
+  descripcionLarga: `Define alcances, responsabilidades, honorarios y condiciones de trabajo para evitar conflictos con tus clientes.
+
+Trabaja con mayor claridad, profesionalismo y seguridad.`,
+
+  precio: "$197 MXN",
+  imagen: "/contrato-contable.png",
+  categoria: "mentalidad",
+  duracion: "Entrenamiento práctico",
+  instructor: "CEFIN",
+  destacado: false,
+  hotmart: "#",
+},
+
+{
+  id: 8,
+  titulo: "Honorarios Contables: Aprende a Cotizar y Cobrar sin Miedo",
+  descripcion:
+    "Guía práctica para calcular y presentar tus honorarios contables con seguridad.",
+  descripcionLarga: `Aprende a estructurar tus precios considerando tiempo, complejidad y valor.
+
+Deja de cobrar al tanteo y empieza a vender con confianza.`,
+
+  precio: "$297 MXN",
+  imagen: "/honorarios-contables.png",
+  categoria: "mentalidad",
+  duracion: "Guía práctica",
+  instructor: "CEFIN",
+  destacado: false,
+  hotmart: "#",
+},
+
+{
+  id: 9,
+  titulo: "Cuentas Contables desde Cero: Cargos, Abonos y Registros sin Confusión",
+  descripcion:
+    "Aprende la lógica básica de las cuentas contables y registros paso a paso.",
+  descripcionLarga: `Comprende activos, pasivos, ingresos y gastos sin memorizar.
+
+Aprende a registrar operaciones con lógica y seguridad desde cero.`,
+
+  precio: "$297 MXN",
+  imagen: "/cuentas-contables.png",
+  categoria: "contabilidad",
+  duracion: "Guía práctica",
+  instructor: "CEFIN",
+  destacado: false,
+  hotmart: "#",
+},
 ];
 
 export const cursos: Curso[] = cursosBase.map((curso) => ({
