@@ -184,7 +184,7 @@ Trabaja con mayor claridad, profesionalismo y seguridad.`,
   instructor: "CEFIN",
   destacado: false,
   hotmart: "#",
-  cardUrl: "",
+  cardUrl: "https://cefin.mx/landings/low-tickets/servicios-contables",
   abrirEnNuevaPestana: true,
 },
 
