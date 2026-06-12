@@ -18,7 +18,7 @@ export default function HeroContent() {
         transition={{ duration: 0.6 }}
         className="mb-4 text-sm font-black uppercase tracking-[0.2em] text-red-400"
       >
-        Capacitacion fiscal profesional en Mexico
+        Capacitación fiscal profesional en México
       </motion.p>
 
       <motion.h1
