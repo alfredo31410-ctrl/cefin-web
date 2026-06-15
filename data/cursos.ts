@@ -204,7 +204,7 @@ Deja de cobrar al tanteo y empieza a vender con confianza.`,
   instructor: "CEFIN",
   destacado: false,
   hotmart: "#",
-  cardUrl: "",
+  cardUrl: "https://cefin.mx/landings/low-tickets/honorarios-contables",
   abrirEnNuevaPestana: true,
 },
 
