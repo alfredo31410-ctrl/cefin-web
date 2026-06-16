@@ -224,7 +224,7 @@ Aprende a registrar operaciones con lógica y seguridad desde cero.`,
   instructor: "CEFIN",
   destacado: false,
   hotmart: "#",
-  cardUrl: "",
+  cardUrl: "https://cefin.mx/landings/low-tickets/cuentas-contables",
   abrirEnNuevaPestana: true,
 },
 ];
