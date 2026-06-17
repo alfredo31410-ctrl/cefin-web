@@ -28,7 +28,7 @@ export default function HeroContent() {
         transition={{ duration: 0.7, delay: 0.2 }}
         className="mb-6 text-4xl font-black leading-[1.1] tracking-tighter text-white md:text-7xl"
       >
-        Actualizacion fiscal inteligente
+        Actualización fiscal inteligente
       </motion.h1>
 
       <motion.p
