@@ -36,7 +36,7 @@ Facturación electrónica sin errores y manejo correcto del CFDI.
 IVA en el sector salud: ingresos exentos y gravados.
 `,
 
-    precio: "$1,527 MXN",
+    precio: "$1,687 MXN",
     imagen: "/medicos.png",
     categoria: "contabilidad",
     duracion: "5 Modulos",
@@ -66,7 +66,7 @@ IVA en el sector salud: ingresos exentos y gravados.
     Como en la escuela… ¡Pero mejor! Con casos reales, fundamentos legales y ejercicios diseñados para contadoras y contadores comprometidos con su actualización.
 `,
 
-    precio: "$1,527 MXN",
+    precio: "$1,687 MXN",
     imagen: "/plataformas.png",
     categoria: "fiscal",
     duracion: "8 modulos",

@@ -58,7 +58,7 @@ export const medicosLanding: CourseLandingData = {
   heroSupportText:
     "Reproduce la clase y despues baja para ver todo el contenido del curso.",
   transformationImage: "/MEDICOS-RETARGUETING.png",
-  price: "$1,527",
+  price: "$1,687",
   priceCurrency: "MXN",
   openEnrollmentLabel: "Inscripcion abierta",
   enrollmentTitle: "Asesor Fiscal de Medicos",
@@ -144,7 +144,7 @@ export const plataformasLanding: CourseLandingData = {
   heroSupportText:
     "Reproduce la clase y despues baja para ver todo el contenido del curso.",
   transformationImage: "/PLATAFORMAS-DIGITALES.png",
-  price: "$1,527",
+  price: "$1,687",
   priceCurrency: "MXN",
   openEnrollmentLabel: "Inscripcion abierta",
   enrollmentTitle: "Asesor Fiscal de Plataformas Digitales",
