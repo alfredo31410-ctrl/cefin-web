@@ -1,77 +1,96 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
+
+const ACTIVE_CAMPAIGN_TAG_ID = "268";
+
+function isValidEmail(value: unknown) {
+  return typeof value === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
 
 export async function POST(request: Request) {
   try {
     const { name, email } = await request.json();
 
-    const AC_URL = 'https://cefincapacitacion.api-us1.com';
-    const AC_KEY = '7f294b1c93ae720555a7b22386b4d2fb8a3f1ff934de80907dd7180e485a2265f66d34b5';
-
-    console.log("--- Iniciando Registro para:", email, "---");
-
-    // 1. Sincronizamos el contacto (Crea o actualiza)
-    const res = await fetch(`${AC_URL}/api/3/contact/sync`, {
-      method: 'POST',
-      headers: {
-        'Api-Token': AC_KEY,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        contact: {
-          email: email,
-          firstName: name,
-        },
-      }),
-    });
-
-    if (!res.ok) {
-      const errorData = await res.text();
-      console.error("Error en Sync Contact:", errorData);
-      return NextResponse.json({ error: 'Error al sincronizar contacto' }, { status: 500 });
+    if (!isValidEmail(email)) {
+      return NextResponse.json(
+        { error: "Correo electronico invalido" },
+        { status: 400 },
+      );
     }
 
-    const data = await res.json();
+    const activeCampaignUrl = process.env.AC_URL;
+    const activeCampaignKey = process.env.AC_KEY;
+
+    if (!activeCampaignUrl || !activeCampaignKey) {
+      console.error("Faltan variables de entorno AC_URL o AC_KEY");
+      return NextResponse.json(
+        { error: "Servicio de registro no configurado" },
+        { status: 500 },
+      );
+    }
+
+    const contactResponse = await fetch(
+      `${activeCampaignUrl}/api/3/contact/sync`,
+      {
+        method: "POST",
+        headers: {
+          "Api-Token": activeCampaignKey,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          contact: {
+            email,
+            firstName: typeof name === "string" ? name.trim() : "",
+          },
+        }),
+      },
+    );
+
+    if (!contactResponse.ok) {
+      const errorData = await contactResponse.text();
+      console.error("Error al sincronizar contacto:", errorData);
+      return NextResponse.json(
+        { error: "Error al sincronizar contacto" },
+        { status: 500 },
+      );
+    }
+
+    const data = await contactResponse.json();
     const contactId = data.contact?.id;
 
     if (!contactId) {
       console.error("No se obtuvo ID del contacto");
-      return NextResponse.json({ error: 'No se obtuvo ID' }, { status: 500 });
+      return NextResponse.json({ error: "No se obtuvo ID" }, { status: 500 });
     }
 
-    console.log("Contacto sincronizado con ID:", contactId);
-
-    // 2. Aplicar la etiqueta usando el ID 268
     try {
-      const tagRes = await fetch(`${AC_URL}/api/3/contactTags`, {
-        method: 'POST',
-        headers: {
-          'Api-Token': AC_KEY,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          contactTag: {
-            contact: contactId,
-            tag: "268", // ID extraído de tu URL
+      const tagResponse = await fetch(
+        `${activeCampaignUrl}/api/3/contactTags`,
+        {
+          method: "POST",
+          headers: {
+            "Api-Token": activeCampaignKey,
+            "Content-Type": "application/json",
           },
-        }),
-      });
+          body: JSON.stringify({
+            contactTag: {
+              contact: contactId,
+              tag: ACTIVE_CAMPAIGN_TAG_ID,
+            },
+          }),
+        },
+      );
 
-      if (!tagRes.ok) {
-        const tagError = await tagRes.text();
-        console.error("Aviso: No se pudo poner la etiqueta:", tagError);
-        // No retornamos error 500 aquí para que el usuario pueda avanzar
-      } else {
-        console.log("¡Etiqueta 268 aplicada con éxito!");
+      if (!tagResponse.ok) {
+        const tagError = await tagResponse.text();
+        console.error("Aviso: no se pudo aplicar la etiqueta:", tagError);
       }
-    } catch (tagErr) {
-      console.error("Error de red al etiquetar:", tagErr);
+    } catch (tagError) {
+      console.error("Error de red al etiquetar:", tagError);
     }
 
-    // Retornamos éxito porque el contacto principal ya está en AC
     return NextResponse.json({ success: true });
-
   } catch (error) {
-    console.error('Error crítico en el servidor:', error);
-    return NextResponse.json({ error: 'Error interno' }, { status: 500 });
+    console.error("Error critico en el servidor:", error);
+    return NextResponse.json({ error: "Error interno" }, { status: 500 });
   }
 }
