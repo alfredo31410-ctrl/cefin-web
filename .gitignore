@@ -1,11 +1,19 @@
-# Ignorar en la raíz y en subcarpetas
+# Dependencies
 node_modules/
+
+# Next.js
 .next/
+out/
 dist/
 build/
-.env
 
-# Específicos para tu carpeta cefin
-cefin/node_modules/
-cefin/.next/
-cefin/out/
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# TypeScript
+*.tsbuildinfo
