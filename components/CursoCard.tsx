@@ -62,8 +62,6 @@ export default function CursoCard({ curso }: Props) {
         <div className="p-4 md:p-6 flex flex-col flex-grow">
           <div className="flex items-center gap-2 md:gap-3 mb-3 text-[11px] font-medium text-slate-400 uppercase tracking-widest">
             <span>👤 {curso.instructor}</span>
-            <span>•</span>
-            <span>⏱️ {curso.duracion}</span>
           </div>
 
           <h3 className="text-base md:text-lg lg:text-xl font-bold mb-2 text-slate-800 line-clamp-2 min-h-[3rem]">

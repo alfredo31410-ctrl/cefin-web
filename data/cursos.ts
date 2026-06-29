@@ -10,7 +10,6 @@ export type Curso = {
   precio: string;
   imagen: string;
   categoria: "fiscal" | "nomina" | "contabilidad" | "mentalidad";
-  duracion: string;
   instructor: string;
   destacado: boolean;
   hotmart: string;
@@ -39,7 +38,6 @@ IVA en el sector salud: ingresos exentos y gravados.
     precio: "$1,687 MXN",
     imagen: "/medicos.png",
     categoria: "contabilidad",
-    duracion: "5 Modulos",
     instructor: "Marisol Galvan",
     destacado: true,
     hotmart: "https://pay.hotmart.com/U101299066J",
@@ -69,7 +67,6 @@ IVA en el sector salud: ingresos exentos y gravados.
     precio: "$1,687 MXN",
     imagen: "/plataformas.png",
     categoria: "fiscal",
-    duracion: "8 modulos",
     instructor: "Alfredo Cobos",
     destacado: true,
     hotmart: "https://pay.hotmart.com/G101368377Q",
@@ -93,7 +90,6 @@ Este no es un curso más. Es el inicio de una transformación profesional.`,
     precio: "$4,387 MXN",
     imagen: "/constructoras.png",
     categoria: "fiscal",
-    duracion: "16 modulos",
     instructor: "Alfredo Cobos",
     destacado: true,
     hotmart: "https://pay.hotmart.com/S100738570C",
@@ -125,7 +121,6 @@ Inversión especial: $9,987.00 MXN.`,
     precio: "$9,987 MXN",
     imagen: "/sistema-360-asesor-contable.png",
     categoria: "contabilidad",
-    duracion: "Ruta 360",
     instructor: "Alfredo Cobos",
     destacado: true,
     hotmart:
@@ -142,7 +137,6 @@ Inversión especial: $9,987.00 MXN.`,
     precio: "$3,687 MXN",
     imagen: "/metodo-cefin-contador-empresario.png",
     categoria: "mentalidad",
-    duracion: "9 cursos",
     instructor: "Alfredo Cobos",
     destacado: true,
     hotmart:
@@ -160,8 +154,7 @@ Deja de depender de recomendaciones y empieza a generar tus propios clientes con
   precio: "$297 MXN",
   imagen: "/clientes-contables.png",
   categoria: "mentalidad",
-  duracion: "Guía práctica",
-  instructor: "CEFIN",
+  instructor: "Alfredo Cobos",
   destacado: false,
   hotmart: "#",
   cardUrl: "https://cefin.mx/landings/low-tickets/primeros-clientes",
@@ -180,8 +173,7 @@ Trabaja con mayor claridad, profesionalismo y seguridad.`,
   precio: "$197 MXN",
   imagen: "/contrato-contable.png",
   categoria: "mentalidad",
-  duracion: "Entrenamiento práctico",
-  instructor: "CEFIN",
+  instructor: "Alfredo Cobos",
   destacado: false,
   hotmart: "#",
   cardUrl: "https://cefin.mx/landings/low-tickets/servicios-contables",
@@ -200,8 +192,7 @@ Deja de cobrar al tanteo y empieza a vender con confianza.`,
   precio: "$297 MXN",
   imagen: "/honorarios-contables.png",
   categoria: "mentalidad",
-  duracion: "Guía práctica",
-  instructor: "CEFIN",
+  instructor: "Alfredo Cobos",
   destacado: false,
   hotmart: "#",
   cardUrl: "https://cefin.mx/landings/low-tickets/honorarios-contables",
@@ -220,11 +211,48 @@ Aprende a registrar operaciones con lógica y seguridad desde cero.`,
   precio: "$297 MXN",
   imagen: "/cuentas-contables.png",
   categoria: "contabilidad",
-  duracion: "Guía práctica",
-  instructor: "CEFIN",
+  instructor: "Alfredo Cobos",
   destacado: false,
   hotmart: "#",
   cardUrl: "https://cefin.mx/landings/low-tickets/cuentas-contables",
+  abrirEnNuevaPestana: true,
+},
+{
+  id: 10,
+  titulo: "Master-IA",
+  descripcion:
+    "Aprende a usar IA, Excel y prompts profesionales para reducir tareas repetivas en tu trabajo.",
+  descripcionLarga: `Convierte la inteligenci aartificial en tu auxiliar contable digital.
+
+Aprende a organizar CFDI y XML, crear papeples de trabajo, preparar reportes y trabajar con IA sin perder tu criterio profesional.`,
+
+  precio: "$497 MXN",
+  imagen: "/banner-masterIApagina.png",
+  categoria: "contabilidad",
+  instructor: "Alfredo Cobos",
+  destacado: true,
+  hotmart: "https://pay.hotmart.com/L106373757U?off=eb9vgnqz&checkoutMode=10&bid=1781880440085",
+  cardUrl: "https://cefin.mx/landings/ia-contadores/inscripcion",
+  abrirEnNuevaPestana: true,
+},
+{
+  id: 11,
+  titulo: "Contadora Estratégica",
+  descripcion:
+    "Aprende a dejar de ser vista solo como quien presenta declaraciones y conviértete en una asesora clave para tus clientes.",
+  descripcionLarga: `Da el paso de contadora operativa a Contadora Estratégica.
+
+Aprende a identificar oportunidades dentro de los negocios de tus clientes, comunicar recomendaciones con claridad, aportar valor más allá del cumplimiento fiscal y posicionarte como una profesional que participa en decisiones importantes.
+
+Construye una asesoría contable más rentable, estratégica y reconocida por tus clientes.`,
+  
+  precio: "$3,687 MXN",
+  imagen: "/banner-contadora-estrategica.png",
+  categoria: "contabilidad",
+  instructor: "Marisol Galván",
+  destacado: true,
+  hotmart: "https://pay.hotmart.com/L106443767M?off=kmo127nh&checkoutMode=10&bid=1782752728757",
+  cardUrl: "https://cefin.mx/landings/contadora-estrategica/inscripcion",
   abrirEnNuevaPestana: true,
 },
 ];
