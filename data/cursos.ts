@@ -247,7 +247,7 @@ Aprende a identificar oportunidades dentro de los negocios de tus clientes, comu
 Construye una asesoría contable más rentable, estratégica y reconocida por tus clientes.`,
   
   precio: "$3,687 MXN",
-  imagen: "/banner.png",
+  imagen: "/banner-contadora-estrategica.png",
   categoria: "contabilidad",
   instructor: "Marisol Galván",
   destacado: true,
