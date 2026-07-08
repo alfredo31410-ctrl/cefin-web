@@ -209,7 +209,7 @@ Deja de cobrar al tanteo y empieza a vender con confianza.`,
 Aprende a registrar operaciones con lógica y seguridad desde cero.`,
 
   precio: "$297 MXN",
-  imagen: "/CUENTAS-CONTABLES.png",
+  imagen: "/cuentas-contables.png",
   categoria: "contabilidad",
   instructor: "Alfredo Cobos",
   destacado: false,
