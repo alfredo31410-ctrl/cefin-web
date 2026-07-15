@@ -8,6 +8,10 @@ export type CourseLandingData = {
   heroImageAlt: string;
   heroSupportText: string;
   transformationImage: string;
+  assistantImage?: string;
+  assistantImageAlt?: string;
+  assistantTitle?: string;
+  assistantDescription?: string;
   price: string;
   priceCurrency: string;
   openEnrollmentLabel: string;
@@ -47,44 +51,49 @@ export type CourseLandingData = {
 
 export const medicosLanding: CourseLandingData = {
   slug: "asesor-fiscal-medicos",
-  title:
-    "Como convertirte en asesor fiscal de medicos y dejar de cobrar como contador general.",
+  title: "Asesor Fiscal CEFIN para Médicos",
   subtitle:
-    "Si atiendes medicos... probablemente estas perdiendo dinero y ni lo sabes.",
-  paymentUrl: "https://pay.hotmart.com/Q105254575O?off=ax75adly&checkoutMode=10",
-  videoId: "eLiK3h77YfU",
-  heroImage: "https://img.youtube.com/vi/eLiK3h77YfU/maxresdefault.jpg",
-  heroImageAlt: "Vista previa de la clase para medicos",
+    "Especialízate en el régimen fiscal de médicos, asesora con seguridad y aumenta tus ingresos.",
+  paymentUrl:
+    "https://pay.hotmart.com/Q105254575O?off=ax75adly&checkoutMode=10&bid=1784134168083",
+  heroImage: "/medicos.png",
+  heroImageAlt: "Asesor Fiscal de Médicos impartido por Marisol Galván",
   heroSupportText:
-    "Reproduce la clase y despues baja para ver todo el contenido del curso.",
+    "Descubre el contenido del curso y elige tu plan ahora mismo.",
   transformationImage: "/MEDICOS-RETARGUETING.png",
-  price: "$1,687",
+  assistantImage: "/asesor-fiscal-medicos-robot-ia.png",
+  assistantImageAlt:
+    "Marisol Galván junto al Robot de IA Asesor Fiscal CEFIN para Médicos",
+  assistantTitle: "Incluye tu Robot de IA – Asesor Fiscal CEFIN para Médicos",
+  assistantDescription:
+    "Consulta tus dudas sobre los temas estudiados y recibe apoyo inmediato para reforzar lo aprendido durante el curso.",
+  price: "$1,287",
   priceCurrency: "MXN",
-  openEnrollmentLabel: "Inscripcion abierta",
-  enrollmentTitle: "Asesor Fiscal de Medicos",
+  openEnrollmentLabel: "Inscripción abierta",
+  enrollmentTitle: "Asesor Fiscal de Médicos",
   enrollmentDescription:
-    "Especializate en un nicho rentable, deja de improvisar y empieza a cobrar por tu criterio.",
+    "Especialízate en un nicho rentable, deja de improvisar y empieza a cobrar por tu criterio.",
   enrollmentBadges: [
     "Acceso inmediato",
-    "Contenido practico",
-    "Enfoque 100% aplicable",
-    "Accede a una sesion en vivo grupal de preguntas y respuestas en el factor CEFIN el lunes siguiente a tu inscripcion a las 11 a.m.",
+    "100% en línea",
+    "Sesión en vivo de preguntas y respuestas",
+    "Robot de IA – Asesor Fiscal CEFIN para Médicos",
   ],
-  heroCta: "Quiero especializarme en medicos ahora",
-  realityTitle: "Esto es lo que esta pasando hoy con muchos contadores:",
+  heroCta: "Quiero especializarme en médicos ahora",
+  realityTitle: "Esto es lo que está pasando hoy con muchos contadores:",
   realityItems: [
-    "Atienden medicos... pero sin una estructura clara.",
+    "Atienden médicos, pero sin una estructura clara.",
     "Confunden ingresos exentos y gravados.",
     "Aplican deducciones sin criterio.",
     "Y terminan resolviendo sobre la marcha.",
   ],
-  realityResult: "El resultado: Trabajan mas... pero no ganan mas.",
+  realityResult: "El resultado: trabajan más, pero no ganan más.",
   realityWarning:
-    "Y lo mas grave: ni siquiera saben exactamente donde esta el error.",
+    "Y lo más grave: ni siquiera saben exactamente dónde está el error.",
   problemTitle:
-    "El problema es que nadie te enseno como aplicar correctamente los impuestos en un sector especifico como el medico.",
+    "El problema es que nadie te enseñó cómo aplicar correctamente los impuestos en un sector específico como el médico.",
   problemSubtitle: "Y ese detalle cambia completamente el resultado.",
-  sectorTitle: "El sector medico es uno de los mejor pagados...",
+  sectorTitle: "El sector médico es uno de los mejor pagados.",
   sectorSubtitle: "Pero solo para contadores que saben lo que hacen.",
   opportunityItems: [
     "Dejas de competir por precio",
@@ -92,43 +101,44 @@ export const medicosLanding: CourseLandingData = {
     "Te conviertes en referencia para tus clientes",
   ],
   audienceItems: [
-    "Ya tienes clientes medicos y quieres hacerlo bien",
+    "Ya tienes clientes médicos y quieres hacerlo bien",
     "Quieres especializarte en un nicho rentable",
     "Buscas dejar de improvisar y trabajar con estructura",
   ],
-  learnEyebrow: "Lo que vas a aprender",
-  learnTitle: "Aplicacion fiscal real para medicos",
+  learnEyebrow: "Temario",
+  learnTitle: "Una guía completa para especializarte en médicos",
   learnItems: [
-    "Como tributan realmente los medicos",
-    "Como aplicar correctamente deducciones",
-    "Como identificar ingresos exentos y gravados",
-    "Como evitar errores comunes que cuestan dinero",
-    "Como asesorar con criterio fiscal real",
+    "Introducción y bienvenida al curso",
+    "Módulo 1: selección del régimen fiscal ideal",
+    "Módulo 2: régimen de actividades empresariales y profesionales",
+    "Módulo 3: Régimen Simplificado de Confianza e IVA",
+    "Módulo 4: deducciones personales, facturación y contabilidad",
+    "Módulo 5: cómo conseguir tus primeros 5 clientes médicos (o tener más)",
   ],
-  learnClosing: "Esto no es teoria. Es aplicacion directa.",
+  learnClosing: "Esto no es teoría. Es aplicación directa.",
   valueTitle:
-    "Este tipo de conocimiento normalmente se cobra en consultorias de miles de pesos...",
+    "Este tipo de conocimiento normalmente se cobra en consultorías de miles de pesos.",
   valueSubtitle: "Pero hoy puedes acceder a todo el curso por:",
   valueItems: [
     "Acceso inmediato",
-    "Contenido practico",
-    "Enfoque 100% aplicable",
-    "Accede a una sesion en vivo grupal de preguntas y respuestas en el factor CEFIN el lunes siguiente a tu inscripcion a las 11 a.m.",
+    "Curso 100% en línea",
+    "Sesión en vivo de preguntas y respuestas",
+    "Robot de IA – Asesor Fiscal CEFIN para Médicos",
   ],
   urgencyTitle:
-    "Este curso no estara disponible en estas condiciones de forma permanente.",
-  urgencySubtitle: "Si estas viendo esto ahora... es el momento de entrar.",
+    "Este curso no estará disponible en estas condiciones de forma permanente.",
+  urgencySubtitle: "Si estás viendo esto ahora, es el momento de entrar.",
   footerNotes: [
-    "Tienes acceso al contenido para verlo a tu ritmo por todo un ano y empezar a aplicarlo desde el primer momento.",
-    "Ademas accedes a un Tutor de Inteligencia Artificial que responde todas tus dudas a partir de los temas estudiados en clase, en tiempo real.",
+    "Tienes acceso al contenido durante todo un año para verlo a tu ritmo y empezar a aplicarlo desde el primer momento.",
+    "Además, el curso incluye el Robot de IA – Asesor Fiscal CEFIN para Médicos para consultar dudas relacionadas con los temas estudiados.",
   ],
   tracking: {
-    viewContentName: "Landing Asesor Fiscal de Medicos",
-    startTrialName: "VSL Medicos iniciada",
-    checkoutName: "Asesor Fiscal de Medicos",
+    viewContentName: "Landing Asesor Fiscal de Médicos",
+    startTrialName: "VSL Médicos iniciada",
+    checkoutName: "Asesor Fiscal de Médicos",
     productId: "Q105254575O",
     offerId: "ax75adly",
-    funnelName: "Medicos Evergreen",
+    funnelName: "Médicos Evergreen",
   },
 };
 export const plataformasLanding: CourseLandingData = {

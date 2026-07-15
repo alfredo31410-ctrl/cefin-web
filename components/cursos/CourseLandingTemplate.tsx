@@ -70,6 +70,31 @@ function PrimaryButton({
   );
 }
 
+function SecondaryButton({
+  href,
+  children,
+  className = "",
+}: {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <a
+      href={href}
+      className={[
+        "inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-8 py-5",
+        "text-center text-lg font-black text-slate-900 shadow-sm",
+        "transition duration-300 hover:-translate-y-1 hover:bg-slate-50",
+        "md:text-2xl",
+        className,
+      ].join(" ")}
+    >
+      {children}
+    </a>
+  );
+}
+
 function SurfaceCard({
   children,
   className = "",
@@ -126,7 +151,7 @@ function EnrollmentCard({
 
         <div className="min-w-[260px] rounded-[1.5rem] bg-slate-950 p-6 text-white">
           <p className="text-sm uppercase tracking-[0.18em] text-red-300">
-            Inversion hoy
+            Inversión hoy
           </p>
 
           <p className="mt-2 text-4xl font-black md:text-5xl">{data.price}</p>
@@ -173,9 +198,14 @@ export default function CourseLandingTemplate({
 }: {
   data: CourseLandingData;
 }) {
+  const [mounted, setMounted] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const playerRef = useRef<{ destroy?: () => void } | null>(null);
   const videoTrackedRef = useRef(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     trackMetaEvent("ViewContent", {
@@ -263,11 +293,22 @@ export default function CourseLandingTemplate({
       </div>
 
       <main className="relative overflow-x-hidden">
-        <section className="relative bg-gradient-to-b from-slate-50 via-white to-white pb-8 pt-36 md:pb-12 md:pt-44">
+        <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-white to-white pb-8 pt-36 md:pb-12 md:pt-44">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(248,113,113,0.16),_transparent_40%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_rgba(15,23,42,0.08),_transparent_30%)]" />
           <Container>
             <div className="mx-auto max-w-5xl">
-              <div className="text-center">
-                <h1 className="text-4xl font-black leading-[1.02] text-slate-900 md:text-6xl">
+              <div
+                className={[
+                  "text-center transition duration-700 ease-out",
+                  mounted ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0",
+                ].join(" ")}
+              >
+                <p className="text-sm font-black uppercase tracking-[0.24em] text-red-600 md:text-base">
+                  Formación especializada CEFIN
+                </p>
+
+                <h1 className="mt-6 text-4xl font-black leading-[1.02] text-slate-900 md:text-6xl">
                   {data.title}
                 </h1>
 
@@ -276,8 +317,15 @@ export default function CourseLandingTemplate({
                 </p>
               </div>
 
-              <div className="mt-10 overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-2 shadow-[0_20px_80px_rgba(15,23,42,0.12)] md:p-3">
-                <div className="relative aspect-video overflow-hidden rounded-[1.5rem] bg-black">
+              <div className="mt-12 grid gap-6 lg:grid-cols-[1.3fr_0.9fr] lg:items-center">
+                <div
+                  className={[
+                    "rounded-[2rem] border border-slate-200 bg-white p-3 shadow-[0_40px_120px_rgba(15,23,42,0.08)] md:p-4",
+                    "transition delay-150 duration-700 ease-out",
+                    mounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
+                  ].join(" ")}
+                >
+                  <div className="relative aspect-video overflow-hidden rounded-[1.5rem] bg-black">
                   {!hasStarted && data.videoId ? (
                     <button
                       type="button"
@@ -328,16 +376,56 @@ export default function CourseLandingTemplate({
                       </div>
                     </>
                   )}
+                  </div>
                 </div>
-              </div>
 
-              <div className="mt-10 text-center">
-                <PrimaryButton
-                  href={data.paymentUrl}
-                  onClick={handleCheckoutClick}
+                <div
+                  className={[
+                    "space-y-8 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_40px_120px_rgba(15,23,42,0.06)]",
+                    "transition delay-300 duration-700 ease-out",
+                    mounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
+                  ].join(" ")}
                 >
-                  {data.heroCta}
-                </PrimaryButton>
+                  <div className="rounded-[2rem] bg-slate-50 p-8 shadow-sm">
+                    <p className="text-sm uppercase tracking-[0.18em] text-slate-500">
+                      Inversión especial
+                    </p>
+                    <p className="mt-4 text-5xl font-black text-slate-900 md:text-6xl">
+                      {data.price}
+                    </p>
+                    <p className="mt-2 text-sm font-semibold uppercase tracking-[0.24em] text-slate-500">
+                      {data.priceCurrency}
+                    </p>
+                    <p className="mt-6 text-base leading-relaxed text-slate-600">
+                      Acceso inmediato a una formación práctica y especializada.
+                    </p>
+                  </div>
+
+                  <div className="grid gap-4">
+                    <PrimaryButton
+                      href={data.paymentUrl}
+                      onClick={handleCheckoutClick}
+                      className="w-full"
+                    >
+                      {data.heroCta}
+                    </PrimaryButton>
+                    <SecondaryButton href="#benefits" className="w-full">
+                      Ver lo que incluye
+                    </SecondaryButton>
+                  </div>
+
+                  <div className="rounded-[2rem] bg-slate-950 p-6 text-white shadow-[0_20px_50px_rgba(15,23,42,0.2)]">
+                    <p className="text-xs uppercase tracking-[0.24em] text-red-300">
+                      Inscripción abierta
+                    </p>
+                    <p className="mt-4 text-2xl font-black leading-tight">
+                      {data.enrollmentTitle}
+                    </p>
+                    <p className="mt-4 text-sm leading-relaxed text-slate-300">
+                      {data.enrollmentDescription}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </Container>
@@ -393,6 +481,32 @@ export default function CourseLandingTemplate({
           </Container>
         </section>
 
+        {data.assistantImage && data.assistantTitle ? (
+          <section className="bg-white py-20 md:py-24">
+            <Container>
+              <div className="mx-auto grid max-w-5xl overflow-hidden rounded-[2rem] bg-slate-950 shadow-[0_30px_90px_rgba(15,23,42,0.2)] lg:grid-cols-[1fr_1.35fr] lg:items-center">
+                <div className="p-8 text-white md:p-12">
+                  <SectionEyebrow dark>Asistencia incluida</SectionEyebrow>
+                  <h2 className="mt-4 text-3xl font-black leading-tight md:text-5xl">
+                    {data.assistantTitle}
+                  </h2>
+                  {data.assistantDescription ? (
+                    <p className="mt-6 text-lg leading-relaxed text-slate-300 md:text-xl">
+                      {data.assistantDescription}
+                    </p>
+                  ) : null}
+                </div>
+
+                <img
+                  src={data.assistantImage}
+                  alt={data.assistantImageAlt ?? data.assistantTitle}
+                  className="h-full min-h-[320px] w-full object-cover object-center"
+                />
+              </div>
+            </Container>
+          </section>
+        ) : null}
+
         <section className="bg-white py-20 md:py-24">
           <Container>
             <div className="mx-auto max-w-5xl text-center">
@@ -421,7 +535,7 @@ export default function CourseLandingTemplate({
           <Container>
             <div className="mx-auto max-w-5xl text-center">
               <SectionEyebrow dark center>
-                Transformacion
+                Transformación
               </SectionEyebrow>
 
               <div className="mt-8 overflow-hidden rounded-[2rem] border border-white/10 shadow-2xl">
@@ -453,7 +567,7 @@ export default function CourseLandingTemplate({
           </Container>
         </section>
 
-        <section className="bg-slate-50 py-20 md:py-24">
+        <section id="benefits" className="bg-slate-50 py-20 md:py-24">
           <Container>
             <div className="mx-auto max-w-5xl">
               <SectionEyebrow center>{data.learnEyebrow}</SectionEyebrow>
@@ -522,9 +636,12 @@ export default function CourseLandingTemplate({
         <section className="bg-white py-20 md:py-24">
           <Container>
             <div className="mx-auto max-w-4xl text-center">
-              <PrimaryButton href={data.paymentUrl} onClick={handleCheckoutClick}>
-                {data.heroCta}
-              </PrimaryButton>
+              <div className="inline-flex flex-col gap-4 sm:flex-row sm:justify-center">
+                <PrimaryButton href={data.paymentUrl} onClick={handleCheckoutClick}>
+                  {data.heroCta}
+                </PrimaryButton>
+                <SecondaryButton href="#benefits">Ver lo que incluye</SecondaryButton>
+              </div>
             </div>
           </Container>
         </section>

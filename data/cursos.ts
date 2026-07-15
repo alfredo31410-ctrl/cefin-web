@@ -35,7 +35,7 @@ Facturación electrónica sin errores y manejo correcto del CFDI.
 IVA en el sector salud: ingresos exentos y gravados.
 `,
 
-    precio: "$1,687 MXN",
+    precio: "$1,287 MXN",
     imagen: "/medicos.png",
     categoria: "contabilidad",
     instructor: "Marisol Galvan",
