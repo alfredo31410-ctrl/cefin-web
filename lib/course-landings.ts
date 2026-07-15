@@ -79,7 +79,7 @@ export const medicosLanding: CourseLandingData = {
     "Sesión en vivo de preguntas y respuestas",
     "Robot de IA – Asesor Fiscal CEFIN para Médicos",
   ],
-  heroCta: "Quiero especializarme en médicos ahora",
+  heroCta: "¡INSCRÍBETE AHORA!",
   realityTitle: "Esto es lo que está pasando hoy con muchos contadores:",
   realityItems: [
     "Atienden médicos, pero sin una estructura clara.",

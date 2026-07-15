@@ -484,14 +484,14 @@ export default function CourseLandingTemplate({
         {data.assistantImage && data.assistantTitle ? (
           <section className="bg-white py-20 md:py-24">
             <Container>
-              <div className="mx-auto grid max-w-5xl overflow-hidden rounded-[2rem] bg-slate-950 shadow-[0_30px_90px_rgba(15,23,42,0.2)] lg:grid-cols-[1fr_1.35fr] lg:items-center">
-                <div className="p-8 text-white md:p-12">
+              <div className="relative mx-auto flex max-w-5xl flex-col overflow-hidden rounded-[2rem] bg-slate-950 shadow-[0_30px_90px_rgba(15,23,42,0.2)] lg:block">
+                <div className="order-1 p-7 text-white sm:p-9 md:p-12 lg:absolute lg:inset-y-0 lg:left-0 lg:z-10 lg:flex lg:w-[48%] lg:flex-col lg:justify-center lg:p-10 xl:p-14">
                   <SectionEyebrow dark>Asistencia incluida</SectionEyebrow>
-                  <h2 className="mt-4 text-3xl font-black leading-tight md:text-5xl">
+                  <h2 className="mt-4 text-3xl font-black leading-tight sm:text-4xl lg:text-3xl xl:text-4xl">
                     {data.assistantTitle}
                   </h2>
                   {data.assistantDescription ? (
-                    <p className="mt-6 text-lg leading-relaxed text-slate-300 md:text-xl">
+                    <p className="mt-5 text-base leading-relaxed text-slate-300 sm:text-lg lg:text-base xl:text-lg">
                       {data.assistantDescription}
                     </p>
                   ) : null}
@@ -500,8 +500,36 @@ export default function CourseLandingTemplate({
                 <img
                   src={data.assistantImage}
                   alt={data.assistantImageAlt ?? data.assistantTitle}
-                  className="h-full min-h-[320px] w-full object-cover object-center"
+                  className="order-2 aspect-[16/10] w-full object-cover object-[72%_center] sm:aspect-video lg:aspect-[1200/630] lg:object-contain lg:object-center"
                 />
+              </div>
+            </Container>
+          </section>
+        ) : null}
+
+        {data.assistantImage ? (
+          <section className="bg-red-600 py-12 text-white md:py-16">
+            <Container>
+              <div className="mx-auto flex max-w-5xl flex-col items-center gap-7 text-center lg:flex-row lg:justify-between lg:text-left">
+                <div className="max-w-2xl">
+                  <p className="text-sm font-black uppercase tracking-[0.2em] text-red-100">
+                    Inscripciones abiertas
+                  </p>
+                  <h2 className="mt-3 text-3xl font-black leading-tight md:text-4xl">
+                    Empieza hoy tu especialización como {data.enrollmentTitle}
+                  </h2>
+                  <p className="mt-3 text-lg font-semibold text-red-50">
+                    Acceso inmediato al curso y a todos sus beneficios.
+                  </p>
+                </div>
+
+                <PrimaryButton
+                  href={data.paymentUrl}
+                  onClick={handleCheckoutClick}
+                  className="w-full shrink-0 bg-slate-950 hover:bg-slate-800 sm:w-auto lg:max-w-sm"
+                >
+                  {data.heroCta}
+                </PrimaryButton>
               </div>
             </Container>
           </section>
@@ -566,6 +594,31 @@ export default function CourseLandingTemplate({
             </div>
           </Container>
         </section>
+
+        {data.assistantImage ? (
+          <section className="bg-slate-950 py-10 text-white md:py-12">
+            <Container>
+              <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
+                <div>
+                  <p className="text-2xl font-black leading-tight sm:text-3xl">
+                    ¿Te identificas? Este curso es para ti.
+                  </p>
+                  <p className="mt-2 text-base text-slate-300 sm:text-lg">
+                    Da el siguiente paso y asegura tu inscripción.
+                  </p>
+                </div>
+
+                <PrimaryButton
+                  href={data.paymentUrl}
+                  onClick={handleCheckoutClick}
+                  className="w-full shrink-0 sm:w-auto md:max-w-sm"
+                >
+                  ¡SÍ, QUIERO INSCRIBIRME AHORA!
+                </PrimaryButton>
+              </div>
+            </Container>
+          </section>
+        ) : null}
 
         <section id="benefits" className="bg-slate-50 py-20 md:py-24">
           <Container>
