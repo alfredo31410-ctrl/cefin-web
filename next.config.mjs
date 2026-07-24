@@ -7,6 +7,10 @@ const nextConfig = {
         destination: 'https://cefin-landings-z9uk.vercel.app/landings/:path*',
       },
       {
+        source: '/api/nif/registro/:path*',
+        destination: 'https://cefin-landings-z9uk.vercel.app/api/nif/registro/:path*',
+      },
+      {
         source: '/_next/image',
         destination: 'https://cefin-landings-z9uk.vercel.app/_next/image',
       },
