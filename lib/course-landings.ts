@@ -53,7 +53,6 @@ export const medicosLanding: CourseLandingData = {
   slug: "asesor-fiscal-medicos",
   title: "Asesor Fiscal CEFIN para Médicos",
   subtitle:
-<<<<<<< Updated upstream
     "Especialízate en el régimen fiscal de médicos, asesora con seguridad y aumenta tus ingresos.",
   paymentUrl:
     "https://pay.hotmart.com/Q105254575O?off=ax75adly&checkoutMode=10&bid=1784134168083",
@@ -68,15 +67,6 @@ export const medicosLanding: CourseLandingData = {
   assistantTitle: "Incluye tu Robot de IA – Asesor Fiscal CEFIN para Médicos",
   assistantDescription:
     "Consulta tus dudas sobre los temas estudiados y recibe apoyo inmediato para reforzar lo aprendido durante el curso.",
-=======
-    "Si atiendes medicos... probablemente estas perdiendo dinero y ni lo sabes.",
-  paymentUrl: "https://pay.hotmart.com/Q105254575O?off=ax75adly&checkoutMode=10&bid=1784134168083",
-  heroImage: "https://img.youtube.com/vi/eLiK3h77YfU/maxresdefault.jpg",
-  heroImageAlt: "Vista previa de la clase para medicos",
-  heroSupportText:
-    "Descubre el contenido del curso y elige tu plan ahora mismo.",
-  transformationImage: "/MEDICOS-RETARGUETING.png",
->>>>>>> Stashed changes
   price: "$1,287",
   priceCurrency: "MXN",
   openEnrollmentLabel: "Inscripción abierta",

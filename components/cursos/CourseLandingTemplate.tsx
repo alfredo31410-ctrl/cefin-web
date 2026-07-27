@@ -59,27 +59,18 @@ function PrimaryButton({
 function SecondaryButton({
   href,
   children,
-<<<<<<< Updated upstream
-=======
   onClick,
->>>>>>> Stashed changes
   className = "",
 }: {
   href: string;
   children: React.ReactNode;
-<<<<<<< Updated upstream
-=======
   onClick?: () => void;
->>>>>>> Stashed changes
   className?: string;
 }) {
   return (
     <a
       href={href}
-<<<<<<< Updated upstream
-=======
       onClick={onClick}
->>>>>>> Stashed changes
       className={[
         "inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-8 py-5",
         "text-center text-lg font-black text-slate-900 shadow-sm",
@@ -197,16 +188,6 @@ export default function CourseLandingTemplate({
   data: CourseLandingData;
 }) {
   const [mounted, setMounted] = useState(false);
-<<<<<<< Updated upstream
-  const [hasStarted, setHasStarted] = useState(false);
-  const playerRef = useRef<{ destroy?: () => void } | null>(null);
-  const videoTrackedRef = useRef(false);
-=======
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
->>>>>>> Stashed changes
 
   useEffect(() => {
     setMounted(true);
@@ -246,14 +227,6 @@ export default function CourseLandingTemplate({
             <div className="mx-auto max-w-5xl">
               <div
                 className={[
-<<<<<<< Updated upstream
-                  "text-center transition duration-700 ease-out",
-                  mounted ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0",
-                ].join(" ")}
-              >
-                <p className="text-sm font-black uppercase tracking-[0.24em] text-red-600 md:text-base">
-                  Formación especializada CEFIN
-=======
                   "text-center",
                   mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
                   "transition duration-700 ease-out",
@@ -261,7 +234,6 @@ export default function CourseLandingTemplate({
               >
                 <p className="text-sm font-black uppercase tracking-[0.24em] text-red-600 md:text-base">
                   Especialización Médica
->>>>>>> Stashed changes
                 </p>
 
                 <h1 className="mt-6 text-4xl font-black leading-[1.02] text-slate-900 md:text-6xl">
@@ -276,74 +248,6 @@ export default function CourseLandingTemplate({
               <div className="mt-12 grid gap-6 lg:grid-cols-[1.3fr_0.9fr] lg:items-center">
                 <div
                   className={[
-<<<<<<< Updated upstream
-                    "rounded-[2rem] border border-slate-200 bg-white p-3 shadow-[0_40px_120px_rgba(15,23,42,0.08)] md:p-4",
-                    "transition delay-150 duration-700 ease-out",
-                    mounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
-                  ].join(" ")}
-                >
-                  <div className="relative aspect-video overflow-hidden rounded-[1.5rem] bg-black">
-                  {!hasStarted && data.videoId ? (
-                    <button
-                      type="button"
-                      onClick={() => setHasStarted(true)}
-                      aria-label="Reproducir video"
-                      className="absolute inset-0 z-10 flex items-center justify-center"
-                    >
-                      <div
-                        className="absolute inset-0 bg-cover bg-center opacity-90"
-                        style={{
-                          backgroundImage: `url('${data.heroImage}')`,
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/30" />
-
-                      <div className="absolute bottom-5 left-5 right-5 text-left text-white md:bottom-8 md:left-8 md:right-8">
-                        <p className="max-w-2xl text-sm font-semibold text-white/80 md:text-base">
-                          {data.heroSupportText}
-                        </p>
-                      </div>
-
-                      <div className="relative z-10 flex h-24 w-24 items-center justify-center rounded-full bg-red-600 shadow-2xl transition duration-300 hover:scale-110 md:h-28 md:w-28">
-                        <svg
-                          className="h-12 w-12 translate-x-1 fill-current text-white md:h-14 md:w-14"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
-                    </button>
-                  ) : data.videoId ? (
-                    <div
-                      id="main-player"
-                      className="absolute inset-0 h-full w-full"
-                    />
-                  ) : (
-                    <>
-                      <img
-                        src={data.heroImage}
-                        alt={data.heroImageAlt}
-                        className="absolute inset-0 h-full w-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/20" />
-                      <div className="absolute bottom-5 left-5 right-5 text-left text-white md:bottom-8 md:left-8 md:right-8">
-                        <p className="max-w-2xl text-sm font-semibold text-white/80 md:text-base">
-                          {data.heroSupportText}
-                        </p>
-                      </div>
-                    </>
-                  )}
-                  </div>
-                </div>
-
-                <div
-                  className={[
-                    "space-y-8 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_40px_120px_rgba(15,23,42,0.06)]",
-                    "transition delay-300 duration-700 ease-out",
-                    mounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
-                  ].join(" ")}
-                >
-=======
                     "rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_40px_120px_rgba(15,23,42,0.08)]",
                     mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10",
                     "transition duration-700 delay-150 ease-out",
@@ -371,7 +275,6 @@ export default function CourseLandingTemplate({
                     "transition duration-700 delay-300 ease-out",
                   ].join(" ")}
                 >
->>>>>>> Stashed changes
                   <div className="rounded-[2rem] bg-slate-50 p-8 shadow-sm">
                     <p className="text-sm uppercase tracking-[0.18em] text-slate-500">
                       Inversión especial
@@ -383,19 +286,11 @@ export default function CourseLandingTemplate({
                       {data.priceCurrency}
                     </p>
                     <p className="mt-6 text-base leading-relaxed text-slate-600">
-<<<<<<< Updated upstream
-                      Acceso inmediato a una formación práctica y especializada.
-                    </p>
-                  </div>
-
-                  <div className="grid gap-4">
-=======
                       Acceso inmediato + guía sectorial específica para médicos.
                     </p>
                   </div>
 
                   <div className="grid gap-4 sm:grid-cols-2">
->>>>>>> Stashed changes
                     <PrimaryButton
                       href={data.paymentUrl}
                       onClick={handleCheckoutClick}
@@ -403,29 +298,16 @@ export default function CourseLandingTemplate({
                     >
                       {data.heroCta}
                     </PrimaryButton>
-<<<<<<< Updated upstream
-                    <SecondaryButton href="#benefits" className="w-full">
-=======
                     <SecondaryButton
                       href="#benefits"
                       className="w-full"
                     >
->>>>>>> Stashed changes
                       Ver lo que incluye
                     </SecondaryButton>
                   </div>
 
                   <div className="rounded-[2rem] bg-slate-950 p-6 text-white shadow-[0_20px_50px_rgba(15,23,42,0.2)]">
                     <p className="text-xs uppercase tracking-[0.24em] text-red-300">
-<<<<<<< Updated upstream
-                      Inscripción abierta
-                    </p>
-                    <p className="mt-4 text-2xl font-black leading-tight">
-                      {data.enrollmentTitle}
-                    </p>
-                    <p className="mt-4 text-sm leading-relaxed text-slate-300">
-                      {data.enrollmentDescription}
-=======
                       Inscripción limitada
                     </p>
                     <p className="mt-4 text-2xl font-black leading-tight">
@@ -433,7 +315,6 @@ export default function CourseLandingTemplate({
                     </p>
                     <p className="mt-4 text-sm leading-relaxed text-slate-300">
                       Curso diseñado para contadores que quieren cobrar su verdadero valor en el nicho médico.
->>>>>>> Stashed changes
                     </p>
                   </div>
                 </div>
@@ -606,34 +487,6 @@ export default function CourseLandingTemplate({
           </Container>
         </section>
 
-<<<<<<< Updated upstream
-        {data.assistantImage ? (
-          <section className="bg-slate-950 py-10 text-white md:py-12">
-            <Container>
-              <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
-                <div>
-                  <p className="text-2xl font-black leading-tight sm:text-3xl">
-                    ¿Te identificas? Este curso es para ti.
-                  </p>
-                  <p className="mt-2 text-base text-slate-300 sm:text-lg">
-                    Da el siguiente paso y asegura tu inscripción.
-                  </p>
-                </div>
-
-                <PrimaryButton
-                  href={data.paymentUrl}
-                  onClick={handleCheckoutClick}
-                  className="w-full shrink-0 sm:w-auto md:max-w-sm"
-                >
-                  ¡SÍ, QUIERO INSCRIBIRME AHORA!
-                </PrimaryButton>
-              </div>
-            </Container>
-          </section>
-        ) : null}
-
-=======
->>>>>>> Stashed changes
         <section id="benefits" className="bg-slate-50 py-20 md:py-24">
           <Container>
             <div className="mx-auto max-w-5xl">
@@ -707,13 +560,9 @@ export default function CourseLandingTemplate({
                 <PrimaryButton href={data.paymentUrl} onClick={handleCheckoutClick}>
                   {data.heroCta}
                 </PrimaryButton>
-<<<<<<< Updated upstream
-                <SecondaryButton href="#benefits">Ver lo que incluye</SecondaryButton>
-=======
                 <SecondaryButton href="#benefits">
                   Ver lo que incluye
                 </SecondaryButton>
->>>>>>> Stashed changes
               </div>
             </div>
           </Container>
