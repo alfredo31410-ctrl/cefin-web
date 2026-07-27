@@ -1,24 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Container from "@/components/Container";
 import { trackMetaEvent } from "@/lib/meta-pixel";
 import type { CourseLandingData } from "@/lib/course-landings";
-
-declare global {
-  interface Window {
-    YT?: {
-      Player: new (
-        elementId: string,
-        config: Record<string, unknown>,
-      ) => {
-        destroy?: () => void;
-      };
-    };
-    onYouTubeIframeAPIReady?: () => void;
-  }
-}
 
 function SectionEyebrow({
   children,
@@ -73,15 +59,27 @@ function PrimaryButton({
 function SecondaryButton({
   href,
   children,
+<<<<<<< Updated upstream
+=======
+  onClick,
+>>>>>>> Stashed changes
   className = "",
 }: {
   href: string;
   children: React.ReactNode;
+<<<<<<< Updated upstream
+=======
+  onClick?: () => void;
+>>>>>>> Stashed changes
   className?: string;
 }) {
   return (
     <a
       href={href}
+<<<<<<< Updated upstream
+=======
+      onClick={onClick}
+>>>>>>> Stashed changes
       className={[
         "inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-8 py-5",
         "text-center text-lg font-black text-slate-900 shadow-sm",
@@ -199,9 +197,16 @@ export default function CourseLandingTemplate({
   data: CourseLandingData;
 }) {
   const [mounted, setMounted] = useState(false);
+<<<<<<< Updated upstream
   const [hasStarted, setHasStarted] = useState(false);
   const playerRef = useRef<{ destroy?: () => void } | null>(null);
   const videoTrackedRef = useRef(false);
+=======
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+>>>>>>> Stashed changes
 
   useEffect(() => {
     setMounted(true);
@@ -215,65 +220,6 @@ export default function CourseLandingTemplate({
       currency: "MXN",
     });
   }, [data]);
-
-  useEffect(() => {
-    if (!hasStarted || !data.videoId) return;
-
-    const setupPlayer = () => {
-      if (!window.YT?.Player || playerRef.current) return;
-
-      playerRef.current = new window.YT.Player("main-player", {
-        videoId: data.videoId,
-        playerVars: {
-          autoplay: 1,
-          rel: 0,
-          modestbranding: 1,
-          playsinline: 1,
-        },
-        events: {
-          onReady: (event: any) => {
-            event.target.playVideo();
-
-            if (!videoTrackedRef.current) {
-              videoTrackedRef.current = true;
-              trackMetaEvent("StartTrial", {
-                ...getCourseTrackingParams(data),
-                content_name: data.tracking.startTrialName,
-                content_category: "Video",
-                value: 150,
-                currency: "MXN",
-              });
-            }
-          },
-        },
-      });
-    };
-
-    const existingScript = document.querySelector(
-      'script[src="https://www.youtube.com/iframe_api"]',
-    );
-
-    if (!existingScript) {
-      const script = document.createElement("script");
-      script.src = "https://www.youtube.com/iframe_api";
-      document.body.appendChild(script);
-    }
-
-    const previousReady = window.onYouTubeIframeAPIReady;
-    window.onYouTubeIframeAPIReady = () => {
-      previousReady?.();
-      setupPlayer();
-    };
-
-    if (window.YT?.Player) {
-      setupPlayer();
-    }
-
-    return () => {
-      playerRef.current?.destroy?.();
-      playerRef.current = null;
-    };
-  }, [data.tracking.startTrialName, data.videoId, hasStarted]);
 
   const handleCheckoutClick = () => {
     const numericValue = Number(data.price.replace(/[^0-9.]/g, ""));
@@ -300,12 +246,22 @@ export default function CourseLandingTemplate({
             <div className="mx-auto max-w-5xl">
               <div
                 className={[
+<<<<<<< Updated upstream
                   "text-center transition duration-700 ease-out",
                   mounted ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0",
                 ].join(" ")}
               >
                 <p className="text-sm font-black uppercase tracking-[0.24em] text-red-600 md:text-base">
                   Formación especializada CEFIN
+=======
+                  "text-center",
+                  mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
+                  "transition duration-700 ease-out",
+                ].join(" ")}
+              >
+                <p className="text-sm font-black uppercase tracking-[0.24em] text-red-600 md:text-base">
+                  Especialización Médica
+>>>>>>> Stashed changes
                 </p>
 
                 <h1 className="mt-6 text-4xl font-black leading-[1.02] text-slate-900 md:text-6xl">
@@ -320,6 +276,7 @@ export default function CourseLandingTemplate({
               <div className="mt-12 grid gap-6 lg:grid-cols-[1.3fr_0.9fr] lg:items-center">
                 <div
                   className={[
+<<<<<<< Updated upstream
                     "rounded-[2rem] border border-slate-200 bg-white p-3 shadow-[0_40px_120px_rgba(15,23,42,0.08)] md:p-4",
                     "transition delay-150 duration-700 ease-out",
                     mounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
@@ -386,6 +343,35 @@ export default function CourseLandingTemplate({
                     mounted ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0",
                   ].join(" ")}
                 >
+=======
+                    "rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_40px_120px_rgba(15,23,42,0.08)]",
+                    mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10",
+                    "transition duration-700 delay-150 ease-out",
+                  ].join(" ")}
+                >
+                  <div className="relative overflow-hidden rounded-[1.5rem] bg-slate-950">
+                    <img
+                      src={data.heroImage}
+                      alt={data.heroImageAlt}
+                      className="h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-6 px-6 text-left text-white md:px-10">
+                      <p className="max-w-xl text-base font-semibold text-white/90 md:text-lg">
+                        {data.heroSupportText}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  className={[
+                    "space-y-8 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-[0_40px_120px_rgba(15,23,42,0.06)]",
+                    mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10",
+                    "transition duration-700 delay-300 ease-out",
+                  ].join(" ")}
+                >
+>>>>>>> Stashed changes
                   <div className="rounded-[2rem] bg-slate-50 p-8 shadow-sm">
                     <p className="text-sm uppercase tracking-[0.18em] text-slate-500">
                       Inversión especial
@@ -397,11 +383,19 @@ export default function CourseLandingTemplate({
                       {data.priceCurrency}
                     </p>
                     <p className="mt-6 text-base leading-relaxed text-slate-600">
+<<<<<<< Updated upstream
                       Acceso inmediato a una formación práctica y especializada.
                     </p>
                   </div>
 
                   <div className="grid gap-4">
+=======
+                      Acceso inmediato + guía sectorial específica para médicos.
+                    </p>
+                  </div>
+
+                  <div className="grid gap-4 sm:grid-cols-2">
+>>>>>>> Stashed changes
                     <PrimaryButton
                       href={data.paymentUrl}
                       onClick={handleCheckoutClick}
@@ -409,13 +403,21 @@ export default function CourseLandingTemplate({
                     >
                       {data.heroCta}
                     </PrimaryButton>
+<<<<<<< Updated upstream
                     <SecondaryButton href="#benefits" className="w-full">
+=======
+                    <SecondaryButton
+                      href="#benefits"
+                      className="w-full"
+                    >
+>>>>>>> Stashed changes
                       Ver lo que incluye
                     </SecondaryButton>
                   </div>
 
                   <div className="rounded-[2rem] bg-slate-950 p-6 text-white shadow-[0_20px_50px_rgba(15,23,42,0.2)]">
                     <p className="text-xs uppercase tracking-[0.24em] text-red-300">
+<<<<<<< Updated upstream
                       Inscripción abierta
                     </p>
                     <p className="mt-4 text-2xl font-black leading-tight">
@@ -423,6 +425,15 @@ export default function CourseLandingTemplate({
                     </p>
                     <p className="mt-4 text-sm leading-relaxed text-slate-300">
                       {data.enrollmentDescription}
+=======
+                      Inscripción limitada
+                    </p>
+                    <p className="mt-4 text-2xl font-black leading-tight">
+                      Entrena para asesorar a médicos con criterio y seguridad.
+                    </p>
+                    <p className="mt-4 text-sm leading-relaxed text-slate-300">
+                      Curso diseñado para contadores que quieren cobrar su verdadero valor en el nicho médico.
+>>>>>>> Stashed changes
                     </p>
                   </div>
                 </div>
@@ -595,6 +606,7 @@ export default function CourseLandingTemplate({
           </Container>
         </section>
 
+<<<<<<< Updated upstream
         {data.assistantImage ? (
           <section className="bg-slate-950 py-10 text-white md:py-12">
             <Container>
@@ -620,6 +632,8 @@ export default function CourseLandingTemplate({
           </section>
         ) : null}
 
+=======
+>>>>>>> Stashed changes
         <section id="benefits" className="bg-slate-50 py-20 md:py-24">
           <Container>
             <div className="mx-auto max-w-5xl">
@@ -693,7 +707,13 @@ export default function CourseLandingTemplate({
                 <PrimaryButton href={data.paymentUrl} onClick={handleCheckoutClick}>
                   {data.heroCta}
                 </PrimaryButton>
+<<<<<<< Updated upstream
                 <SecondaryButton href="#benefits">Ver lo que incluye</SecondaryButton>
+=======
+                <SecondaryButton href="#benefits">
+                  Ver lo que incluye
+                </SecondaryButton>
+>>>>>>> Stashed changes
               </div>
             </div>
           </Container>

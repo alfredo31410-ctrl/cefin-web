@@ -275,6 +275,31 @@ Construye una asesoría fiscal más rentable, estratégica y valorada por tus cl
   hotmart: "https://pay.hotmart.com/R105211548E?off=2fonqwf3&checkoutMode=10&bid=1783529897089",
   cardUrl: "https://cefin.mx/landings/asesor-fiscal-pf/inscripcion",
   abrirEnNuevaPestana: true,
+},
+{
+  id: 13,
+  titulo: "EstrategIA Evolución Contable",
+  descripcion:
+    "Domina la Inteligencia Artificial aplicada a la contabilidad, automatiza tareas con Excel y utiliza agentes especializados para trabajar con mayor rapidez, claridad y criterio profesional.",
+
+  descripcionLarga: `Evoluciona tu forma de trabajar como contador utilizando Inteligencia Artificial de manera práctica y aplicada.
+
+En EstrategIA Evolución Contable aprenderás a combinar Inteligencia Artificial y Excel para agilizar tareas, analizar información y mejorar tus procesos contables, fiscales y empresariales.
+
+También recibirás contenidos complementarios para implementar ChatGPT Work, crear agentes contables y fiscales con Claude, fortalecer tu despacho y romper las barreras que limitan tu crecimiento profesional.
+
+La formación incluye 6 meses de sesiones en vivo del Factor CEFIN todos los lunes, para que continúes aprendiendo, resolviendo dudas y aplicando la Inteligencia Artificial en situaciones reales.`,
+
+  precio: "$12,387 MXN",
+  imagen: "/MASTER IA - BANNER CEFIN.png",
+  categoria: "contabilidad",
+  instructor: "CEFIN - Contabilidad e Impuestos",
+  destacado: true,
+  hotmart:
+    "https://pay.hotmart.com/G106884758Y?off=anbe55e7&checkoutMode=10",
+  cardUrl:
+    "https://cefin.mx/landings/ia-contadores/ecosistema",
+  abrirEnNuevaPestana: true,
 }
 ];
 
