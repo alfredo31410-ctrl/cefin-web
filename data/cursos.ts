@@ -300,6 +300,22 @@ La formación incluye 6 meses de sesiones en vivo del Factor CEFIN todos los lun
   cardUrl:
     "https://cefin.mx/landings/ia-contadores/ecosistema",
   abrirEnNuevaPestana: true,
+},
+{
+  id: 14,
+  titulo: "Asesor Fiscal para Restaurantes y negocios de comida",
+  descripcion:
+    "Aprende a asesorar fiscalmente a restaurantes y negocios de comida con estrategias prácticas y aplicables.",
+  descripcionLarga:
+    "Especialízate como asesor fiscal para restaurantes y negocios de comida y fortalece tu asesoría para este sector.",
+  precio: "$3,687 MXN",
+  imagen: "/cefin-contable.jpg",
+  categoria: "contabilidad",
+  instructor: "CEFIN - Contabilidad e Impuestos",
+  destacado: true,
+  hotmart: "#",
+  cardUrl: "https://cefin.mx/landings/restaurantes/inscripcion",
+  abrirEnNuevaPestana: true,
 }
 ];
 
