@@ -35,7 +35,7 @@ Facturación electrónica sin errores y manejo correcto del CFDI.
 IVA en el sector salud: ingresos exentos y gravados.
 `,
 
-    precio: "$1,287 MXN",
+    precio: "$1,687 MXN",
     imagen: "/medicos.png",
     categoria: "contabilidad",
     instructor: "Marisol Galvan",
@@ -134,7 +134,7 @@ Inversión especial: $9,987.00 MXN.`,
       "Transforma tu despacho contable en un negocio más ordenado, rentable y profesional con estrategias de ventas, cobro, liderazgo y posicionamiento.",
     descripcionLarga:
       "Una ruta estratégica para dejar de operar únicamente como contador y comenzar a dirigir tu despacho con mentalidad empresarial.",
-    precio: "$3,687 MXN",
+    precio: "$4,787 MXN",
     imagen: "/metodo-cefin-contador-empresario.png",
     categoria: "mentalidad",
     instructor: "Alfredo Cobos",
@@ -246,7 +246,7 @@ Aprende a identificar oportunidades dentro de los negocios de tus clientes, comu
 
 Construye una asesoría contable más rentable, estratégica y reconocida por tus clientes.`,
   
-  precio: "$3,687 MXN",
+  precio: "$4,787 MXN",
   imagen: "/banner-contadora-estrategica.png",
   categoria: "contabilidad",
   instructor: "Marisol Galván",
@@ -267,7 +267,7 @@ Aprende a analizar la situación fiscal de tus clientes, identificar oportunidad
 Este programa está diseñado para ayudarte a fortalecer tu criterio fiscal, atender con más confianza a personas físicas, justificar mejor tus honorarios y posicionarte como un profesional que no solo cumple obligaciones, sino que ayuda a tomar mejores decisiones.
 
 Construye una asesoría fiscal más rentable, estratégica y valorada por tus clientes.`,
-  precio: "$3,687 MXN",
+  precio: "$4,787 MXN",
   imagen: "/banner - PF.png",
   categoria: "fiscal",
   instructor: "Alfredo Cobos",

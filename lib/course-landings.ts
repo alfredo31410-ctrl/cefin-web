@@ -67,7 +67,7 @@ export const medicosLanding: CourseLandingData = {
   assistantTitle: "Incluye tu Robot de IA – Asesor Fiscal CEFIN para Médicos",
   assistantDescription:
     "Consulta tus dudas sobre los temas estudiados y recibe apoyo inmediato para reforzar lo aprendido durante el curso.",
-  price: "$1,287",
+  price: "$1,687",
   priceCurrency: "MXN",
   openEnrollmentLabel: "Inscripción abierta",
   enrollmentTitle: "Asesor Fiscal de Médicos",
@@ -426,7 +426,7 @@ export const metodoCefinContadorEmpresarioLanding: CourseLandingData = {
   heroSupportText:
     "Una ruta estratégica para transformar tu despacho contable en un negocio más ordenado, rentable y profesional.",
   transformationImage: "/metodo-cefin-contador-empresario.png",
-  price: "$3,687",
+  price: "$4,787",
   priceCurrency: "MXN",
   openEnrollmentLabel: "Inscripción especial",
   enrollmentTitle: "Método CEFIN: Contador a Empresario Contable",
