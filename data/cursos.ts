@@ -310,7 +310,7 @@ La formación incluye 6 meses de sesiones en vivo del Factor CEFIN todos los lun
     "Especialízate como asesor fiscal para restaurantes y negocios de comida y fortalece tu asesoría para este sector.",
   precio: "$3,687 MXN",
   imagen: "/BANNER - RESTAURANTES para web.png",
-  categoria: "contabilidad",
+  categoria: "fiscal",
   instructor: "CEFIN - Contabilidad e Impuestos",
   destacado: true,
   hotmart: "#",
