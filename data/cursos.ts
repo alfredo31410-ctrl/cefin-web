@@ -87,7 +87,7 @@ IVA en el sector salud: ingresos exentos y gravados.
 
 Este no es un curso más. Es el inicio de una transformación profesional.`,
 
-    precio: "$4,387 MXN",
+    precio: "$4,787 MXN",
     imagen: "/constructoras.png",
     categoria: "fiscal",
     instructor: "Alfredo Cobos",
