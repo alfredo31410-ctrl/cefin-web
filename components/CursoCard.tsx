@@ -20,13 +20,14 @@ export default function CursoCard({ curso }: Props) {
   const cardUrl = curso.cardUrl?.trim()
   const cursoHref = cardUrl || `/cursos/${curso.slug}`
   const abrirEnNuevaPestana = Boolean(cardUrl && curso.abrirEnNuevaPestana)
+  const CardLink = cardUrl ? "a" : Link
 
   return (
     <motion.div
       whileHover={{ y: -6 }}
       className="h-full"
     >
-      <Link
+      <CardLink
         href={cursoHref}
         target={abrirEnNuevaPestana ? "_blank" : undefined}
         rel={abrirEnNuevaPestana ? "noopener noreferrer" : undefined}
@@ -92,7 +93,7 @@ export default function CursoCard({ curso }: Props) {
             </div>
           </div>
         </div>
-      </Link>
+      </CardLink>
     </motion.div>
   )
 }
