@@ -93,6 +93,7 @@ Este no es un curso más. Es el inicio de una transformación profesional.`,
     instructor: "Alfredo Cobos",
     destacado: true,
     hotmart: "https://pay.hotmart.com/S100738570C",
+    cardUrl: "https://cefin.mx/landings/constructoras/inscripcion",
   },
   {
     id: 4,
